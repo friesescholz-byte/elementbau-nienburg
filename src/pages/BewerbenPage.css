@@ -1,0 +1,453 @@
+.apply-page-wrapper {
+  padding: 160px 0 100px 0;
+  background-color: #fafbfc;
+  min-height: 100vh;
+}
+
+.apply-grid-page {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.apply-info-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-main-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(2.3rem, 3.5vw, 3.5rem);
+  font-weight: 850;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.apply-main-title .highlight {
+  color: var(--eb-orange);
+}
+
+.apply-sub-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--eb-text-muted);
+  text-transform: uppercase;
+  margin: 0 0 30px 0;
+  letter-spacing: 0.05em;
+}
+
+.apply-intro {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--eb-text-muted);
+  margin-bottom: 40px;
+}
+
+.apply-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.apply-benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid var(--eb-card-border);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.apply-benefit-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--eb-orange);
+  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.06);
+}
+
+.benefit-icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: var(--eb-orange-light);
+  color: var(--eb-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.benefit-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.benefit-card-content h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.benefit-card-content p {
+  font-size: 0.95rem;
+  color: var(--eb-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.apply-contact-box {
+  background-color: var(--eb-text-main);
+  color: #ffffff;
+  padding: 35px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.apply-contact-box::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--eb-orange);
+}
+
+.apply-contact-box h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--eb-orange);
+  margin-bottom: 15px;
+}
+
+.apply-contact-box p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.box-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.box-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.box-link:hover {
+  color: var(--eb-orange);
+}
+
+.box-link svg {
+  color: var(--eb-orange);
+  flex-shrink: 0;
+}
+
+/* === FORM CARD === */
+.apply-form-side {
+  position: relative;
+  width: 100%;
+}
+
+.apply-form-side::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 50%;
+  height: 50%;
+  border-bottom: 3px solid var(--eb-orange);
+  border-right: 3px solid var(--eb-orange);
+  z-index: 1;
+}
+
+.apply-form-card {
+  background-color: #ffffff;
+  border: 1px solid var(--eb-card-border);
+  box-shadow: var(--eb-card-shadow);
+  border-radius: 8px;
+  padding: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Progress Indicator */
+.progress-bar-wrapper {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.progress-bar-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.step-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--eb-card-border);
+  background-color: #ffffff;
+  color: var(--eb-text-muted);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.step-dot.active {
+  border-color: var(--eb-orange);
+  background-color: var(--eb-orange);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(255, 140, 0, 0.2);
+}
+
+.step-bar-line {
+  flex: 1;
+  max-width: 60px;
+  height: 2px;
+  background-color: var(--eb-card-border);
+  margin: 0 10px;
+}
+
+.step-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--eb-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-step-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.form-step-desc {
+  font-size: 0.95rem;
+  color: var(--eb-text-muted);
+  margin-bottom: 30px;
+}
+
+/* Radio button customized lists */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 20px;
+  border: 1px solid var(--eb-card-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.radio-label input {
+  accent-color: var(--eb-orange);
+  width: 18px;
+  height: 18px;
+}
+
+.radio-label.selected {
+  border-color: var(--eb-orange);
+  background-color: var(--eb-orange-light);
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.04);
+}
+
+.apply-next-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.step-button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.back-btn {
+  color: var(--eb-text-muted);
+}
+
+.back-btn:hover {
+  color: var(--eb-text-main);
+}
+
+.apply-summary-box {
+  background-color: #f9fafb;
+  border: 1px solid var(--eb-card-border);
+  padding: 24px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+
+.apply-summary-box h4 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--eb-text-main);
+  letter-spacing: 0.05em;
+}
+
+.apply-summary-box p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.apply-summary-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Success Step styles */
+.apply-success-step {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.success-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #d1fae5;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+}
+
+.success-title-main {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  color: var(--eb-text-main);
+  margin-bottom: 10px;
+}
+
+.success-desc-main {
+  font-size: 1.1rem;
+  color: var(--eb-text-muted);
+  max-width: 400px;
+  margin-bottom: 35px;
+  line-height: 1.5;
+}
+
+.success-next-steps {
+  text-align: left;
+  background-color: #f6fcf9;
+  border: 1px solid #a7f3d0;
+  padding: 25px 30px;
+  border-radius: 6px;
+  margin-bottom: 35px;
+  max-width: 440px;
+}
+
+.success-next-steps h4 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #065f46;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+.success-next-steps ol {
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: #065f46;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.back-home-btn {
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (max-width: 1024px) {
+  .apply-grid-page {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .apply-info-side {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .apply-form-side {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .apply-page-wrapper {
+    padding: 120px 0 60px 0;
+  }
+
+  .apply-benefit-card {
+    padding: 20px;
+  }
+
+  .apply-contact-box {
+    padding: 25px;
+  }
+
+  .apply-form-card {
+    padding: 30px 20px;
+  }
+}

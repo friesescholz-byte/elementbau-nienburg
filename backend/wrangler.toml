@@ -1,0 +1,7 @@
+name = "elementbau-nienburg-backend"
+main = "src/index.js"
+compatibility_date = "2024-05-23"
+
+[vars]
+RESEND_API_KEY = "re_23WnEvZS_MiA7sHvE1HVkZC5TDV7TeqXi"
+CLOUDFLARE_TURNSTILE_SECRET_KEY = "0x4AAAAAADYkqblgcNFy2414q1-0SYR3RH8"

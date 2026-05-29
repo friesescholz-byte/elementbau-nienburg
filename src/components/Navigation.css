@@ -1,0 +1,218 @@
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: transparent;
+  padding: 30px 0;
+  transition: var(--transition-smooth);
+}
+
+.navigation-bar.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 18px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-accent {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--eb-text-main);
+  letter-spacing: -0.02em;
+}
+
+.logo-sub {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--eb-orange);
+  letter-spacing: 0.25em;
+  margin-top: 2px;
+}
+
+.desktop-menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: var(--transition-fast);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--eb-orange);
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+  color: var(--eb-orange);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--eb-text-muted);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.nav-phone-btn:hover {
+  color: var(--eb-orange);
+}
+
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--eb-text-main);
+  color: #ffffff;
+  padding: 12px 24px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  border-radius: 4px;
+}
+
+.nav-cta-btn:hover {
+  background-color: var(--eb-orange);
+  box-shadow: 0 10px 20px rgba(255, 140, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--eb-text-main);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 998;
+  padding: 100px 40px 40px 40px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-sidebar.open {
+  right: 0;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  transition: var(--transition-fast);
+}
+
+.mobile-nav-link:hover, .mobile-nav-link.highlight {
+  color: var(--eb-orange);
+}
+
+.mobile-phone-li {
+  margin-top: 30px;
+  border-top: 1px solid var(--eb-card-border);
+  padding-top: 30px;
+}
+
+.mobile-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--eb-text-main);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.mobile-phone-link svg {
+  color: var(--eb-orange);
+}
+
+@media (max-width: 1024px) {
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+}
