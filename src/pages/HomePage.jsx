@@ -1,30 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Hls from 'hls.js';
 import { 
-  ArrowRight, Check, X, ShieldAlert, Award, Sparkles, User, FileText, CheckCircle2, Phone, Mail 
+  ArrowRight, Check, X, ShieldAlert, Award, Sparkles, FileText, CheckCircle2, Phone, Mail 
 } from 'lucide-react';
 import './HomePage.css';
 
 export default function HomePage() {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    const videoSrc = 'https://customer-yyb10hxshizegbas.cloudflarestream.com/902be9d923550e614748141398f799d2/manifest/video.m3u8';
-    
-    if (video) {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-      }
-    }
-  }, []);
-
   // Framer Motion Animation Constants
   const ease = [0.25, 1, 0.5, 1];
   
@@ -47,8 +29,8 @@ export default function HomePage() {
     }
   };
 
-  // R2 Base URL for Images
-  const r2Url = 'https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/elementbau-nienburg';
+  // R2 Base URL for Images (synced directly with Cloudflare R2 website-datein bucket)
+  const r2Url = 'https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni';
 
   return (
     <div className="homepage-wrapper">
@@ -114,12 +96,12 @@ export default function HomePage() {
             
             <div className="video-wrapper">
               <video 
-                ref={videoRef} 
                 className="hero-video" 
-                autoplay 
+                src={`${r2Url}/elementbau_Clip.mp4`}
+                autoPlay 
                 muted 
                 loop 
-                playsinline
+                playsInline
               />
             </div>
           </motion.div>
@@ -134,7 +116,7 @@ export default function HomePage() {
           <div className="section-header">
             <div className="section-tag">Leistungen</div>
             <h2 className="section-title">
-              Unser Service<br /><span class="highlight">im Überblick.</span>
+              Unser Service<br /><span className="highlight">im Überblick.</span>
             </h2>
           </div>
 
@@ -253,7 +235,7 @@ export default function HomePage() {
           <div className="section-header center">
             <div className="section-tag center">Ablauf</div>
             <h2 className="section-title">
-              So läuft Ihr Projekt<br /><span class="highlight">mit uns ab.</span>
+              So läuft Ihr Projekt<br /><span className="highlight">mit uns ab.</span>
             </h2>
             <p className="section-intro text-center">
               Ein kompakter, strukturierter Prozess – für maximale Sicherheit und Transparenz von der ersten Idee bis zur finalen Übergabe.
@@ -269,7 +251,7 @@ export default function HomePage() {
                 <p className="step-text">Wir treffen uns direkt bei Ihnen vor Ort. So können wir die Gegebenheiten analysieren, Ihre Wünsche aufnehmen und erste Lösungsansätze besprechen.</p>
               </div>
               <div className="step-image-wrapper">
-                <img src={`${r2Url}/pexels-hazardos-804065.jpg`} alt="Persönliche Beratung" className="step-img" onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/pexels-hazardos-804065-hGYvBKT6XnZcJwtw.jpg'; }} />
+                <img src={`${r2Url}/pexels-hazardos-804065-hGYvBKT6XnZcJwtw.jpg`} alt="Persönliche Beratung" className="step-img" />
               </div>
             </div>
 
@@ -281,7 +263,7 @@ export default function HomePage() {
                 <p className="step-text">Nach der Besichtigung erstellen wir ein detailliertes Konzept. Sie erhalten von uns ein transparentes und faires Angebot, das exakt auf Ihre individuellen Wünsche und die Gegebenheiten vor Ort zugeschnitten ist.</p>
               </div>
               <div className="step-image-wrapper">
-                <img src={`${r2Url}/photo-1503387762-592deb58ef4e.jpg`} alt="Planung und Kalkulation" className="step-img" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'; }} />
+                <img src={`${r2Url}/photo-1503387762-592deb58ef4e.jpg`} alt="Planung und Kalkulation" className="step-img" />
               </div>
             </div>
 
@@ -289,11 +271,11 @@ export default function HomePage() {
             <div className="step-row">
               <div className="step-content">
                 <span className="step-bg-num">03</span>
-                <h3 class="step-title">Vorbereitung</h3>
+                <h3 className="step-title">Vorbereitung</h3>
                 <p className="step-text">Wir kümmern uns um die gesamte Materialbeschaffung und bereiten die Baustelle optimal vor, damit am Stichtag direkt und sauber losgelegt werden kann.</p>
               </div>
               <div className="step-image-wrapper">
-                <img src={`${r2Url}/gemini_generated_image_xjke6ixjke6ixjke.png`} alt="Baustelle Vorbereitung" className="step-img" onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/gemini_generated_image_xjke6ixjke6ixjke-DBmLUNLJwji5Aik3.png'; }} />
+                <img src={`${r2Url}/gemini_generated_image_xjke6ixjke6ixjke-DBmLUNLJwji5Aik3.png`} alt="Baustelle Vorbereitung" className="step-img" />
               </div>
             </div>
 
@@ -301,11 +283,11 @@ export default function HomePage() {
             <div className="step-row">
               <div className="step-content">
                 <span className="step-bg-num">04</span>
-                <h3 class="step-title">Umsetzung vor Ort</h3>
+                <h3 className="step-title">Umsetzung vor Ort</h3>
                 <p className="step-text">Unsere erfahrenen Handwerker setzen das Projekt präzise um. Dabei achten wir besonders auf eine saubere Ausführung und die Einhaltung des Zeitplans.</p>
               </div>
               <div className="step-image-wrapper">
-                <img src={`${r2Url}/gemini_generated_image_22rait22rait22ra.png`} alt="Montage auf der Baustelle" className="step-img" onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png'; }} />
+                <img src={`${r2Url}/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png`} alt="Montage auf der Baustelle" className="step-img" />
               </div>
             </div>
 
@@ -313,11 +295,11 @@ export default function HomePage() {
             <div className="step-row">
               <div className="step-content">
                 <span className="step-bg-num">05</span>
-                <h3 class="step-title">Besenreine Übergabe</h3>
+                <h3 className="step-title">Besenreine Übergabe</h3>
                 <p className="step-text">Bevor wir gehen, räumen wir auf. Sie erhalten die Räumlichkeiten besenrein zurück. Erst nach einer gemeinsamen Qualitätskontrolle ist das Projekt für uns abgeschlossen.</p>
               </div>
               <div className="step-image-wrapper">
-                <img src={`${r2Url}/photo-1584622650111-993a426fbf0a.jpg`} alt="Besenreine Übergabe" className="step-img" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'; }} />
+                <img src={`${r2Url}/photo-1584622650111-993a426fbf0a.jpg`} alt="Besenreine Übergabe" className="step-img" />
               </div>
             </div>
           </div>
@@ -339,7 +321,7 @@ export default function HomePage() {
           <div className="section-header center">
             <div className="section-tag center">Unser Versprechen</div>
             <h2 className="section-title">
-              Warum Kunden<br /><span class="highlight">uns vertrauen.</span>
+              Warum Kunden<br /><span className="highlight">uns vertrauen.</span>
             </h2>
             <p className="section-intro text-center">
               Wir stehen für ehrliche Beratung, transparente Kommunikation und kompromisslose Qualität – von der ersten Skizze bis zur besenreinen Übergabe.
@@ -436,10 +418,9 @@ export default function HomePage() {
           <div className="image-container">
             <div className="image-wrapper">
               <img 
-                src={`${r2Url}/profilbild_louis_gerber.jpeg`} 
+                src={`${r2Url}/profilbild_louis_gerber-EnnxyBfGmmKeemaD.jpeg`} 
                 alt="Portrait von Louis Gerber - Elementbau" 
                 className="profile-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/profilbild_louis_gerber-EnnxyBfGmmKeemaD.jpeg'; }}
               />
             </div>
           </div>
@@ -470,10 +451,9 @@ export default function HomePage() {
             {/* Item 1 */}
             <div className="gallery-item span-2-row">
               <img 
-                src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die.jpg`} 
+                src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
                 alt="Fachgerechter Aushub von altem Mutterboden" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Tiefbauarbeiten</h3>
@@ -484,10 +464,9 @@ export default function HomePage() {
             {/* Item 2 */}
             <div className="gallery-item span-2-col">
               <img 
-                src={`${r2Url}/pexels-tima-miroshnichenko-6195961.jpg`} 
+                src={`${r2Url}/pexels-tima-miroshnichenko-6195961-rfUv8zMCUSldDbne.jpg`} 
                 alt="Bauendreinigung" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/pexels-tima-miroshnichenko-6195961-rfUv8zMCUSldDbne.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Bauendreinigung</h3>
@@ -498,10 +477,9 @@ export default function HomePage() {
             {/* Item 3 */}
             <div className="gallery-item">
               <img 
-                src={`${r2Url}/pexels-ono-kosuki-5974235.jpg`} 
+                src={`${r2Url}/pexels-ono-kosuki-5974235-XaEPDarDU7l1STiy.jpg`} 
                 alt="Holzarbeiten" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/pexels-ono-kosuki-5974235-XaEPDarDU7l1STiy.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Holzarbeiten</h3>
@@ -512,10 +490,9 @@ export default function HomePage() {
             {/* Item 4 */}
             <div className="gallery-item span-2-col">
               <img 
-                src={`${r2Url}/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1.jpg`} 
+                src={`${r2Url}/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1-BBwRqVvNfA3ccoHf.jpg`} 
                 alt="Start einer Großbaustelle mit neuen Fenstern" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1-BBwRqVvNfA3ccoHf.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Fenstermontage</h3>
@@ -526,10 +503,9 @@ export default function HomePage() {
             {/* Item 5 */}
             <div className="gallery-item">
               <img 
-                src={`${r2Url}/d-abdichtung-im-eingangsbereich-erfolgreich-abgeschlossen-fa1-4r-unseren-kunden-easyfitness_nien.jpg`} 
+                src={`${r2Url}/d-abdichtung-im-eingangsbereich-erfolgreich-abgeschlossen-fa1-4r-unseren-kunden-easyfitness_nien-20C8pnOX78IJqO2c.jpg`} 
                 alt="Pflastern und Abdichten" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/d-abdichtung-im-eingangsbereich-erfolgreich-abgeschlossen-fa1-4r-unseren-kunden-easyfitness_nien-20C8pnOX78IJqO2c.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Pflastern & Abdichten</h3>
@@ -540,10 +516,9 @@ export default function HomePage() {
             {/* Item 6 */}
             <div className="gallery-item">
               <img 
-                src={`${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente.jpg`} 
+                src={`${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg`} 
                 alt="Neue Schiebetür erfolgreich eingebaut" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Fenstereinbau</h3>
@@ -554,10 +529,9 @@ export default function HomePage() {
             {/* Item 7 */}
             <div className="gallery-item">
               <img 
-                src={`${r2Url}/pexels-jimmy-nilsson-masth-193596566-11427055.jpg`} 
+                src={`${r2Url}/pexels-jimmy-nilsson-masth-193596566-11427055-PZ3mUxKrXAEfdW6S.jpg`} 
                 alt="Verputzen von Kanten" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/pexels-jimmy-nilsson-masth-193596566-11427055-PZ3mUxKrXAEfdW6S.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Verputzarbeiten</h3>
@@ -568,10 +542,9 @@ export default function HomePage() {
             {/* Item 8 */}
             <div className="gallery-item span-2-col">
               <img 
-                src={`${r2Url}/pexels-introspectivedsgn-6124239.jpg`} 
+                src={`${r2Url}/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg`} 
                 alt="Anbringen von Dämmung" 
                 className="gallery-img"
-                onError={(e) => { e.target.src = 'https://assets.zyrosite.com/snetI6TO2furnKS3/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg'; }}
               />
               <div className="project-overlay">
                 <h3 className="project-title">Energieeffizienz</h3>
@@ -603,7 +576,7 @@ export default function HomePage() {
               <div className="section-tag">Projektanfrage</div>
               
               <h2 className="cta-title">
-                Starten wir Ihr<br /><span class="highlight">Projekt.</span>
+                Starten wir Ihr<br /><span className="highlight">Projekt.</span>
               </h2>
               
               <p className="cta-text">
