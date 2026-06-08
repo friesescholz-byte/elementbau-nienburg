@@ -16,40 +16,56 @@ export default function BewerbenPage() {
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [turnstileToken, setTurnstileToken] = useState('');
-  const turnstileContainerRef = useRef(null);
+  
+  const turnstileRef = useRef(null);
+  const widgetIdRef = useRef(null);
 
-  // Initialize Turnstile dynamically when step 3 is reached
   useEffect(() => {
-    if (step === 3) {
-      let script = document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
-      
-      const loadTurnstile = () => {
-        if (window.turnstile && turnstileContainerRef.current) {
-          try {
-            window.turnstile.render(turnstileContainerRef.current, {
-              sitekey: '0x4AAAAAADYkqUkruymHstA5',
-              callback: (token) => {
-                setTurnstileToken(token);
-              },
-            });
-          } catch (e) {
-            // Already rendered
-          }
-        }
-      };
+    let interval;
 
-      if (!script) {
-        script = document.createElement('script');
-        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-        window.onloadTurnstileCallback = loadTurnstile;
-      } else {
-        // Script already exists
-        setTimeout(loadTurnstile, 100);
+    const renderWidget = () => {
+      if (step === 3 && turnstileRef.current && window.turnstile && !widgetIdRef.current) {
+        try {
+          // 1. Container zwingend leeren, um StrictMode-Doppelrender-Fehler zu vermeiden!
+          turnstileRef.current.innerHTML = "";
+          
+          // 2. Widget rendern
+          widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: '0x4AAAAAADYkqUkruymHstA5',
+            callback: (token) => {
+              setTurnstileToken(token);
+              setStatus({ type: '', message: '' });
+            },
+            "expired-callback": () => setTurnstileToken(""),
+            theme: "light",
+          });
+          if (interval) clearInterval(interval);
+        } catch (e) {
+          console.error("Turnstile render error:", e);
+        }
+      }
+    };
+
+    if (step === 3) {
+      renderWidget();
+
+      // Falls API noch lädt, kurz pollen
+      if (!widgetIdRef.current) {
+        interval = setInterval(() => {
+          if (window.turnstile) {
+            renderWidget();
+          }
+        }, 100);
       }
     }
+
+    return () => {
+      if (interval) clearInterval(interval);
+      if (widgetIdRef.current && window.turnstile) {
+        try { window.turnstile.remove(widgetIdRef.current); } catch (e) {}
+        widgetIdRef.current = null;
+      }
+    };
   }, [step]);
 
   const handleSubmit = async (e) => {
@@ -62,13 +78,13 @@ export default function BewerbenPage() {
     setStatus({ type: 'loading', message: 'Bewerbung wird gesendet...' });
 
     try {
-      const response = await fetch('https://elementbau-nienburg-backend.friese-scholz.workers.dev/api/send-email', {
+      const response = await fetch('https://friesescholzwebdesign.pages.dev/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           ...formData, 
           turnstileToken,
-          toEmail: 'scholz.friese@gmail.com',
+          source: 'elementbau-nienburg',
           formType: 'bewerbung'
         }),
       });
@@ -343,7 +359,7 @@ export default function BewerbenPage() {
 
                     {/* Turnstile Container */}
                     <div className="cf-turnstile-wrapper">
-                      <div ref={turnstileContainerRef} className="cf-turnstile"></div>
+                      <div ref={turnstileRef} className="cf-turnstile"></div>
                     </div>
 
                     {status.message && (

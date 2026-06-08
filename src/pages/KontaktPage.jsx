@@ -13,49 +13,53 @@ export default function KontaktPage() {
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [turnstileToken, setTurnstileToken] = useState('');
-  const turnstileContainerRef = useRef(null);
+  
+  const turnstileRef = useRef(null);
+  const widgetIdRef = useRef(null);
 
-  // Turnstile dynamic initialization
   useEffect(() => {
-    // Check if script is already present
-    let script = document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
-    
-    if (!script) {
-      script = document.createElement('script');
-      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
+    let interval;
 
-    window.onloadTurnstileCallback = () => {
-      if (window.turnstile && turnstileContainerRef.current) {
-        window.turnstile.render(turnstileContainerRef.current, {
-          sitekey: '0x4AAAAAADYkqUkruymHstA5',
-          callback: (token) => {
-            setTurnstileToken(token);
-          },
-        });
+    const renderWidget = () => {
+      if (turnstileRef.current && window.turnstile && !widgetIdRef.current) {
+        try {
+          // 1. Container zwingend leeren, um StrictMode-Doppelrender-Fehler zu vermeiden!
+          turnstileRef.current.innerHTML = "";
+          
+          // 2. Widget rendern
+          widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: '0x4AAAAAADYkqUkruymHstA5',
+            callback: (token) => {
+              setTurnstileToken(token);
+              setStatus({ type: '', message: '' });
+            },
+            "expired-callback": () => setTurnstileToken(""),
+            theme: "light",
+          });
+          if (interval) clearInterval(interval);
+        } catch (e) {
+          console.error("Turnstile render error:", e);
+        }
       }
     };
 
-    // If script is already loaded
-    if (window.turnstile && turnstileContainerRef.current) {
-      try {
-        window.turnstile.render(turnstileContainerRef.current, {
-          sitekey: '0x4AAAAAADYkqUkruymHstA5',
-          callback: (token) => {
-            setTurnstileToken(token);
-          },
-        });
-      } catch (e) {
-        // Already rendered or error
-      }
+    renderWidget();
+
+    // Falls API noch lädt, kurz pollen
+    if (!widgetIdRef.current) {
+      interval = setInterval(() => {
+        if (window.turnstile) {
+          renderWidget();
+        }
+      }, 100);
     }
 
     return () => {
-      // Clean up callbacks if needed
-      window.onloadTurnstileCallback = null;
+      if (interval) clearInterval(interval);
+      if (widgetIdRef.current && window.turnstile) {
+        try { window.turnstile.remove(widgetIdRef.current); } catch (e) {}
+        widgetIdRef.current = null;
+      }
     };
   }, []);
 
@@ -69,13 +73,13 @@ export default function KontaktPage() {
     setStatus({ type: 'loading', message: 'Ihre Anfrage wird gesendet...' });
 
     try {
-      const response = await fetch('https://elementbau-nienburg-backend.friese-scholz.workers.dev/api/send-email', {
+      const response = await fetch('https://friesescholzwebdesign.pages.dev/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           ...formData, 
           turnstileToken,
-          toEmail: 'scholz.friese@gmail.com',
+          source: 'elementbau-nienburg',
           formType: 'kontakt'
         }),
       });
@@ -231,7 +235,7 @@ export default function KontaktPage() {
 
                 {/* Turnstile Container */}
                 <div className="cf-turnstile-wrapper">
-                  <div ref={turnstileContainerRef} className="cf-turnstile"></div>
+                  <div ref={turnstileRef} className="cf-turnstile"></div>
                 </div>
 
                 <button 
