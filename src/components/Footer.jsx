@@ -95,14 +95,7 @@ export default function Footer() {
               <Link to="/bewerben" className="footer-link">Jobs / Karriere</Link>
             </li>
             <li>
-              <a 
-                href="https://assets.zyrosite.com/snetI6TO2furnKS3/barrierefreiheitserklaerung_-1-CHov7Amxl9ua9N7T.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="footer-link"
-              >
-                Barrierefreiheitserklärung
-              </a>
+              <Link to="/barrierefreiheit" className="footer-link">Barrierefreiheitserklärung</Link>
             </li>
           </ul>
         </div>
@@ -114,7 +107,7 @@ export default function Footer() {
         <div className="footer-bottom-container">
           <p>© {currentYear} Elementbau Nienburg. Alle Rechte vorbehalten.</p>
           <p className="agency-tag">
-            Website by <a href="https://scholz-friese.de" target="_blank" rel="noopener noreferrer">Scholz & Friese</a>
+            Website by <a href="https://scholz-friese-webdesign.de/" target="_blank" rel="noopener noreferrer">Scholz & Friese Webdesign</a>
           </p>
         </div>
       </div>

@@ -383,59 +383,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. ÜBER UNS SECTION */}
-      <section id="ueber-uns" className="about-section">
-        <div className="container about-grid">
-          
-          <div className="about-content">
-            <div className="section-tag">Das sind wir</div>
-            
-            <h2 className="about-title">
-              Jung. Dynamisch.<br /><span class="highlight">Handwerk mit Herz.</span>
-            </h2>
-            
-            <p className="about-text">
-              Hallo, ich bin Louis Gerber. Als junges Unternehmen aus der Region stehen wir für eine neue Generation im Handwerk: modern, verlässlich und immer auf Augenhöhe mit unseren Kunden.
-            </p>
-            
-            <p className="about-text">
-              Wir sind kein riesiger, anonymer Konzern, sondern ein eingespieltes Team, das anpackt. Ob Trockenbau, Sanierung oder schnelle Hilfe beim Wasserschaden – wir legen Wert auf ehrliche Arbeit, direkte Kommunikation und Ergebnisse, die sich sehen lassen können. Bei uns wissen Sie immer, wer auf Ihrer Baustelle arbeitet.
-            </p>
-            
-            <div className="claim-box">
-              <span className="claim-title">Meine Philosophie</span>
-              <p className="claim-text">
-                "Gute Arbeit braucht kein langes Reden, sondern saubere Ausführung und ein klares Wort."
-              </p>
-            </div>
-
-            <a href="/bewerben" className="btn-solid">
-              Werde Teil unseres Teams
-              <ArrowRight className="arrow" />
-            </a>
-          </div>
-
-          <div className="image-container">
-            <div className="image-wrapper">
-              <img 
-                src={`${r2Url}/profilbild_louis_gerber-EnnxyBfGmmKeemaD.jpeg`} 
-                alt="Portrait von Louis Gerber - Elementbau" 
-                className="profile-img"
-              />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 6. REFERENZEN & PROJEKTE SECTION */}
+      {/* 5. REFERENZEN & PROJEKTE SECTION */}
       <section id="projekte" className="references-section">
         <div className="container">
           
           <div className="ref-header">
             <div className="section-tag">Referenzen / Projekte</div>
             <h2 className="ref-title">
-              Qualität, die<br /><span class="highlight">man sieht.</span>
+              Qualität, die<br /><span className="highlight">man sieht.</span>
             </h2>
             <p className="ref-intro">
               Ein kleiner Einblick in unsere tägliche Arbeit – von der Badsanierung bis zum Dachgeschossausbau.
@@ -562,6 +517,51 @@ export default function HomePage() {
               Jetzt Projekt anfragen
               <ArrowRight className="arrow" />
             </a>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. ÜBER UNS SECTION */}
+      <section id="ueber-uns" className="about-section">
+        <div className="container about-grid">
+          
+          <div className="about-content">
+            <div className="section-tag">Das sind wir</div>
+            
+            <h2 className="about-title">
+              Jung. Dynamisch.<br /><span className="highlight">Handwerk mit Herz.</span>
+            </h2>
+            
+            <p className="about-text">
+              Hallo, ich bin Louis Gerber. Als junges Unternehmen aus der Region stehen wir für eine neue Generation im Handwerk: modern, verlässlich und immer auf Augenhöhe mit unseren Kunden.
+            </p>
+            
+            <p className="about-text">
+              Wir sind kein riesiger, anonymer Konzern, sondern ein eingespieltes Team, das anpackt. Ob Trockenbau, Sanierung oder schnelle Hilfe beim Wasserschaden – wir legen Wert auf ehrliche Arbeit, direkte Kommunikation und Ergebnisse, die sich sehen lassen können. Bei uns wissen Sie immer, wer auf Ihrer Baustelle arbeitet.
+            </p>
+            
+            <div className="claim-box">
+              <span className="claim-title">Meine Philosophie</span>
+              <p className="claim-text">
+                "Gute Arbeit braucht kein langes Reden, sondern saubere Ausführung und ein klares Wort."
+              </p>
+            </div>
+
+            <a href="/bewerben" className="btn-solid">
+              Werde Teil unseres Teams
+              <ArrowRight className="arrow" />
+            </a>
+          </div>
+
+          <div className="image-container">
+            <div className="image-wrapper">
+              <img 
+                src={`${r2Url}/profilbild_louis_gerber-EnnxyBfGmmKeemaD.jpeg`} 
+                alt="Portrait von Louis Gerber - Elementbau" 
+                className="profile-img"
+              />
+            </div>
           </div>
 
         </div>

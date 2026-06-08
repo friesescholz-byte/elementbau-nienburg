@@ -126,7 +126,7 @@ export default {
           },
           body: JSON.stringify({
             from: 'Elementbau Nienburg <anfragen@scholz-friese.de>',
-            to: toEmail || 'info@elementbau-ni.de',
+            to: toEmail || 'scholz.friese@gmail.com',
             reply_to: email,
             subject: emailSubject,
             html: emailHtml,

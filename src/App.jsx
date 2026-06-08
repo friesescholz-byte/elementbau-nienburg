@@ -7,6 +7,7 @@ import KontaktPage from './pages/KontaktPage';
 import BewerbenPage from './pages/BewerbenPage';
 import ImprintPage from './pages/ImprintPage';
 import PrivacyPage from './pages/PrivacyPage';
+import AccessibilityPage from './pages/AccessibilityPage';
 import './App.css';
 
 // Scroll to Top Utility Component
@@ -45,6 +46,7 @@ function App() {
           <Route path="/bewerben" element={<BewerbenPage />} />
           <Route path="/impressum" element={<ImprintPage />} />
           <Route path="/datenschutz" element={<PrivacyPage />} />
+          <Route path="/barrierefreiheit" element={<AccessibilityPage />} />
         </Routes>
       </main>
       <Footer />

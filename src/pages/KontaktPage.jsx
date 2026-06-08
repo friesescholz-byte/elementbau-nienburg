@@ -75,7 +75,7 @@ export default function KontaktPage() {
         body: JSON.stringify({ 
           ...formData, 
           turnstileToken,
-          toEmail: 'info@elementbau-ni.de',
+          toEmail: 'scholz.friese@gmail.com',
           formType: 'kontakt'
         }),
       });
