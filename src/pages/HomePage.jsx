@@ -113,13 +113,55 @@ export default function HomePage() {
       <section className="baudienstleistungen-intro">
         <div className="container intro-grid">
           
-          {/* Left Column: Text */}
+          {/* Left Column: Text & Features */}
           <div className="intro-left">
             <div className="section-tag">Baudienstleistungen</div>
-            <h2 className="intro-title">Alles aus einer Hand.</h2>
+            <h2 className="intro-title">Alles aus einer Hand</h2>
             <p className="intro-text">
               Mit <strong>ElementBau</strong> bieten wir Ihnen umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber. Dank unserer langjährigen Erfahrung und unseres hohen Qualitätsanspruchs sind wir Ihr zuverlässiger Ansprechpartner für Neubau-, Umbau-, Sanierungs- und Modernisierungsprojekte.
             </p>
+            
+            <div className="intro-usps-grid">
+              <div className="usp-item">
+                <div className="usp-icon-wrapper">
+                  <CheckCircle2 size={18} />
+                </div>
+                <div className="usp-content">
+                  <h3>Komplettservice</h3>
+                  <p>Von der Beratung über die Ausführung bis zur Übergabe alles aus einer Hand.</p>
+                </div>
+              </div>
+              
+              <div className="usp-item">
+                <div className="usp-icon-wrapper">
+                  <CheckCircle2 size={18} />
+                </div>
+                <div className="usp-content">
+                  <h3>Erfahrung & Qualität</h3>
+                  <p>Handwerksleistung auf höchstem Niveau mit langjähriger Praxiserfahrung.</p>
+                </div>
+              </div>
+              
+              <div className="usp-item">
+                <div className="usp-icon-wrapper">
+                  <CheckCircle2 size={18} />
+                </div>
+                <div className="usp-content">
+                  <h3>Faire Festpreise</h3>
+                  <p>Volle Kostentransparenz und verlässliche Angebote ohne versteckte Kosten.</p>
+                </div>
+              </div>
+              
+              <div className="usp-item">
+                <div className="usp-icon-wrapper">
+                  <CheckCircle2 size={18} />
+                </div>
+                <div className="usp-content">
+                  <h3>Schnelle Hilfe</h3>
+                  <p>Reaktionsschnelle Unterstützung bei Wasserschäden und dringenden Sanierungen.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Cistern Project Progress */}
