@@ -147,8 +147,8 @@ export default function HomePage() {
                   <CheckCircle2 size={18} />
                 </div>
                 <div className="usp-content">
-                  <h3>Faire Festpreise</h3>
-                  <p>Volle Kostentransparenz und verlässliche Angebote ohne versteckte Kosten.</p>
+                  <h3>Für jedes Projekt</h3>
+                  <p>Umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber.</p>
                 </div>
               </div>
               
