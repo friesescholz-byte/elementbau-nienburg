@@ -1266,3 +1266,227 @@
     display: none;
   }
 }
+
+/* === 1.5. BAUDIENSTLEISTUNGEN SECTION === */
+.baudienstleistungen-intro {
+  padding: 80px 0;
+  background-color: var(--eb-bg);
+  border-bottom: 1px solid var(--eb-card-border);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.intro-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--eb-text-main);
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--eb-text-muted);
+  margin: 0;
+  font-weight: 400;
+}
+
+.scope-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.services-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+  padding-top: 5px;
+}
+
+.service-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.service-ul li {
+  font-size: 0.95rem;
+  color: var(--eb-text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.service-ul li::before {
+  content: '✔';
+  color: var(--eb-orange);
+  font-weight: bold;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Right Column Progress Card */
+.progress-card {
+  background-color: var(--eb-card-bg);
+  border: 1px solid var(--eb-card-border);
+  box-shadow: var(--eb-card-shadow);
+  padding: 30px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--eb-orange);
+}
+
+.progress-card-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 5px 0;
+  color: var(--eb-text-main);
+}
+
+.progress-card-title .highlight {
+  color: var(--eb-orange);
+}
+
+.progress-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--eb-text-muted);
+  margin-bottom: 25px;
+}
+
+.progress-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.progress-step-item {
+  display: flex;
+  gap: 24px;
+  align-items: start;
+}
+
+.step-img-box {
+  width: 140px;
+  height: 105px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.step-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.progress-step-item:hover .step-thumb {
+  transform: scale(1.05);
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-num-badge {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--eb-orange);
+  background-color: rgba(255, 140, 0, 0.08);
+  padding: 2px 8px;
+  border-radius: 3px;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-info h4 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--eb-text-main);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.step-info p {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--eb-text-muted);
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-list-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .progress-step-item {
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+  }
+  
+  .step-img-box {
+    width: 100px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 5px;
+  }
+  
+  .baudienstleistungen-intro {
+    padding: 60px 0;
+  }
+}

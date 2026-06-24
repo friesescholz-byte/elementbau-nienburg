@@ -109,6 +109,93 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 1.5. BAUDIENSTLEISTUNGEN INTRO */}
+      <section className="baudienstleistungen-intro">
+        <div className="container intro-grid">
+          
+          {/* Left Column: Text & List */}
+          <div className="intro-left">
+            <div className="section-tag">Baudienstleistungen</div>
+            <h2 className="intro-title">Alles aus einer Hand.</h2>
+            <p className="intro-text">
+              Mit <strong>ElementBau</strong> bieten wir Ihnen umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber. Dank unserer langjährigen Erfahrung und unseres hohen Qualitätsanspruchs sind wir Ihr zuverlässiger Ansprechpartner für Neubau-, Umbau-, Sanierungs- und Modernisierungsprojekte.
+            </p>
+            <p className="scope-title">Unser Leistungsspektrum umfasst zahlreiche Arbeiten rund um Haus, Wohnung und Gewerbeobjekte:</p>
+            
+            <div className="services-list-grid">
+              <ul className="service-ul">
+                <li>Trockenbauarbeiten</li>
+                <li>Innenausbau und Renovierungen</li>
+                <li>Kellerabdichtungen und Feuchtigkeitsschutz</li>
+                <li>Leckortung und Wasserschadensanierung</li>
+                <li>Maler- und Spachtelarbeiten</li>
+                <li>Decken- und Wandverkleidungen</li>
+                <li>Dämm- und Isolierarbeiten</li>
+                <li>Bodenverlegearbeiten</li>
+              </ul>
+              <ul className="service-ul">
+                <li>Abbruch- und Rückbauarbeiten</li>
+                <li>Sanierung von Wohn- und Gewerbeobjekten</li>
+                <li>Montagearbeiten aller Art</li>
+                <li>Türen- und Fenstermontage</li>
+                <li>Badezimmer- und Wohnraumsanierungen</li>
+                <li>Dachgeschossausbau</li>
+                <li>Reparatur- und Instandsetzungsarbeiten</li>
+                <li>Entkernungsarbeiten</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Column: Cistern Project Progress */}
+          <div className="intro-right">
+            <div className="progress-card">
+              <h3 className="progress-card-title">Zisterneneinbau <span className="highlight">abfolge</span></h3>
+              <p className="progress-card-subtitle">Praxisbeispiel: Einbau einer 4000 Liter Wasserzisterne</p>
+              
+              <div className="progress-steps-list">
+                {/* Step 1 */}
+                <div className="progress-step-item">
+                  <div className="step-img-box">
+                    <img src={`${r2Url}/702730042_17872956285668112_3004010946025521635_n_ergebnis.webp`} alt="Erdarbeiten & Aushub" className="step-thumb" />
+                  </div>
+                  <div className="step-info">
+                    <span className="step-num-badge">Schritt 01</span>
+                    <h4>Aushub & Erdarbeiten</h4>
+                    <p>Baggern und Vorbereitung der Baugrube vor Ort.</p>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="progress-step-item">
+                  <div className="step-img-box">
+                    <img src={`${r2Url}/%F0%9F%9A%A7%F0%9F%92%A7%20Projekt%20abgeschlossen!%20%F0%9F%92%A7%F0%9F%9A%A7Der%20Einbau%20unserer%204000%20L%20Wasserzisterne%20ist%20erfolgreich%20vollend%20(1)_ergebnis.webp`} alt="Zisterneneinlass" className="step-thumb" />
+                  </div>
+                  <div className="step-info">
+                    <span className="step-num-badge">Schritt 02</span>
+                    <h4>Zisterneneinbau</h4>
+                    <p>Einsetzen der 4000 Liter Zisterne in das Erdreich.</p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="progress-step-item">
+                  <div className="step-img-box">
+                    <img src={`${r2Url}/%F0%9F%9A%A7%F0%9F%92%A7%20Projekt%20abgeschlossen!%20%F0%9F%92%A7%F0%9F%9A%A7Der%20Einbau%20unserer%204000%20L%20Wasserzisterne%20ist%20erfolgreich%20vollend%20(2)_ergebnis.webp`} alt="Wasseranschluss" className="step-thumb" />
+                  </div>
+                  <div className="step-info">
+                    <span className="step-num-badge">Schritt 03</span>
+                    <h4>Anschluss & Verrohrung</h4>
+                    <p>Fachgerechter Wasseranschluss und abschließende Arbeiten.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* 2. LEISTUNGEN SECTION */}
       <section id="leistungen" className="services-section">
         <div className="container">
