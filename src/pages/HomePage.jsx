@@ -113,37 +113,13 @@ export default function HomePage() {
       <section className="baudienstleistungen-intro">
         <div className="container intro-grid">
           
-          {/* Left Column: Text & List */}
+          {/* Left Column: Text */}
           <div className="intro-left">
             <div className="section-tag">Baudienstleistungen</div>
             <h2 className="intro-title">Alles aus einer Hand.</h2>
             <p className="intro-text">
               Mit <strong>ElementBau</strong> bieten wir Ihnen umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber. Dank unserer langjährigen Erfahrung und unseres hohen Qualitätsanspruchs sind wir Ihr zuverlässiger Ansprechpartner für Neubau-, Umbau-, Sanierungs- und Modernisierungsprojekte.
             </p>
-            <p className="scope-title">Unser Leistungsspektrum umfasst zahlreiche Arbeiten rund um Haus, Wohnung und Gewerbeobjekte:</p>
-            
-            <div className="services-list-grid">
-              <ul className="service-ul">
-                <li>Trockenbauarbeiten</li>
-                <li>Innenausbau und Renovierungen</li>
-                <li>Kellerabdichtungen und Feuchtigkeitsschutz</li>
-                <li>Leckortung und Wasserschadensanierung</li>
-                <li>Maler- und Spachtelarbeiten</li>
-                <li>Decken- und Wandverkleidungen</li>
-                <li>Dämm- und Isolierarbeiten</li>
-                <li>Bodenverlegearbeiten</li>
-              </ul>
-              <ul className="service-ul">
-                <li>Abbruch- und Rückbauarbeiten</li>
-                <li>Sanierung von Wohn- und Gewerbeobjekten</li>
-                <li>Montagearbeiten aller Art</li>
-                <li>Türen- und Fenstermontage</li>
-                <li>Badezimmer- und Wohnraumsanierungen</li>
-                <li>Dachgeschossausbau</li>
-                <li>Reparatur- und Instandsetzungsarbeiten</li>
-                <li>Entkernungsarbeiten</li>
-              </ul>
-            </div>
           </div>
 
           {/* Right Column: Cistern Project Progress */}
@@ -223,7 +199,7 @@ export default function HomePage() {
               <h3 className="card-title">Wasserschaden & Leckortung</h3>
               <p className="card-desc">Bei Wasserschäden handeln wir schnell und zuverlässig. Von der Schadensanalyse bis zur vollständigen Trocknung und Sanierung kümmern wir uns um alles.</p>
               <ul className="service-list">
-                <li>Leckortung & Schadensdiagnose</li>
+                <li>Leckortung & Wasserschadensanierung</li>
                 <li>Reparatur bei Rohrbruch & Leitungswasserschäden</li>
                 <li>Wasserschaden-Notdienst</li>
                 <li>Bautrocknung & Entfeuchtung</li>
@@ -240,11 +216,13 @@ export default function HomePage() {
               <h3 className="card-title">Trockenbau & Innenausbau</h3>
               <p className="card-desc">Mit professionellem Trockenbau schaffen wir neue Räume und moderne Innenbereiche. Ideal für Renovierungen, Umbauten oder den Ausbau von Dachgeschossen.</p>
               <ul className="service-list">
+                <li>Trockenbauarbeiten</li>
+                <li>Innenausbau & Renovierungen</li>
                 <li>Trennwände & Raumaufteilungen</li>
                 <li>Decken- und Wandverkleidungen</li>
-                <li>Trockenestrich & Bodenaufbau</li>
                 <li>Dachgeschossausbau</li>
-                <li>Dämmung & Isolierung</li>
+                <li>Dämm- & Isolierarbeiten</li>
+                <li>Maler- & Spachtelarbeiten</li>
               </ul>
             </motion.div>
 
@@ -257,11 +235,14 @@ export default function HomePage() {
               <h3 className="card-title">Altbausanierung & Renovierung</h3>
               <p className="card-desc">Wir verwandeln alte Gebäude in moderne Wohn- oder Arbeitsräume. Dabei übernehmen wir die komplette Koordination aller Arbeiten – alles aus einer Hand.</p>
               <ul className="service-list">
+                <li>Sanierung von Wohn- & Gewerbeobjekten</li>
+                <li>Badezimmer- & Wohnraumsanierungen</li>
                 <li>Renovierung und Modernisierung</li>
-                <li>Trockenbau & Dämmarbeiten</li>
-                <li>Einbau von Fenstern, Türen & Böden</li>
-                <li>Badsanierungen</li>
-                <li>Koordination aller Gewerke</li>
+                <li>Türen- & Fenstermontage</li>
+                <li>Bodenverlegearbeiten</li>
+                <li>Abbruch- & Rückbauarbeiten</li>
+                <li>Reparatur- & Instandsetzungsarbeiten</li>
+                <li>Montagearbeiten aller Art</li>
               </ul>
             </motion.div>
 
@@ -274,7 +255,7 @@ export default function HomePage() {
               <h3 className="card-title">Kellerabdichtung</h3>
               <p className="card-desc">Ihr Vorteil: Ein Ansprechpartner, ein durchdachter Ablauf und ein dauerhaft trockenes Ergebnis. Wir schützen Ihr Gebäude nachhaltig vor Feuchtigkeit.</p>
               <ul className="service-list">
-                <li>Freilegung des betroffenen Mauerwerks</li>
+                <li>Kellerabdichtung & Feuchtigkeitsschutz</li>
                 <li>Gründliche Vorbereitung der Flächen</li>
                 <li>Hochwertige Abdichtung (innen & außen)</li>
                 <li>Fachgerechtes Verschließen</li>
@@ -291,7 +272,7 @@ export default function HomePage() {
               <h3 className="card-title">Badsanierung</h3>
               <p className="card-desc">Wir verwandeln Ihr Badezimmer in eine moderne Wohlfühloase. Ihr Vorteil: Ein Ansprechpartner, klare Abläufe und ein Bad, das perfekt zu Ihnen passt.</p>
               <ul className="service-list">
-                <li>Rückbau und fachgerechte Entkernung</li>
+                <li>Entkernungsarbeiten & Rückbau</li>
                 <li>Planung und individuelle Gestaltung</li>
                 <li>Sanitär- und Elektroarbeiten</li>
                 <li>Fliesenarbeiten und Abdichtung</li>
