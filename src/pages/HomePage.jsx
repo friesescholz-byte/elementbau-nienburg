@@ -546,11 +546,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. VERTRAUEN & USP SECTION */}
-      <section className="why-us-section">
-        <div className="container">
+      {/* 4. VERTRAUEN / WHY US SECTION */}
+      <section className="why-us-section trust-section">
+        {/* Cinematic Handwerk Background Image & Multi-Layer Gradient Overlay */}
+        <div className="why-us-bg-wrap" aria-hidden="true">
+          <img 
+            src={`${r2Url}/nb/Elementbau-10_ergebnis.webp`} 
+            alt="" 
+            className="why-us-bg-img" 
+          />
+          <div className="why-us-bg-overlay" />
+        </div>
+
+        <div className="container why-us-container">
           
-          <div className="section-header center">
+          <div className="section-header center why-us-header">
             <div className="section-tag center">Verlässlichkeit & Qualität</div>
             <h2 className="section-title">
               Warum Kunden <span className="highlight">Elementbau vertrauen.</span>

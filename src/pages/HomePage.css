@@ -1008,25 +1008,80 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* === 4. VERTRAUEN SECTION === */
-.trust-section {
-  padding: 100px 0;
+/* === 4. VERTRAUEN / WHY US SECTION WITH CINEMATIC HANDWERK BACKGROUND === */
+.why-us-section {
+  position: relative;
+  padding: 130px 0;
+  overflow: hidden;
+  background-color: #0b1120;
+}
+
+.why-us-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.why-us-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: brightness(0.38) contrast(1.1) saturate(1.15);
+  transform: scale(1.04);
+}
+
+.why-us-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, rgba(11, 17, 32, 0.92) 0%, rgba(15, 23, 42, 0.78) 50%, rgba(11, 17, 32, 0.95) 100%),
+    radial-gradient(ellipse at 50% 40%, rgba(255, 140, 0, 0.12) 0%, transparent 65%);
+}
+
+.why-us-container {
+  position: relative;
+  z-index: 2;
+}
+
+.why-us-header .section-tag {
+  color: var(--eb-orange);
+}
+
+.why-us-header .section-title {
+  color: #ffffff;
+}
+
+.why-us-header .section-title .highlight {
+  color: var(--eb-orange);
+}
+
+.why-us-header .section-intro {
+  color: #cbd5e1;
 }
 
 .trust-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: 30px;
+  gap: 32px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .trust-card {
-  padding: 50px;
-  border-radius: 6px;
+  padding: 48px 42px;
+  border-radius: 18px;
   position: relative;
   overflow: hidden;
-  transition: var(--transition-smooth);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.trust-card:hover {
+  transform: translateY(-4px);
 }
 
 .card-heading {
@@ -1056,39 +1111,67 @@
   transition: var(--transition-smooth);
 }
 
+/* Card 1: Negative / Was es bei uns nicht gibt (Edle dunkle Glassmorphism Card) */
 .card-negative {
-  background-color: #f9fafb;
-  border: 1px solid var(--eb-card-border);
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
 }
 
 .card-negative .card-heading {
-  color: var(--eb-text-muted);
+  color: #94a3b8;
 }
 
 .card-negative .trust-list li {
-  color: var(--eb-text-muted);
+  color: #94a3b8;
   text-decoration: line-through;
-  text-decoration-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: rgba(239, 68, 68, 0.4);
 }
 
+.card-negative .list-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Card 2: Positive / Sondern immer (Leuchtende High-End Card) */
 .card-positive {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 2px solid var(--eb-orange);
-  box-shadow: var(--eb-card-shadow);
+  box-shadow: 0 25px 60px rgba(255, 140, 0, 0.22), 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .card-positive .card-heading {
-  color: var(--eb-orange);
+  color: #ea580c;
 }
 
 .card-positive .trust-list li {
-  color: var(--eb-text-main);
+  color: #0f172a;
   font-size: 1.16rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-positive .list-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
   color: var(--eb-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* === 5. REFERENZEN SECTION === */
