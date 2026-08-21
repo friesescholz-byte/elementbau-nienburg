@@ -50,13 +50,13 @@
 }
 
 .footer-tagline {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.02rem;
+  line-height: 1.65;
   color: #8e939e;
 }
 
 .footer-google-badge {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .google-badge-link {
@@ -64,14 +64,14 @@
   background-color: rgba(255, 140, 0, 0.1);
   border: 1px solid rgba(255, 140, 0, 0.3);
   color: var(--eb-orange);
-  padding: 10px 18px;
+  padding: 11px 20px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: var(--transition-fast);
 }
 
@@ -84,7 +84,7 @@
 
 .footer-title {
   font-family: 'Exo 2', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
@@ -104,7 +104,7 @@
 .footer-link {
   text-decoration: none;
   color: #8e939e;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   transition: var(--transition-fast);
 }
 
@@ -113,19 +113,56 @@
   padding-left: 4px;
 }
 
+.footer-jobs-highlight {
+  color: var(--eb-orange) !important;
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer-jobs-icon {
+  color: var(--eb-orange);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.footer-jobs-highlight:hover .footer-jobs-icon {
+  transform: translateY(-2px) rotate(8deg);
+}
+
 .footer-link-icon {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   text-decoration: none;
   color: #8e939e;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   transition: var(--transition-fast);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .footer-link-icon:not(.no-hover):hover {
   color: var(--eb-orange);
+}
+
+.footer-emergency-phone {
+  color: #fca5a5 !important;
+  font-weight: 700;
+}
+
+.footer-emergency-phone svg {
+  color: #ef4444 !important;
+}
+
+.footer-emergency-phone:hover {
+  color: #ffffff !important;
+}
+
+.highlight-link {
+  color: var(--eb-orange) !important;
+  font-weight: 700;
 }
 
 .footer-link-icon svg {

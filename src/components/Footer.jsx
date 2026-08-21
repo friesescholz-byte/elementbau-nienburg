@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ShieldAlert, Briefcase } from 'lucide-react';
+import { servicesData } from '../data/servicesData';
 import './Footer.css';
 
 export default function Footer() {
@@ -17,7 +18,7 @@ export default function Footer() {
             <span className="logo-sub">NIENBURG</span>
           </Link>
           <p className="footer-tagline">
-            Ihr verlässlicher Partner für Ausbau, Sanierung und Pflege in Nienburg und Umgebung. Alles aus einer Hand.
+            Ihr Fachbetrieb für Schadenssanierung, zerstörungsfreie Leckortung und Baudienstleistungen in Nienburg & Umgebung. Alles aus einer Hand.
           </p>
           <div className="footer-google-badge">
             <a 
@@ -26,19 +27,38 @@ export default function Footer() {
               rel="noopener noreferrer" 
               className="google-badge-link"
             >
-              ★ ★ ★ ★ ★ Google Bewertung abgeben
+              ★ ★ ★ ★ ★ 5.0 Google Bewertung abgeben
             </a>
           </div>
         </div>
 
+        {/* Services Column */}
+        <div className="footer-col">
+          <h4 className="footer-title">Baudienstleistungen</h4>
+          <ul className="footer-links">
+            {servicesData.slice(0, 5).map((s) => (
+              <li key={s.slug}>
+                <Link to={`/leistungen/${s.slug}`} className="footer-link">
+                  {s.navTitle}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/#leistungen" className="footer-link highlight-link">
+                Alle Gewerke ansehen →
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* Contact Column */}
         <div className="footer-col">
-          <h4 className="footer-title">Kontakt</h4>
+          <h4 className="footer-title">Kontakt & Notruf</h4>
           <ul className="footer-links">
             <li>
-              <a href="tel:+4950219249870" className="footer-link-icon">
-                <Phone size={16} />
-                <span>05021 9249870</span>
+              <a href="tel:+4950219249870" className="footer-link-icon footer-emergency-phone">
+                <ShieldAlert size={16} />
+                <span>05021 9249870 (24h Notruf)</span>
               </a>
             </li>
             <li>
@@ -56,32 +76,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Opening Hours Column */}
-        <div className="footer-col">
-          <h4 className="footer-title">Öffnungszeiten</h4>
-          <ul className="footer-links">
-            <li>
-              <div className="footer-link-icon no-hover">
-                <Clock size={16} />
-                <span>
-                  <strong>Mo. - Do.</strong><br />
-                  6:30 – 16:30 Uhr
-                </span>
-              </div>
-            </li>
-            <li>
-              <div className="footer-link-icon no-hover">
-                <Clock size={16} />
-                <span>
-                  <strong>Fr.</strong><br />
-                  6:30 – 13:00 Uhr
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        {/* Navigation Column */}
+        {/* Legal Column */}
         <div className="footer-col">
           <h4 className="footer-title">Rechtliches</h4>
           <ul className="footer-links">
@@ -92,7 +87,10 @@ export default function Footer() {
               <Link to="/datenschutz" className="footer-link">Datenschutz</Link>
             </li>
             <li>
-              <Link to="/bewerben" className="footer-link">Jobs / Karriere</Link>
+              <Link to="/bewerben" className="footer-link footer-jobs-highlight">
+                <Briefcase size={14} className="footer-jobs-icon" />
+                <span>Jobs / Karriere</span>
+              </Link>
             </li>
             <li>
               <Link to="/barrierefreiheit" className="footer-link">Barrierefreiheitserklärung</Link>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowRight, Check, X, ShieldAlert, Award, Sparkles, FileText, CheckCircle2, Phone, Mail 
+  ArrowRight, Check, X, ShieldAlert, Award, Sparkles, FileText, CheckCircle2, Phone, Mail,
+  Star, MessageSquare, Droplets, Paintbrush, Hammer, Wrench, Home, Waves, AlertTriangle,
+  ChevronLeft, ChevronRight, ChevronUp, ChevronDown, ZoomIn, Maximize2
 } from 'lucide-react';
+import { servicesData, r2Url } from '../data/servicesData';
 import './HomePage.css';
 
 export default function HomePage() {
@@ -29,14 +32,167 @@ export default function HomePage() {
     }
   };
 
-  // R2 Base URL for Images (synced directly with Cloudflare R2 website-datein bucket)
-  const r2Url = 'https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni';
+  // 3D Gallery Slider & Lightbox State
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const galleryProjects = [
+    {
+      id: 1,
+      title: 'Hochwertige Fußbodenverlegung',
+      category: 'Bodenbeläge & Finish',
+      location: 'Wohnraum Modernisierung',
+      desc: 'Fachgerechtes Verlegen von edlen Design- & Vinylböden mit lückenloser Untergrundvorbereitung und exakter Kantenausbildung.',
+      image: `${r2Url}/nb/Elementbau-2_ergebnis.webp`,
+      alt: 'Fachgerechte Fußbodenverlegung in Nienburg',
+      isPortrait: true
+    },
+    {
+      id: 2,
+      title: 'Professionelle Bautrocknung',
+      category: 'Trocknung & Notdienst',
+      location: 'Wasserschadensanierung',
+      desc: 'Gezielte Tiefenentfeuchtung von Estrich, Mauerwerk und Dämmschichten mit modernster Kondensationstrocknungstechnik.',
+      image: `${r2Url}/nb/Elementbau-15_ergebnis.webp`,
+      alt: 'Professionelle Bautrocknung nach Wasserschaden',
+      isPortrait: true
+    },
+    {
+      id: 3,
+      title: 'Sockel- & Kellerabdichtung',
+      category: 'Feuchtigkeitsschutz',
+      location: 'Eingangsbereich & Mauerwerk',
+      desc: 'Lückenlose Abdichtung gegen drückendes Wasser und aufsteigende Feuchtigkeit.',
+      image: `${r2Url}/d-abdichtung-im-eingangsbereich-erfolgreich-abgeschlossen-fa1-4r-unseren-kunden-easyfitness_nien-20C8pnOX78IJqO2c.jpg`,
+      alt: 'Sockelabdichtung und Pflasterarbeiten'
+    },
+    {
+      id: 4,
+      title: 'Moderne Badsanierung',
+      category: 'Fliesen & Sanitär',
+      location: 'Komplettbad Modernisierung',
+      desc: 'Schlüsselfertiger Umbau mit barrierefreier Dusche und hochwertiger Sanitärausstattung.',
+      image: `${r2Url}/nb/Bad-Sanieren_Elementbau.jpg`,
+      alt: 'Moderne Badsanierung Elementbau Nienburg'
+    },
+    {
+      id: 5,
+      title: 'Schiebetüren- & Fenstermontage',
+      category: 'Bauelemente',
+      location: 'Passgenaue Montage',
+      desc: 'Einbau hochwertiger Schiebetüren und energieeffizienter Fenstersysteme.',
+      image: `${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg`,
+      alt: 'Schiebetüren- und Fenstermontage'
+    },
+    {
+      id: 6,
+      title: 'Q4 Spachtel- & Putzarbeiten',
+      category: 'Maler & Putz',
+      location: 'Exakte Kantenausbildung',
+      desc: 'Plane Wandflächen, scharfe Kanten und edle Anstriche.',
+      image: `${r2Url}/pexels-jimmy-nilsson-masth-193596566-11427055-PZ3mUxKrXAEfdW6S.jpg`,
+      alt: 'Präzise Verputzarbeiten'
+    },
+    {
+      id: 7,
+      title: 'Dachdämmung & Trockenbau',
+      category: 'Energieeffizienz',
+      location: 'Dachausbau & Isolierung',
+      desc: 'Wärmedämmung und raumbildende Trockenbauwände.',
+      image: `${r2Url}/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg`,
+      alt: 'Dachdämmung und Isolierung'
+    },
+    {
+      id: 8,
+      title: 'Erdarbeiten & Mutterbodenaushub',
+      category: 'Tiefbau & Sanierung',
+      location: 'Nienburg (Weser)',
+      desc: 'Fachgerechtes Auskoffern und Untergrundstabilisierung.',
+      image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+      alt: 'Fachgerechte Erdarbeiten und Schadensbehebung'
+    },
+    {
+      id: 9,
+      title: 'Großbaustellen Fenstereinbau',
+      category: 'Großprojekte',
+      location: 'Gewerbe & Wohnbau',
+      desc: 'Präzise Montage bei umfangreichen Gebäudeelementen.',
+      image: `${r2Url}/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1-BBwRqVvNfA3ccoHf.jpg`,
+      alt: 'Großbaustelle Fenstermontage'
+    }
+  ];
+
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'Escape') setLightboxIndex(null);
+      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev + 1) % galleryProjects.length);
+      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev - 1 + galleryProjects.length) % galleryProjects.length);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, galleryProjects.length]);
+
+  // Auto-advance 3D slider smoothly every 5 seconds (paused if hovered or lightbox open)
+  useEffect(() => {
+    if (isHovered || lightboxIndex !== null) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % galleryProjects.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isHovered, lightboxIndex, activeSlide, galleryProjects.length]);
+
+  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % galleryProjects.length);
+  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + galleryProjects.length) % galleryProjects.length);
+
+  const getSlidePositionClass = (index) => {
+    const total = galleryProjects.length;
+    let diff = (index - activeSlide + total) % total;
+    if (diff > total / 2) diff -= total;
+
+    if (diff === 0) return 'slide-active';
+    if (diff === -1) return 'slide-prev';
+    if (diff === 1) return 'slide-next';
+    if (diff === -2) return 'slide-far-prev';
+    if (diff === 2) return 'slide-far-next';
+    return 'slide-hidden';
+  };
+
+  const googleReviews = [
+    {
+      name: 'Markus Kupfer',
+      type: 'Wasserschaden & Notfall',
+      rating: 5,
+      date: 'Google Rezension',
+      text: 'Bestens. Ich hatte bei meinem Einfamilienhaus einen Wasser-Notfall. Das Team war schnell vor Ort, hat sofort "Erste Hilfe" geleistet und mich danach beraten, was ich tun kann, um das Wasser von meinem Haus fernzuhalten. Die verschiedenen Maßnahmen wurden fachgerecht und zum fairen Preis umgesetzt. Danke!'
+    },
+    {
+      name: 'Brayn Stammer',
+      type: 'Wasserschadensanierung',
+      rating: 5,
+      date: 'Google Rezension',
+      text: 'Nach einem Wasserschaden waren wir auf schnelle und kompetente Hilfe angewiesen und genau das haben wir bei ElementBau bekommen! Vom ersten Kontakt an wurde professionell, freundlich und lösungsorientiert gearbeitet.'
+    },
+    {
+      name: 'Joachim Roß',
+      type: 'Baudienstleistungen & Sanierung',
+      rating: 5,
+      date: 'Google Rezension',
+      text: 'Absolut empfehlenswert. Schnelle Terminzusage, Auftrag sauber und akkurat erledigt. Freundliches Team, wir sind äußerst zufrieden.'
+    }
+  ];
 
   return (
     <div className="homepage-wrapper">
       
       {/* 1. HERO SECTION */}
       <section id="hero" className="hero-section">
+        {/* Architectural Grid Pattern Background */}
+        <div className="hero-blueprint-bg" />
+        <div className="hero-glow-accent" />
+
         <div className="container hero-container">
           
           <motion.div 
@@ -45,63 +201,79 @@ export default function HomePage() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div className="brand-tag" variants={fadeUp}>
-              Inh. Louis Gerber
+            <motion.div className="brand-tag emergency-brand-tag" variants={fadeUp}>
+              <span className="pulse-tag-dot"></span>
+              24h Notdienst • Inh. Louis Gerber • Nienburg (Weser)
             </motion.div>
             
             <motion.h1 className="title" variants={fadeUp}>
-              Bauen, Sanieren <span className="keep-together">& <span className="highlight">Pflegen.</span></span><br />
+              Schadenssanierung & <span className="highlight">Leckortung.</span><br />
               Alles aus einer Hand.
             </motion.h1>
             
             <motion.p className="subtitle" variants={fadeUp}>
-              Ob Innenausbau, Altbausanierung, Erdarbeiten oder schnelle Hilfe bei Wasserschäden – wir realisieren Ihr Projekt zuverlässig und zu fairen, transparenten Konditionen.
+              Schnelle Soforthilfe bei Wasserschäden, zerstörungsfreie Ortung und fachgerechte Komplettsanierung in Nienburg & Region.
             </motion.p>
 
             <motion.div className="stats-row" variants={fadeUp}>
               <div className="stat">
-                <span className="stat-title">Vielseitig.</span>
-                <span className="stat-desc">Alles aus einer Hand</span>
+                <span className="stat-title emergency-stat">24/7 Notruf</span>
+                <span className="stat-desc">Sofort vor Ort</span>
               </div>
               <div className="stat">
-                <span className="stat-title">Transparent.</span>
-                <span className="stat-desc">Faire Festpreise</span>
+                <span className="stat-title">Zerstörungsfrei</span>
+                <span className="stat-desc">Präzise Ortung</span>
               </div>
               <div className="stat">
-                <span className="stat-title">Schnell.</span>
-                <span className="stat-desc">Notdienst & Hilfe</span>
+                <span className="stat-title">Komplettservice</span>
+                <span className="stat-desc">Trocknung & Sanierung</span>
               </div>
             </motion.div>
 
-            <motion.div className="button-group" variants={fadeUp}>
-              <a href="/kontakt" className="btn-solid">
-                Projekt anfragen
-                <ArrowRight className="arrow" />
-              </a>
-              <a href="/bewerben" className="btn-subtle">
-                Wir suchen Verstärkung für unser Team
-                <ArrowRight className="arrow" />
+            <motion.div className="button-group hero-buttons-wrap" variants={fadeUp}>
+              <Link to="/kontakt?service=Wasserschaden%20%26%20Leckortung" className="btn-hero-primary">
+                <span>Schaden online melden</span>
+                <ArrowRight size={18} />
+              </Link>
+
+              <a href="tel:+4950219249870" className="btn-hero-secondary">
+                <span className="emergency-icon-dot" />
+                <Phone size={17} />
+                <span>24h Notfall anrufen</span>
               </a>
             </motion.div>
           </motion.div>
 
           <motion.div 
-            className="media-side"
+            className="hero-organic-stage"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease }}
+            transition={{ duration: 0.9, ease }}
           >
-            <div className="media-decor decor-top-right"></div>
-            <div className="media-decor decor-bottom-left"></div>
-            
-            <div className="video-wrapper">
-              <video 
-                className="hero-video" 
-                src={`${r2Url}/elementbau_Clip.mp4`}
-                autoPlay 
-                muted 
-                loop 
-                playsInline
+            {/* 1. Top Wide Landscape Card */}
+            <div className="organic-photo-card organic-card-top">
+              <img 
+                src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
+                alt="Elementbau Nienburg Team vor Ort im Einsatz" 
+                className="organic-img" 
+              />
+            </div>
+
+            {/* 2. Bottom-Left Tall Portrait Card */}
+            <div className="organic-photo-card organic-card-portrait">
+              <img 
+                src={`${r2Url}/nb/Elementbau-9_ergebnis.webp`} 
+                alt="Elementbau Nienburg Handwerk & Sanierung" 
+                className="organic-img" 
+              />
+            </div>
+
+            {/* 3. Bottom-Right Card */}
+            <div className="organic-photo-card organic-card-bottom-right">
+              <img 
+                src={`${r2Url}/nb/Elementbau-7_ergebnis.webp`} 
+                alt="Elementbau Nienburg Baudienstleistungen" 
+                className="organic-img" 
               />
             </div>
           </motion.div>
@@ -109,102 +281,106 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1.5. BAUDIENSTLEISTUNGEN INTRO */}
-      <section className="baudienstleistungen-intro">
-        <div className="container intro-grid">
+      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (SEAMLESS 3-STEP FLOW) */}
+      <section id="soforthilfe" className="soforthilfe-section">
+        <div className="container">
           
-          {/* Left Column: Text & Features */}
-          <div className="intro-left">
-            <div className="section-tag">Baudienstleistungen</div>
-            <h2 className="intro-title">Alles aus einer Hand</h2>
-            <p className="intro-text">
-              Mit <strong>ElementBau</strong> bieten wir Ihnen umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber. Dank unserer langjährigen Erfahrung und unseres hohen Qualitätsanspruchs sind wir Ihr zuverlässiger Ansprechpartner für Neubau-, Umbau-, Sanierungs- und Modernisierungsprojekte.
+          <div className="section-header center">
+            <div className="section-tag center">3-Stufen Soforthilfe</div>
+            <h2 className="section-title">
+              Wasserschaden? <span className="highlight">Wir handeln sofort.</span>
+            </h2>
+            <p className="section-intro text-center">
+              Von der zerstörungsfreien Ortung bis zur schlüsselfertigen Übergabe – schnell, transparent und fachgerecht.
             </p>
-            
-            <div className="intro-usps-grid">
-              <div className="usp-item">
-                <div className="usp-icon-wrapper">
-                  <CheckCircle2 size={18} />
-                </div>
-                <div className="usp-content">
-                  <h3>Komplettservice</h3>
-                  <p>Von der Beratung über die Ausführung bis zur Übergabe alles aus einer Hand.</p>
-                </div>
-              </div>
-              
-              <div className="usp-item">
-                <div className="usp-icon-wrapper">
-                  <CheckCircle2 size={18} />
-                </div>
-                <div className="usp-content">
-                  <h3>Erfahrung & Qualität</h3>
-                  <p>Handwerksleistung auf höchstem Niveau mit langjähriger Praxiserfahrung.</p>
-                </div>
-              </div>
-              
-              <div className="usp-item">
-                <div className="usp-icon-wrapper">
-                  <CheckCircle2 size={18} />
-                </div>
-                <div className="usp-content">
-                  <h3>Für jedes Projekt</h3>
-                  <p>Umfassende Baudienstleistungen für private, gewerbliche und öffentliche Auftraggeber.</p>
-                </div>
-              </div>
-              
-              <div className="usp-item">
-                <div className="usp-icon-wrapper">
-                  <CheckCircle2 size={18} />
-                </div>
-                <div className="usp-content">
-                  <h3>Schnelle Hilfe</h3>
-                  <p>Reaktionsschnelle Unterstützung bei Wasserschäden und dringenden Sanierungen.</p>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Cistern Project Progress */}
-          <div className="intro-right">
-            <div className="progress-card">
-              <h3 className="progress-card-title">Zisterneneinbau <span className="highlight">abfolge</span></h3>
-              <p className="progress-card-subtitle">Praxisbeispiel: Einbau einer 4000 Liter Wasserzisterne</p>
+          <div className="soforthilfe-grid-wrap">
+            <div className="soforthilfe-process-track" />
+
+            <div className="soforthilfe-grid">
               
-              <div className="progress-steps-list">
-                {/* Step 1 */}
-                <div className="progress-step-item">
-                  <div className="step-img-box">
-                    <img src={`${r2Url}/702730042_17872956285668112_3004010946025521635_n_ergebnis.webp`} alt="Erdarbeiten & Aushub" className="step-thumb" />
-                  </div>
-                  <div className="step-info">
-                    <span className="step-num-badge">Schritt 01</span>
-                    <h4>Aushub & Erdarbeiten</h4>
-                    <p>Baggern und Vorbereitung der Baugrube vor Ort.</p>
-                  </div>
+              {/* Step 1 */}
+              <div className="soforthilfe-card">
+                <div className="soforthilfe-card-media">
+                  <img 
+                    src={`${r2Url}/nb/Elementbau-6_ergebnis.webp`} 
+                    alt="Zerstörungsfreie Leckortung" 
+                    className="soforthilfe-img" 
+                  />
+                  <div className="step-num-pill">1</div>
                 </div>
-
-                {/* Step 2 */}
-                <div className="progress-step-item">
-                  <div className="step-img-box">
-                    <img src={`${r2Url}/%F0%9F%9A%A7%F0%9F%92%A7%20Projekt%20abgeschlossen!%20%F0%9F%92%A7%F0%9F%9A%A7Der%20Einbau%20unserer%204000%20L%20Wasserzisterne%20ist%20erfolgreich%20vollend%20(1)_ergebnis.webp`} alt="Zisterneneinlass" className="step-thumb" />
-                  </div>
-                  <div className="step-info">
-                    <span className="step-num-badge">Schritt 02</span>
-                    <h4>Zisterneneinbau</h4>
-                    <p>Einsetzen der 4000 Liter Zisterne in das Erdreich.</p>
-                  </div>
+                <div className="soforthilfe-card-body">
+                  <h3 className="soforthilfe-card-title">Zerstörungsfreie Ortung</h3>
+                  <p className="soforthilfe-card-desc">
+                    Punktgenaue Lokalisierung des Rohrbruchs per Infrarot- und Akustikmesstechnik – ganz ohne unnötige Wandaufbrüche.
+                  </p>
+                  <ul className="soforthilfe-bullets">
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Ortung ohne Stemmarbeiten</span>
+                    </li>
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Schadensbericht für Versicherung</span>
+                    </li>
+                  </ul>
                 </div>
+              </div>
 
-                {/* Step 3 */}
-                <div className="progress-step-item">
-                  <div className="step-img-box">
-                    <img src={`${r2Url}/%F0%9F%9A%A7%F0%9F%92%A7%20Projekt%20abgeschlossen!%20%F0%9F%92%A7%F0%9F%9A%A7Der%20Einbau%20unserer%204000%20L%20Wasserzisterne%20ist%20erfolgreich%20vollend%20(2)_ergebnis.webp`} alt="Wasseranschluss" className="step-thumb" />
-                  </div>
-                  <div className="step-info">
-                    <span className="step-num-badge">Schritt 03</span>
-                    <h4>Anschluss & Verrohrung</h4>
-                    <p>Fachgerechter Wasseranschluss und abschließende Arbeiten.</p>
-                  </div>
+              {/* Step 2 */}
+              <div className="soforthilfe-card">
+                <div className="soforthilfe-card-media">
+                  <img 
+                    src={`${r2Url}/nb/Elementbau-13_ergebnis.webp`} 
+                    alt="Gezielte Bautrocknung" 
+                    className="soforthilfe-img soforthilfe-img-step2" 
+                  />
+                  <div className="step-num-pill">2</div>
+                </div>
+                <div className="soforthilfe-card-body">
+                  <h3 className="soforthilfe-card-title">Gezielte Bautrocknung</h3>
+                  <p className="soforthilfe-card-desc">
+                    Hocheffiziente Tiefenentfeuchtung von Estrich, Mauerwerk und Dämmschichten zur dauerhaften Schimmel-Prävention.
+                  </p>
+                  <ul className="soforthilfe-bullets">
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Tiefenentfeuchtung der Bausubstanz</span>
+                    </li>
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Lückenloses Messprotokoll</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="soforthilfe-card">
+                <div className="soforthilfe-card-media">
+                  <img 
+                    src={`${r2Url}/nb/Elementbau-14_ergebnis.webp`} 
+                    alt="Komplette Wiederherstellung" 
+                    className="soforthilfe-img" 
+                  />
+                  <div className="step-num-pill">3</div>
+                </div>
+                <div className="soforthilfe-card-body">
+                  <h3 className="soforthilfe-card-title">Komplette Sanierung</h3>
+                  <p className="soforthilfe-card-desc">
+                    Trockenbau, Fliesen- und Malerarbeiten aus einer Hand – sauber, fachgerecht und bezugsfertig übergeben.
+                  </p>
+                  <ul className="soforthilfe-bullets">
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Alle Gewerke nahtlos koordiniert</span>
+                    </li>
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>Schlüsselfertig & bezugsfertig</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -214,210 +390,156 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. LEISTUNGEN SECTION */}
+      {/* 2. LEISTUNGEN OVERVIEW SECTION */}
       <section id="leistungen" className="services-section">
         <div className="container">
           
           <div className="section-header">
-            <div className="section-tag">Leistungen</div>
+            <div className="section-tag">Baudienstleistungen</div>
             <h2 className="section-title">
-              Unser Service<br /><span className="highlight">im Überblick.</span>
+              Unsere Gewerke <span className="highlight">im Überblick.</span>
             </h2>
+            <p className="section-intro">
+              Von der Leckortung und Trocknung über Badsanierung bis hin zu Malerarbeiten und Sanierung.
+            </p>
           </div>
 
-          <motion.div 
-            className="services-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {/* Card 1 */}
-            <motion.div className="service-card" variants={fadeUp}>
-              <span className="service-number">01</span>
-              <div className="service-icon">
-                <ShieldAlert size={32} />
-              </div>
-              <h3 className="card-title">Wasserschaden & Leckortung</h3>
-              <p className="card-desc">Bei Wasserschäden handeln wir schnell und zuverlässig. Von der Schadensanalyse bis zur vollständigen Trocknung und Sanierung kümmern wir uns um alles.</p>
-              <ul className="service-list">
-                <li>Leckortung & Wasserschadensanierung</li>
-                <li>Reparatur bei Rohrbruch & Leitungswasserschäden</li>
-                <li>Wasserschaden-Notdienst</li>
-                <li>Bautrocknung & Entfeuchtung</li>
-                <li>Schimmelbeseitigung</li>
-              </ul>
-            </motion.div>
+          <div className="services-grid">
+            {servicesData.map((service) => (
+              <div key={service.slug} className="service-card-clean">
+                <div className="service-card-clean-header">
+                  <div className="service-icon-clean">
+                    {service.slug === 'wasserschaden' && <ShieldAlert size={24} />}
+                    {service.slug === 'badsanierung' && <Sparkles size={24} />}
+                    {service.slug === 'malerarbeiten' && <Paintbrush size={24} />}
+                    {service.slug === 'renovierung-sanierung' && <Hammer size={24} />}
+                    {service.slug === 'trockenbau' && <Wrench size={24} />}
+                    {service.slug === 'sanitaerarbeiten' && <Droplets size={24} />}
+                    {service.slug === 'innenausbau' && <Home size={24} />}
+                    {service.slug === 'kellerabdichtung' && <Waves size={24} />}
+                  </div>
+                  {service.slug === 'wasserschaden' && (
+                    <span className="service-badge-emergency">24h Notdienst</span>
+                  )}
+                </div>
 
-            {/* Card 2 */}
-            <motion.div className="service-card" variants={fadeUp}>
-              <span className="service-number">02</span>
-              <div className="service-icon">
-                <FileText size={32} />
-              </div>
-              <h3 className="card-title">Trockenbau & Innenausbau</h3>
-              <p className="card-desc">Mit professionellem Trockenbau schaffen wir neue Räume und moderne Innenbereiche. Ideal für Renovierungen, Umbauten oder den Ausbau von Dachgeschossen.</p>
-              <ul className="service-list">
-                <li>Trockenbauarbeiten</li>
-                <li>Innenausbau & Renovierungen</li>
-                <li>Trennwände & Raumaufteilungen</li>
-                <li>Decken- und Wandverkleidungen</li>
-                <li>Dachgeschossausbau</li>
-                <li>Dämm- & Isolierarbeiten</li>
-                <li>Maler- & Spachtelarbeiten</li>
-              </ul>
-            </motion.div>
+                <div className="service-card-clean-body">
+                  <h3 className="card-clean-title">{service.title}</h3>
+                  <p className="card-clean-desc">{service.cardShortDesc || service.shortDesc}</p>
+                  
+                  {service.cardBullets && service.cardBullets.length > 0 && (
+                    <ul className="service-clean-bullets">
+                      {service.cardBullets.slice(0, 3).map((bullet, idx) => (
+                        <li key={idx}>
+                          <Check className="clean-bullet-icon" size={16} />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-            {/* Card 3 */}
-            <motion.div className="service-card" variants={fadeUp}>
-              <span className="service-number">03</span>
-              <div className="service-icon">
-                <Award size={32} />
+                  <Link to={`/leistungen/${service.slug}`} className="service-clean-action">
+                    <span>Details ansehen</span>
+                    <ArrowRight size={16} className="clean-action-arrow" />
+                  </Link>
+                </div>
               </div>
-              <h3 className="card-title">Altbausanierung & Renovierung</h3>
-              <p className="card-desc">Wir verwandeln alte Gebäude in moderne Wohn- oder Arbeitsräume. Dabei übernehmen wir die komplette Koordination aller Arbeiten – alles aus einer Hand.</p>
-              <ul className="service-list">
-                <li>Sanierung von Wohn- & Gewerbeobjekten</li>
-                <li>Badezimmer- & Wohnraumsanierungen</li>
-                <li>Renovierung und Modernisierung</li>
-                <li>Türen- & Fenstermontage</li>
-                <li>Bodenverlegearbeiten</li>
-                <li>Abbruch- & Rückbauarbeiten</li>
-                <li>Reparatur- & Instandsetzungsarbeiten</li>
-                <li>Montagearbeiten aller Art</li>
-              </ul>
-            </motion.div>
-
-            {/* Card 4 */}
-            <motion.div className="service-card" variants={fadeUp}>
-              <span className="service-number">04</span>
-              <div className="service-icon">
-                <CheckCircle2 size={32} />
-              </div>
-              <h3 className="card-title">Kellerabdichtung</h3>
-              <p className="card-desc">Ihr Vorteil: Ein Ansprechpartner, ein durchdachter Ablauf und ein dauerhaft trockenes Ergebnis. Wir schützen Ihr Gebäude nachhaltig vor Feuchtigkeit.</p>
-              <ul className="service-list">
-                <li>Kellerabdichtung & Feuchtigkeitsschutz</li>
-                <li>Gründliche Vorbereitung der Flächen</li>
-                <li>Hochwertige Abdichtung (innen & außen)</li>
-                <li>Fachgerechtes Verschließen</li>
-                <li>Wiederherstellung von Gelände & Oberflächen</li>
-              </ul>
-            </motion.div>
-
-            {/* Card 5 */}
-            <motion.div className="service-card" variants={fadeUp}>
-              <span className="service-number">05</span>
-              <div className="service-icon">
-                <Sparkles size={32} />
-              </div>
-              <h3 className="card-title">Badsanierung</h3>
-              <p className="card-desc">Wir verwandeln Ihr Badezimmer in eine moderne Wohlfühloase. Ihr Vorteil: Ein Ansprechpartner, klare Abläufe und ein Bad, das perfekt zu Ihnen passt.</p>
-              <ul className="service-list">
-                <li>Entkernungsarbeiten & Rückbau</li>
-                <li>Planung und individuelle Gestaltung</li>
-                <li>Sanitär- und Elektroarbeiten</li>
-                <li>Fliesenarbeiten und Abdichtung</li>
-                <li>Montage von Badmöbeln & Ausstattung</li>
-                <li>Saubere Fertigstellung und Übergabe</li>
-              </ul>
-            </motion.div>
-          </motion.div>
+            ))}
+          </div>
 
           <div className="cta-banner">
             <div className="cta-text">
               <h3>Bereit für Ihr nächstes Projekt?</h3>
               <p>Rufen Sie uns direkt an unter <a href="tel:+4950219249870" className="cta-phone">05021 9249870</a> oder vereinbaren Sie online einen Termin. Wir beraten Sie gerne unverbindlich.</p>
             </div>
-            <a href="/kontakt" className="btn-solid">
+            <Link to="/kontakt" className="btn-solid">
               Projekt anfragen
               <ArrowRight className="arrow" />
-            </a>
+            </Link>
           </div>
 
         </div>
       </section>
 
-      {/* 3. ABLAUF SECTION */}
-      <section id="ablauf" className="process-section">
+      {/* 3. GOOGLE REVIEWS SECTION */}
+      <section id="bewertungen" className="reviews-section">
         <div className="container">
           
           <div className="section-header center">
-            <div className="section-tag center">Ablauf</div>
+            <div className="section-tag center">Google Rezensionen</div>
             <h2 className="section-title">
-              So läuft Ihr Projekt<br /><span className="highlight">mit uns ab.</span>
+              Was Kunden <span className="highlight">über uns sagen.</span>
             </h2>
             <p className="section-intro text-center">
-              Ein kompakter, strukturierter Prozess – für maximale Sicherheit und Transparenz von der ersten Idee bis zur finalen Übergabe.
+              Echte Erfahrungen von Kunden aus Nienburg und der Region – von akuten Wasserschaden-Notfällen bis zu geplanten Sanierungen.
             </p>
           </div>
 
-          <div className="process-steps">
-            {/* Step 1 */}
-            <div className="step-row">
-              <div className="step-content">
-                <span className="step-bg-num">01</span>
-                <h3 className="step-title">Persönliche Beratung</h3>
-                <p className="step-text">Wir treffen uns direkt bei Ihnen vor Ort. So können wir die Gegebenheiten analysieren, Ihre Wünsche aufnehmen und erste Lösungsansätze besprechen.</p>
-              </div>
-              <div className="step-image-wrapper">
-                <img src={`${r2Url}/pexels-hazardos-804065-hGYvBKT6XnZcJwtw.jpg`} alt="Persönliche Beratung" className="step-img" />
-              </div>
-            </div>
+          <div className="reviews-grid">
+            {googleReviews.map((rev, idx) => (
+              <div className="review-card" key={idx}>
+                <div className="review-header">
+                  <div className="reviewer-avatar">
+                    {rev.name.charAt(0)}
+                  </div>
+                  <div className="reviewer-meta">
+                    <h3 className="reviewer-name">{rev.name}</h3>
+                    <span className="review-type">{rev.type}</span>
+                  </div>
+                  <div className="google-icon-badge">
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
+                      alt="Google Logo" 
+                      className="google-svg" 
+                    />
+                  </div>
+                </div>
 
-            {/* Step 2 */}
-            <div className="step-row">
-              <div className="step-content">
-                <span className="step-bg-num">02</span>
-                <h3 className="step-title">Planung & Angebot</h3>
-                <p className="step-text">Nach der Besichtigung erstellen wir ein detailliertes Konzept. Sie erhalten von uns ein transparentes und faires Angebot, das exakt auf Ihre individuellen Wünsche und die Gegebenheiten vor Ort zugeschnitten ist.</p>
-              </div>
-              <div className="step-image-wrapper">
-                <img src={`${r2Url}/photo-1503387762-592deb58ef4e.jpg`} alt="Planung und Kalkulation" className="step-img" />
-              </div>
-            </div>
+                <div className="stars-row">
+                  {[...Array(rev.rating)].map((_, i) => (
+                    <Star key={i} size={16} className="star-filled" />
+                  ))}
+                  <span className="verified-badge">Verifizierte Bewertung</span>
+                </div>
 
-            {/* Step 3 */}
-            <div className="step-row">
-              <div className="step-content">
-                <span className="step-bg-num">03</span>
-                <h3 className="step-title">Vorbereitung</h3>
-                <p className="step-text">Wir kümmern uns um die gesamte Materialbeschaffung und bereiten die Baustelle optimal vor, damit am Stichtag direkt und sauber losgelegt werden kann.</p>
+                <p className="review-text">"{rev.text}"</p>
               </div>
-              <div className="step-image-wrapper">
-                <img src={`${r2Url}/gemini_generated_image_xjke6ixjke6ixjke-DBmLUNLJwji5Aik3.png`} alt="Baustelle Vorbereitung" className="step-img" />
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="step-row">
-              <div className="step-content">
-                <span className="step-bg-num">04</span>
-                <h3 className="step-title">Umsetzung vor Ort</h3>
-                <p className="step-text">Unsere erfahrenen Handwerker setzen das Projekt präzise um. Dabei achten wir besonders auf eine saubere Ausführung und die Einhaltung des Zeitplans.</p>
-              </div>
-              <div className="step-image-wrapper">
-                <img src={`${r2Url}/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png`} alt="Montage auf der Baustelle" className="step-img" />
-              </div>
-            </div>
-
-            {/* Step 5 */}
-            <div className="step-row">
-              <div className="step-content">
-                <span className="step-bg-num">05</span>
-                <h3 className="step-title">Besenreine Übergabe</h3>
-                <p className="step-text">Bevor wir gehen, räumen wir auf. Sie erhalten die Räumlichkeiten besenrein zurück. Erst nach einer gemeinsamen Qualitätskontrolle ist das Projekt für uns abgeschlossen.</p>
-              </div>
-              <div className="step-image-wrapper">
-                <img src={`${r2Url}/photo-1584622650111-993a426fbf0a.jpg`} alt="Besenreine Übergabe" className="step-img" />
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="cta-wrapper text-center">
-            <a href="/kontakt" className="btn-solid">
-              Jetzt Projekt anfragen
-              <ArrowRight className="arrow" />
+          {/* Google Trust CTA Bar */}
+          <div className="google-trust-bar">
+            <div className="trust-stars-total">
+              <div className="google-g-wrap">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
+                  alt="Google" 
+                  className="google-g-logo" 
+                />
+              </div>
+              <div>
+                <div className="rating-score">
+                  <strong>5.0</strong>
+                  <div className="stars-mini">
+                    <Star size={14} className="star-filled" />
+                    <Star size={14} className="star-filled" />
+                    <Star size={14} className="star-filled" />
+                    <Star size={14} className="star-filled" />
+                    <Star size={14} className="star-filled" />
+                  </div>
+                </div>
+                <span className="rating-sub">Bewertet auf Google</span>
+              </div>
+            </div>
+
+            <a 
+              href="https://search.google.com/local/writereview?placeid=ChIJvT4qfNTK04ARtbgIU5NoR5k" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-google-review"
+            >
+              <MessageSquare size={16} />
+              <span>Jetzt Google-Bewertung abgeben</span>
             </a>
           </div>
 
@@ -425,16 +547,16 @@ export default function HomePage() {
       </section>
 
       {/* 4. VERTRAUEN & USP SECTION */}
-      <section className="trust-section">
+      <section className="why-us-section">
         <div className="container">
           
           <div className="section-header center">
-            <div className="section-tag center">Unser Versprechen</div>
+            <div className="section-tag center">Verlässlichkeit & Qualität</div>
             <h2 className="section-title">
-              Warum Kunden<br /><span className="highlight">uns vertrauen.</span>
+              Warum Kunden <span className="highlight">Elementbau vertrauen.</span>
             </h2>
             <p className="section-intro text-center">
-              Wir stehen für ehrliche Beratung, transparente Kommunikation und kompromisslose Qualität – von der ersten Skizze bis zur besenreinen Übergabe.
+              Wir verbinden langjährige Handwerkserfahrung mit moderner Technik, transparenter Kommunikation und absoluter Verlässlichkeit.
             </p>
           </div>
 
@@ -471,19 +593,19 @@ export default function HomePage() {
                   <span className="list-icon">
                     <Check size={18} />
                   </span>
-                  Klare Prozesse
+                  Klare Prozesse & 24h-Erreichbarkeit
                 </li>
                 <li>
                   <span className="list-icon">
                     <Check size={18} />
                   </span>
-                  Verlässliche Festpreise
+                  Verlässliche Kostentransparenz
                 </li>
                 <li>
                   <span className="list-icon">
                     <Check size={18} />
                   </span>
-                  Saubere Ausführung
+                  Saubere, fachgerechte Ausführung
                 </li>
               </ul>
             </div>
@@ -503,7 +625,7 @@ export default function HomePage() {
               Qualität, die<br /><span className="highlight">man sieht.</span>
             </h2>
             <p className="ref-intro">
-              Ein kleiner Einblick in unsere tägliche Arbeit – von der Badsanierung bis zum Dachgeschossausbau.
+              Ein kleiner Einblick in unsere tägliche Arbeit – von der Schadensbehebung über Badsanierung bis zum Innenausbau.
             </p>
             <div className="claim-box">
               <p className="claim-text">
@@ -512,121 +634,170 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="gallery-grid">
-            {/* Item 1 */}
-            <div className="gallery-item span-2-row">
-              <img 
-                src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
-                alt="Fachgerechter Aushub von altem Mutterboden" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Tiefbauarbeiten</h3>
-                <span className="project-cat">Mutterboden Aushub</span>
-              </div>
+          {/* 3D Perspective Cover Flow Stage */}
+          <div 
+            className="perspective-carousel-wrapper"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <div className="perspective-stage">
+              {galleryProjects.map((project, idx) => {
+                const posClass = getSlidePositionClass(idx);
+                const isActive = idx === activeSlide;
+
+                return (
+                  <div 
+                    key={project.id} 
+                    className={`perspective-slide ${posClass}`}
+                    onClick={() => {
+                      if (!isActive) {
+                        setActiveSlide(idx);
+                      } else {
+                        setLightboxIndex(idx);
+                      }
+                    }}
+                  >
+                    <div className="slide-card-inner">
+                      <div className="slide-image-wrapper">
+                        {/* Ambient blurred backdrop for portrait / custom aspect ratio shots */}
+                        <img 
+                          src={project.image} 
+                          alt="" 
+                          className="slide-img-blur-bg" 
+                          aria-hidden="true" 
+                        />
+
+                        {/* Foreground sharp image (automatically adapts to any orientation) */}
+                        <img 
+                          src={project.image} 
+                          alt={project.alt} 
+                          className="slide-img" 
+                        />
+
+                        <div className="slide-badge-tag">
+                          {project.category}
+                        </div>
+
+                        {isActive && (
+                          <button 
+                            className="slide-zoom-pill"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setLightboxIndex(idx);
+                            }}
+                            title="Großansicht öffnen"
+                          >
+                            <ZoomIn size={13} />
+                            <span>Großansicht</span>
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="slide-caption-bar">
+                        <div className="slide-text-main">
+                          <h3 className="slide-title">{project.title}</h3>
+                          <p className="slide-location">{project.location}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Item 2 */}
-            <div className="gallery-item span-2-col">
-              <img 
-                src={`${r2Url}/pexels-tima-miroshnichenko-6195961-rfUv8zMCUSldDbne.jpg`} 
-                alt="Bauendreinigung" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Bauendreinigung</h3>
-                <span className="project-cat">Sauberkeit nach Maß</span>
-              </div>
-            </div>
-            
-            {/* Item 3 */}
-            <div className="gallery-item">
-              <img 
-                src={`${r2Url}/pexels-ono-kosuki-5974235-XaEPDarDU7l1STiy.jpg`} 
-                alt="Holzarbeiten" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Holzarbeiten</h3>
-                <span className="project-cat">Montage & Reparatur</span>
-              </div>
-            </div>
-            
-            {/* Item 4 */}
-            <div className="gallery-item span-2-col">
-              <img 
-                src={`${r2Url}/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1-BBwRqVvNfA3ccoHf.jpg`} 
-                alt="Start einer Großbaustelle mit neuen Fenstern" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Fenstermontage</h3>
-                <span className="project-cat">Großbaustelle</span>
-              </div>
-            </div>
+            {/* Slider Navigation & Dots Bar */}
+            <div className="slider-controls-bar">
+              <button 
+                className="slider-nav-arrow" 
+                onClick={prevSlide} 
+                aria-label="Vorheriges Projekt"
+              >
+                <ChevronLeft size={22} />
+              </button>
 
-            {/* Item 5 */}
-            <div className="gallery-item">
-              <img 
-                src={`${r2Url}/d-abdichtung-im-eingangsbereich-erfolgreich-abgeschlossen-fa1-4r-unseren-kunden-easyfitness_nien-20C8pnOX78IJqO2c.jpg`} 
-                alt="Pflastern und Abdichten" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Pflastern & Abdichten</h3>
-                <span className="project-cat">Außenanlagen</span>
+              <div className="slider-dots-container">
+                {galleryProjects.map((_, dotIdx) => (
+                  <button 
+                    key={dotIdx} 
+                    className={`slider-dot ${dotIdx === activeSlide ? 'active' : ''}`}
+                    onClick={() => setActiveSlide(dotIdx)}
+                    aria-label={`Gehe zu Projekt ${dotIdx + 1}`}
+                  />
+                ))}
               </div>
-            </div>
-            
-            {/* Item 6 */}
-            <div className="gallery-item">
-              <img 
-                src={`${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg`} 
-                alt="Neue Schiebetür erfolgreich eingebaut" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Fenstereinbau</h3>
-                <span className="project-cat">Moderne Schiebetüren</span>
-              </div>
-            </div>
 
-            {/* Item 7 */}
-            <div className="gallery-item">
-              <img 
-                src={`${r2Url}/pexels-jimmy-nilsson-masth-193596566-11427055-PZ3mUxKrXAEfdW6S.jpg`} 
-                alt="Verputzen von Kanten" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Verputzarbeiten</h3>
-                <span className="project-cat">Präzision im Detail</span>
-              </div>
-            </div>
-
-            {/* Item 8 */}
-            <div className="gallery-item span-2-col">
-              <img 
-                src={`${r2Url}/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg`} 
-                alt="Anbringen von Dämmung" 
-                className="gallery-img"
-              />
-              <div className="project-overlay">
-                <h3 className="project-title">Energieeffizienz</h3>
-                <span className="project-cat">Dämmung & Isolierung</span>
-              </div>
+              <button 
+                className="slider-nav-arrow" 
+                onClick={nextSlide} 
+                aria-label="Nächstes Projekt"
+              >
+                <ChevronRight size={22} />
+              </button>
             </div>
           </div>
+
+          {/* FULLSCREEN LIGHTBOX MODAL */}
+          <AnimatePresence>
+            {lightboxIndex !== null && galleryProjects[lightboxIndex] && (
+              <motion.div 
+                className="gallery-lightbox-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setLightboxIndex(null)}
+              >
+                <div className="lightbox-content-wrap" onClick={(e) => e.stopPropagation()}>
+                  <button 
+                    className="lightbox-close-btn"
+                    onClick={() => setLightboxIndex(null)}
+                    aria-label="Schließen"
+                  >
+                    <X size={22} />
+                  </button>
+
+                  <button 
+                    className="lightbox-arrow lightbox-arrow-prev"
+                    onClick={() => setLightboxIndex((lightboxIndex - 1 + galleryProjects.length) % galleryProjects.length)}
+                    aria-label="Vorheriges Bild"
+                  >
+                    <ChevronLeft size={26} />
+                  </button>
+
+                  <div className="lightbox-media-container">
+                    <img 
+                      src={galleryProjects[lightboxIndex].image} 
+                      alt={galleryProjects[lightboxIndex].alt} 
+                      className="lightbox-main-img" 
+                    />
+                    <div className="lightbox-caption">
+                      <span className="lightbox-category-badge">{galleryProjects[lightboxIndex].category}</span>
+                      <h3 className="lightbox-title">{galleryProjects[lightboxIndex].title}</h3>
+                      <p className="lightbox-desc">{galleryProjects[lightboxIndex].desc}</p>
+                    </div>
+                  </div>
+
+                  <button 
+                    className="lightbox-arrow lightbox-arrow-next"
+                    onClick={() => setLightboxIndex((lightboxIndex + 1) % galleryProjects.length)}
+                    aria-label="Nächstes Bild"
+                  >
+                    <ChevronRight size={26} />
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="cta-block">
             <div className="cta-text-wrapper">
               <h3 className="cta-headline">Überzeugt von unserer Arbeit?</h3>
-              <p className="cta-subtext">Lassen Sie uns gemeinsam Ihr nächstes Projekt realisieren. Schnell, sauber und zu fairen, transparenten Konditionen.</p>
+              <p className="cta-subtext">Lassen Sie uns gemeinsam Ihr nächstes Projekt realisieren. Schnell, sauber und zu fairen Konditionen.</p>
             </div>
-            <a href="/kontakt" className="btn-solid">
+            <Link to="/kontakt" className="btn-solid">
               Jetzt Projekt anfragen
               <ArrowRight className="arrow" />
-            </a>
+            </Link>
           </div>
 
         </div>
@@ -644,11 +815,11 @@ export default function HomePage() {
             </h2>
             
             <p className="about-text">
-              Hallo, ich bin Louis Gerber. Als junges Unternehmen aus der Region stehen wir für eine neue Generation im Handwerk: modern, verlässlich und immer auf Augenhöhe mit unseren Kunden.
+              Hallo, ich bin Louis Gerber. Als junges Handwerksunternehmen aus Nienburg stehen wir für eine moderne Generation im Bauwesen: schnell erreichbar, lösungsorientiert und immer auf Augenhöhe mit unseren Kunden.
             </p>
             
             <p className="about-text">
-              Wir sind kein riesiger, anonymer Konzern, sondern ein eingespieltes Team, das anpackt. Ob Trockenbau, Sanierung oder schnelle Hilfe beim Wasserschaden – wir legen Wert auf ehrliche Arbeit, direkte Kommunikation und Ergebnisse, die sich sehen lassen können. Bei uns wissen Sie immer, wer auf Ihrer Baustelle arbeitet.
+              Ob akuter Wasserschaden mit 24h-Einsatz, Badsanierung oder umfassender Innenausbau – wir legen Wert auf ehrliche Arbeit, direkte Kommunikation und Ergebnisse, die sich sehen lassen können. Bei uns wissen Sie immer, wer auf Ihrer Baustelle arbeitet.
             </p>
             
             <div className="claim-box">
@@ -658,17 +829,17 @@ export default function HomePage() {
               </p>
             </div>
 
-            <a href="/bewerben" className="btn-solid">
+            <Link to="/bewerben" className="btn-solid">
               Werde Teil unseres Teams
               <ArrowRight className="arrow" />
-            </a>
+            </Link>
           </div>
 
           <div className="image-container">
             <div className="image-wrapper">
               <img 
-                src={`${r2Url}/profilbild_louis_gerber-EnnxyBfGmmKeemaD.jpeg`} 
-                alt="Portrait von Louis Gerber - Elementbau" 
+                src={`${r2Url}/nb/Louis-Gerber_ergebnis.webp`} 
+                alt="Portrait von Louis Gerber - Elementbau Nienburg" 
                 className="profile-img"
               />
             </div>
@@ -677,29 +848,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. FINAL CTA & CONTACT SECTION */}
+      {/* 6.5. HIGH-IMPACT CAREER TEASER SECTION */}
+      <section className="career-teaser-section">
+        <div className="container">
+          <div className="career-teaser-card">
+            <div className="career-teaser-content">
+              <div className="career-teaser-tag">
+                <span className="pulse-dot" />
+                <span>Karriere bei Elementbau • Nienburg & Region</span>
+              </div>
+              <h2 className="career-teaser-title">
+                Allrounder & Fliesenleger gesucht!
+              </h2>
+              <p className="career-teaser-desc">
+                Du suchst eine 4-Tage-Woche, faire Bezahlung, Firmenwagen (auch privat nutzbar), frei wählbares Profi-Werkzeug und ein starkes Team auf Augenhöhe? Bewirb dich jetzt in unter 60 Sekunden ohne Lebenslauf.
+              </p>
+              <div className="career-teaser-pills">
+                <span className="teaser-pill">📅 4-Tage-Woche</span>
+                <span className="teaser-pill">🚗 Firmenwagen (auch privat)</span>
+                <span className="teaser-pill">📱 Firmenhandy</span>
+                <span className="teaser-pill">🛠️ Profi-Werkzeug frei wählbar</span>
+              </div>
+              <div className="career-teaser-actions">
+                <Link to="/bewerben" className="btn-hero-primary btn-career-teaser">
+                  <span>Offene Stellen & 60s Express-Bewerbung</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+            <div className="career-teaser-visual">
+              <div className="teaser-photo-wrapper">
+                <img 
+                  src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
+                  alt="Elementbau Team im Einsatz" 
+                  className="teaser-photo-img" 
+                />
+                <div className="teaser-badge-overlay">
+                  <strong>2 offene Stellen</strong>
+                  <span>4-Tage-Woche möglich</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FINAL CTA & EMERGENCY CONTACT SECTION */}
       <section className="final-cta-section">
         <div className="container">
           <div className="cta-box">
             <div className="cta-content">
               
-              <div className="section-tag">Projektanfrage</div>
+              <div className="section-tag">24h Soforthilfe & Anfrage</div>
               
               <h2 className="cta-title">
                 Starten wir Ihr<br /><span className="highlight">Projekt.</span>
               </h2>
               
               <p className="cta-text">
-                Sie haben ein Anliegen, einen Ausbau oder einen akuten Schaden?<br />
-                Sprechen Sie mit mir – ich berate Sie persönlich, ehrlich und unverbindlich.
+                Sie haben einen akuten Wasserschaden oder planen einen Umbau?<br />
+                Rufen Sie uns direkt an oder senden Sie uns Ihre unverbindliche Anfrage mit Schadensfotos.
               </p>
 
               <div className="contact-grid">
-                <a href="tel:+4950219249870" className="contact-item">
+                <a href="tel:+4950219249870" className="contact-item item-emergency-final">
                   <div className="contact-icon">
                     <Phone size={20} />
                   </div>
-                  <span className="contact-detail">05021 9249870</span>
+                  <span className="contact-detail">05021 9249870 (24h Notruf)</span>
                 </a>
 
                 <a href="mailto:info@elementbau-ni.de" className="contact-item">
@@ -710,10 +926,10 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <a href="/kontakt" className="btn-solid">
-                Jetzt anfragen
+              <Link to="/kontakt" className="btn-solid">
+                Jetzt Schaden / Projekt melden
                 <ArrowRight className="arrow" />
-              </a>
+              </Link>
 
             </div>
           </div>

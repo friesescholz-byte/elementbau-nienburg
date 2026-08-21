@@ -30,7 +30,8 @@ html, body {
   font-family: 'Inter', sans-serif;
   background-color: var(--eb-bg);
   color: var(--eb-text-main);
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.65;
   overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -42,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  line-height: 1.1;
+  line-height: 1.12;
   color: var(--eb-text-main);
 }
 
@@ -70,7 +71,7 @@ section {
 /* Section Header Utility */
 .section-header {
   margin-bottom: 60px;
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .section-header.center {
@@ -85,8 +86,8 @@ section {
 .section-tag {
   font-family: 'Exo 2', sans-serif;
   color: var(--eb-orange);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 20px;
@@ -112,7 +113,7 @@ section {
 }
 
 .section-title {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-size: clamp(2.3rem, 4.2vw, 3.6rem);
   font-weight: 800;
   margin: 0;
 }
@@ -123,10 +124,10 @@ section {
 
 .section-intro {
   margin-top: 20px;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   line-height: 1.7;
   color: var(--eb-text-muted);
-  max-width: 600px;
+  max-width: 650px;
 }
 
 /* Premium Buttons */
