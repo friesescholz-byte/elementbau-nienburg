@@ -1,0 +1,345 @@
+/* ==========================================================================
+   KONTAKTPAGE STYLES - ELEMENTBAU NIENBURG
+   ========================================================================== */
+
+.contact-page-wrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.contact-hero {
+  padding: 160px 0 100px 0;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.contact-grid-page {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+/* LEFT SIDE: INFO */
+.contact-info-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-main-title {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.contact-main-title .highlight {
+  color: var(--eb-orange);
+}
+
+.contact-intro-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--eb-text-muted);
+  margin-bottom: 30px;
+}
+
+/* Emergency Hotline Box */
+.contact-emergency-banner {
+  display: flex;
+  gap: 16px;
+  background-color: #fef2f2;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-left: 4px solid #dc2626;
+  padding: 20px 24px;
+  border-radius: 6px;
+  margin-bottom: 35px;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.04);
+}
+
+.emergency-banner-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.emergency-banner-text h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #991b1b;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.emergency-banner-text p {
+  font-size: 0.98rem;
+  color: #7f1d1d;
+  margin-bottom: 10px;
+}
+
+.emergency-call-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #dc2626;
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 4px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: var(--transition-fast);
+}
+
+.emergency-call-anchor:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.contact-details-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--eb-card-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: var(--transition-smooth);
+}
+
+.detail-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--eb-orange);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.detail-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 140, 0, 0.08);
+  color: var(--eb-orange);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-text h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--eb-text-muted);
+  margin-bottom: 2px;
+}
+
+.detail-link {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--eb-text-main);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.detail-link:hover {
+  color: var(--eb-orange);
+}
+
+.detail-val {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--eb-text-main);
+  margin: 0;
+}
+
+/* RIGHT SIDE: FORM */
+.contact-form-side {
+  position: relative;
+}
+
+.contact-card {
+  background-color: #ffffff;
+  border: 1px solid var(--eb-card-border);
+  box-shadow: var(--eb-card-shadow);
+  border-radius: 8px;
+  padding: 45px 40px;
+  position: relative;
+}
+
+.form-card-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.form-card-sub {
+  font-size: 0.95rem;
+  color: var(--eb-text-muted);
+  margin-bottom: 30px;
+}
+
+.contact-react-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.select-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+  cursor: pointer;
+}
+
+/* FILE UPLOAD ZONE */
+.file-upload-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.file-hint {
+  font-size: 0.75rem;
+  color: var(--eb-text-muted);
+  text-transform: none;
+  font-weight: 400;
+}
+
+.file-drop-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 6px;
+  padding: 24px 20px;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.file-drop-zone:hover {
+  border-color: var(--eb-orange);
+  background-color: #ffffff;
+}
+
+.upload-icon {
+  color: var(--eb-orange);
+}
+
+.drop-text {
+  font-size: 0.9rem;
+  color: var(--eb-text-muted);
+}
+
+.drop-text strong {
+  color: var(--eb-text-main);
+  text-decoration: underline;
+}
+
+.selected-files-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--eb-text-main);
+}
+
+.chip-icon {
+  color: var(--eb-orange);
+}
+
+.chip-size {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.chip-remove-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: color 0.2s ease;
+}
+
+.chip-remove-btn:hover {
+  color: #dc2626;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  justify-content: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.btn-emergency-submit {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-color: #dc2626;
+}
+
+.btn-emergency-submit:hover {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+  border-color: #991b1b;
+  color: #ffffff;
+}
+
+@media (max-width: 991px) {
+  .contact-grid-page {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-hero {
+    padding: 130px 0 60px 0;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+  }
+}
