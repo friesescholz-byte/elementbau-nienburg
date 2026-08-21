@@ -547,17 +547,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. VERTRAUEN / WHY US SECTION */}
-      <section className="why-us-section trust-section">
-        {/* Cinematic Handwerk Background Image & Multi-Layer Gradient Overlay */}
-        <div className="why-us-bg-wrap" aria-hidden="true">
-          <img 
-            src={`${r2Url}/nb/Elementbau-10_ergebnis.webp`} 
-            alt="" 
-            className="why-us-bg-img" 
-          />
-          <div className="why-us-bg-overlay" />
-        </div>
-
+      <section id="vertrauen" className="why-us-section trust-section">
         <div className="container why-us-container">
           
           <div className="section-header center why-us-header">
