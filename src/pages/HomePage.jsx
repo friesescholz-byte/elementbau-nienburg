@@ -223,10 +223,10 @@ export default function HomePage() {
   return (
     <div className="homepage-wrapper">
       
-      {/* 1. HERO SECTION WITH AUTHENTIC DRY-BRUSH STROKE & CENTERED BACKGROUND PHOTOS */}
+      {/* 1. HERO SECTION WITH REAL HIGH-RES PAINTERLY BRUSH EDGE & SLIDESHOW */}
       <section id="hero" className="hero-section hero-brush-split">
         
-        {/* Right Half: Perfectly Centered Photo Slideshow */}
+        {/* Right Half: Centered Photo Slideshow */}
         <div className="hero-slideshow-wrap" aria-hidden="true">
           {heroSlides.map((slide, idx) => (
             <div 
@@ -244,45 +244,16 @@ export default function HomePage() {
           <div className="hero-slide-right-gradient" />
         </div>
 
-        {/* Left Side: Deep #012444 Navy Painterly Block with Organic Brush Edge */}
+        {/* Left Side: Deep #012444 Navy Painterly Block with Real PNG Brush Edge */}
         <div className="hero-navy-brush-block">
           
-          {/* Authentic Painterly Brush SVG Edge */}
-          <div className="hero-brush-edge-right" aria-hidden="true">
-            <svg viewBox="0 0 200 900" preserveAspectRatio="none" className="brush-edge-svg">
-              <defs>
-                <filter id="paintBrushFilter" x="-20%" y="-10%" width="140%" height="120%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="4" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-                  <feMerge>
-                    <feMergeNode in="displaced" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Main Paint Body with Brush Dispersion */}
-              <g filter="url(#paintBrushFilter)">
-                <path 
-                  d="M0 0 H40 
-                  C60 15 75 22 110 28 C140 34 175 42 150 50 C120 58 165 68 185 78 C155 88 135 98 165 110 
-                  C140 122 180 135 160 148 C135 160 185 174 165 188 C145 200 175 214 145 228 C120 240 180 254 165 268 
-                  C150 282 125 294 175 308 C195 320 145 334 165 348 C185 362 135 376 175 390 C195 404 140 418 165 432 
-                  C185 446 130 460 170 474 C195 488 145 502 165 518 C185 532 135 546 175 560 C195 574 150 588 165 602 
-                  C180 616 135 630 170 644 C195 658 140 672 165 686 C185 700 145 714 170 728 C195 742 150 756 165 770 
-                  C180 784 135 798 165 812 C185 826 140 840 160 854 C175 868 130 882 150 894 C160 900 100 900 50 900 H0 Z" 
-                  fill="#012444" 
-                />
-                {/* Horizontal Bristle Scratches */}
-                <path d="M30 20 H165 M20 40 H185 M40 65 H175 M25 90 H190 M35 115 H170 M20 140 H185 M40 165 H175 M25 190 H190 M35 215 H170 M20 240 H185 M40 265 H175 M25 290 H190 M35 315 H170 M20 340 H185 M40 365 H175 M25 390 H190 M35 415 H170 M20 440 H185 M40 465 H175 M25 490 H190 M35 515 H170 M20 540 H185 M40 565 H175 M25 590 H190 M35 615 H170 M20 640 H185 M40 665 H175 M25 690 H190 M35 715 H170 M20 740 H185 M40 765 H175 M25 790 H190 M35 815 H170 M20 840 H185 M40 865 H175 M25 890 H180" stroke="#012444" strokeWidth="6" strokeLinecap="round" />
-              </g>
-              
-              {/* Secondary Dry-Brush Layer with Fine Whiskers */}
-              <g opacity="0.85">
-                <path d="M120 35 Q170 38 190 40 M130 75 Q180 78 200 80 M110 120 Q165 124 185 126 M130 165 Q185 168 205 170 M115 210 Q170 214 190 216 M135 255 Q190 258 210 260 M120 300 Q175 304 195 306 M140 345 Q195 348 215 350 M125 390 Q180 394 200 396 M145 435 Q200 438 220 440 M130 480 Q185 484 205 486 M150 525 Q205 528 225 530 M135 570 Q190 574 210 576 M155 615 Q210 618 230 620 M140 660 Q195 664 215 666 M160 705 Q215 708 235 710 M145 750 Q200 754 220 756 M165 795 Q220 798 240 800 M150 840 Q205 844 225 846 M170 885 Q225 888 245 890" stroke="#012444" strokeWidth="3" strokeLinecap="round" />
-                <path d="M140 45 Q180 48 198 50 M150 135 Q190 138 208 140 M145 225 Q185 228 203 230 M155 315 Q195 318 213 320 M150 405 Q190 408 208 410 M160 495 Q200 498 218 500 M155 585 Q195 588 213 590 M165 675 Q205 678 223 680 M160 765 Q200 768 218 770 M170 855 Q210 858 228 860" stroke="#012444" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-              </g>
-            </svg>
-          </div>
+          {/* Real High-Resolution Acrylic Paintbrush Edge PNG */}
+          <img 
+            src="/brush-edge-real.png" 
+            alt="" 
+            className="hero-brush-edge-real-png" 
+            aria-hidden="true" 
+          />
 
           <div className="container hero-container-brush">
             
@@ -295,7 +266,7 @@ export default function HomePage() {
               {/* Eyebrow badge */}
               <motion.div className="hero-insta-badge" variants={fadeUp}>
                 <span className="pulse-dot-orange" />
-                <span>24h Notdienst • Inh. Louis Gerber • Nienburg (Weser)</span>
+                <span>24h Notdienst • Inh. Louis Gerber • Nienburg</span>
               </motion.div>
 
               {/* Main Headline */}
@@ -398,24 +369,14 @@ export default function HomePage() {
                     alt="24h Notfalleinsatz und zerstörungsfreie Ortung bei Elementbau Nienburg" 
                     className="storyline-img" 
                   />
-                  <div className="photo-step-number-tag">
-                    <span>SCHRITT 01</span>
-                  </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card card-brush-left">
-                  <div className="card-brush-edge-left" aria-hidden="true">
-                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
-                      <path d="M60 0 H20 C10 15 35 30 15 48 C-2 65 30 82 12 100 C-5 118 28 135 10 155 C-8 175 32 192 14 212 C-4 230 28 250 8 270 C-10 290 30 310 12 330 C-6 350 26 370 8 390 C-8 410 28 430 12 450 C-4 470 25 485 20 500 H60 Z" fill="#012444" />
-                      <path d="M30 35 H0 M35 90 H0 M28 145 H0 M32 200 H0 M25 258 H0 M30 315 H0 M26 372 H0 M32 430 H0" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  
+                <div className="storyline-blue-card">
                   <div className="step-card-eyebrow">
                     <span className="pulse-dot-orange-sm" />
-                    <span>01 • ERSTVERSORGUNG & LECKORTUNG</span>
+                    <span>ERSTVERSORGUNG & LECKORTUNG</span>
                   </div>
 
                   <h3 className="step-card-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
@@ -460,24 +421,14 @@ export default function HomePage() {
                     alt="Professionelle Bautrocknung und Feuchtigkeitsentzug" 
                     className="storyline-img storyline-img-dryer" 
                   />
-                  <div className="photo-step-number-tag">
-                    <span>SCHRITT 02</span>
-                  </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card card-brush-right">
-                  <div className="card-brush-edge-right" aria-hidden="true">
-                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
-                      <path d="M0 0 H40 C50 15 25 30 45 48 C62 65 30 82 48 100 C65 118 32 135 50 155 C68 175 28 192 46 212 C64 230 32 250 52 270 C70 290 30 310 48 330 C66 350 34 370 52 390 C68 410 32 430 48 450 C64 470 35 485 40 500 H0 Z" fill="#012444" />
-                      <path d="M30 35 H60 M25 90 H60 M32 145 H60 M28 200 H60 M35 258 H60 M30 315 H60 M34 372 H60 M28 430 H60" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  
+                <div className="storyline-blue-card">
                   <div className="step-card-eyebrow">
                     <span className="pulse-dot-orange-sm" />
-                    <span>02 • BAUTROCKNUNG & ENTZUG</span>
+                    <span>BAUTROCKNUNG & FEUCHTIGKEITSENTZUG</span>
                   </div>
 
                   <h3 className="step-card-title">Gezielte technische Bautrocknung</h3>
@@ -522,24 +473,14 @@ export default function HomePage() {
                     alt="Schlüsselfertige Sanierung und Wiederherstellung" 
                     className="storyline-img" 
                   />
-                  <div className="photo-step-number-tag">
-                    <span>SCHRITT 03</span>
-                  </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card card-brush-left">
-                  <div className="card-brush-edge-left" aria-hidden="true">
-                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
-                      <path d="M60 0 H20 C10 15 35 30 15 48 C-2 65 30 82 12 100 C-5 118 28 135 10 155 C-8 175 32 192 14 212 C-4 230 28 250 8 270 C-10 290 30 310 12 330 C-6 350 26 370 8 390 C-8 410 28 430 12 450 C-4 470 25 485 20 500 H60 Z" fill="#012444" />
-                      <path d="M30 35 H0 M35 90 H0 M28 145 H0 M32 200 H0 M25 258 H0 M30 315 H0 M26 372 H0 M32 430 H0" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  
+                <div className="storyline-blue-card">
                   <div className="step-card-eyebrow">
                     <span className="pulse-dot-orange-sm" />
-                    <span>03 • KOMPLETTSANIERUNG & ÜBERGABE</span>
+                    <span>KOMPLETTSANIERUNG & WIEDERHERSTELLUNG</span>
                   </div>
 
                   <h3 className="step-card-title">Fachgerechte Komplettsanierung</h3>
