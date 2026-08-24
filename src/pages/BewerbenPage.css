@@ -1605,3 +1605,583 @@
     border-radius: 50px;
   }
 }
+
+
+/* ==========================================================================
+   PRO MAX SPLIT BRUSH HERO - BEWERBEN & KARRIERE (AGENCY GRADE)
+   ========================================================================== */
+.career-pro-hero {
+  position: relative;
+  width: 100%;
+  min-height: 84vh;
+  display: flex;
+  background-color: #012444;
+  overflow: hidden;
+}
+
+/* Right Slideshow Half */
+.career-hero-slideshow-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 46%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  background-color: #012444;
+}
+
+.career-hero-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.career-hero-slide-bg.active {
+  opacity: 1;
+}
+
+.career-hero-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.04);
+  transition: transform 6s ease-out;
+}
+
+.career-hero-slide-bg.active .career-hero-slide-img {
+  transform: scale(1);
+}
+
+.career-hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(1, 36, 68, 0.4) 0%, rgba(1, 36, 68, 0.15) 100%),
+              linear-gradient(180deg, rgba(1, 36, 68, 0.2) 0%, rgba(1, 36, 68, 0.5) 100%);
+  pointer-events: none;
+}
+
+.career-hero-slide-dots {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.career-hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.career-hero-dot.active {
+  width: 24px;
+  border-radius: 10px;
+  background: var(--eb-orange);
+}
+
+/* Left Deep Navy Block */
+.career-hero-navy-block {
+  position: relative;
+  width: 60%;
+  min-height: 84vh;
+  background-color: #012444;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  padding: 135px 0 75px 0;
+}
+
+.career-brush-edge-real-png {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -24px;
+  width: 28px;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.career-hero-container {
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: 30px;
+  padding-left: max(6%, 32px);
+  padding-right: 60px;
+  position: relative;
+  z-index: 5;
+}
+
+.career-hero-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.career-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 140, 0, 0.12);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  color: var(--eb-orange);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+}
+
+.pulse-dot-orange-sm {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--eb-orange);
+  box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7);
+  animation: pulseOrangeDot 2s infinite;
+}
+
+.career-hero-main-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(2rem, 2.6vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.career-hero-main-title .highlight {
+  color: var(--eb-orange);
+}
+
+.career-hero-subline {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(0.88rem, 1.15vw, 1.05rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--eb-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 18px 0;
+}
+
+.career-hero-desc-box {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 24px;
+  max-width: 540px;
+}
+
+.career-desc-bar {
+  width: 4px;
+  background: linear-gradient(180deg, #ff8c00 0%, #ea580c 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.career-desc-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* 4 Circular Feature Icons */
+.career-hero-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 30px;
+}
+
+.career-feat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.career-feat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.career-feat-item:hover .career-feat-icon {
+  background: var(--eb-orange);
+  border-color: var(--eb-orange);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 22px rgba(255, 140, 0, 0.4);
+}
+
+.career-feat-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+/* Action Buttons */
+.career-hero-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary-career {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff8c00 0%, #ea580c 100%);
+  color: #ffffff;
+  padding: 15px 28px;
+  border-radius: 50px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-hero-primary-career:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(255, 140, 0, 0.55);
+}
+
+.btn-hero-secondary-career {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 15px 24px;
+  border-radius: 50px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.btn-hero-secondary-career:hover {
+  border-color: var(--eb-orange);
+  color: var(--eb-orange);
+  background: rgba(255, 140, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Tablet & Mobile Media Queries for Career Hero */
+@media (max-width: 1024px) {
+  .career-pro-hero {
+    flex-direction: column;
+    min-height: auto;
+    background: #012444;
+  }
+
+  .career-hero-slideshow-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .career-hero-slide-overlay {
+    background: linear-gradient(180deg, rgba(1, 36, 68, 0.94) 0%, rgba(1, 36, 68, 0.9) 50%, rgba(1, 36, 68, 0.98) 100%) !important;
+  }
+
+  .career-hero-navy-block {
+    width: 100%;
+    min-height: auto;
+    padding: 125px 24px 60px 24px;
+    background: transparent;
+  }
+
+  .career-brush-edge-real-png {
+    display: none !important;
+  }
+
+  .career-hero-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .career-hero-inner-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .career-hero-main-title {
+    font-size: clamp(1.85rem, 5vw, 2.6rem);
+    text-align: center;
+  }
+
+  .career-hero-subline {
+    text-align: center;
+  }
+
+  .career-hero-desc-box {
+    justify-content: center;
+    max-width: 520px;
+    margin: 0 auto 24px auto;
+  }
+
+  .career-desc-bar {
+    display: none;
+  }
+
+  .career-desc-text {
+    text-align: center;
+  }
+
+  .career-hero-features-grid {
+    max-width: 520px;
+    margin: 0 auto 28px auto;
+  }
+
+  .career-hero-actions-row {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .career-hero-navy-block {
+    padding: 110px 18px 50px 18px;
+  }
+
+  .career-hero-main-title {
+    font-size: clamp(1.7rem, 7.5vw, 2.15rem);
+  }
+
+  .career-hero-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .career-feat-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .career-hero-actions-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-hero-primary-career,
+  .btn-hero-secondary-career {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    height: 50px;
+    font-size: 0.88rem;
+  }
+}
+
+
+/* ==========================================================================
+   HOMEPAGE BRUSH SPLIT HERO IMPORT FOR BEWERBEN PAGE
+   ========================================================================== */
+.career-hero-split-master {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  background-color: #012444;
+  overflow: hidden;
+}
+
+.career-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 140, 0, 0.12);
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  color: var(--eb-orange);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+}
+
+.btn-hero-career-explore {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+.btn-hero-career-explore:hover {
+  background: rgba(255, 140, 0, 0.2) !important;
+  border-color: var(--eb-orange) !important;
+  color: var(--eb-orange) !important;
+}
+
+/* Master Mobile Hero Perfection for Career Page */
+@media (max-width: 1024px) {
+  .career-hero-split-master {
+    flex-direction: column !important;
+    min-height: auto !important;
+    background: #012444 !important;
+  }
+
+  .career-hero-split-master .hero-slideshow-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .career-hero-split-master .hero-slide-right-gradient {
+    background: linear-gradient(180deg, rgba(1, 36, 68, 0.95) 0%, rgba(1, 36, 68, 0.92) 50%, rgba(1, 36, 68, 0.98) 100%) !important;
+  }
+
+  .career-hero-split-master .hero-navy-brush-block {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 125px 24px 60px 24px !important;
+    background: rgba(1, 36, 68, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  .career-hero-split-master .hero-brush-edge-real-png {
+    display: none !important;
+  }
+
+  .career-hero-split-master .hero-container-brush {
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .career-hero-split-master .hero-brush-content {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .career-hero-split-master .hero-insta-title {
+    color: #ffffff !important;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7) !important;
+    text-align: center !important;
+  }
+
+  .career-hero-split-master .hero-insta-subline {
+    color: #ff8c00 !important;
+    text-align: center !important;
+  }
+
+  .career-hero-split-master .hero-insta-desc-box {
+    justify-content: center !important;
+    max-width: 520px !important;
+    margin: 0 auto 24px auto !important;
+  }
+
+  .career-hero-split-master .insta-bar {
+    display: none !important;
+  }
+
+  .career-hero-split-master .insta-text {
+    color: #f1f5f9 !important;
+    text-align: center !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .career-hero-split-master .hero-insta-features-grid {
+    max-width: 520px !important;
+    margin: 0 auto 28px auto !important;
+  }
+
+  .career-hero-split-master .insta-feat-icon {
+    background: rgba(1, 36, 68, 0.7) !important;
+    border: 1.5px solid rgba(255, 140, 0, 0.7) !important;
+    color: #ffffff !important;
+  }
+
+  .career-hero-split-master .insta-feat-label {
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .career-hero-split-master .hero-insta-actions {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .career-hero-split-master .hero-navy-brush-block {
+    padding: 110px 18px 50px 18px !important;
+  }
+
+  .career-hero-split-master .hero-insta-features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+
+  .career-hero-split-master .hero-insta-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .career-hero-split-master .btn-hero-primary-insta,
+  .career-hero-split-master .btn-hero-emergency-insta {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    height: 50px !important;
+    font-size: 0.88rem !important;
+  }
+}

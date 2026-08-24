@@ -10,6 +10,30 @@ import './BewerbenPage.css';
 
 const r2Url = 'https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni';
 
+
+const careerHeroSlides = [
+  {
+    id: 1,
+    image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+    alt: 'Elementbau Team im Praxiseinsatz'
+  },
+  {
+    id: 2,
+    image: `${r2Url}/nb/Elementbau-Auto01.webp`,
+    alt: 'Elementbau Firmenwagen Flotte'
+  },
+  {
+    id: 3,
+    image: `${r2Url}/nb/Elementbau-9_ergebnis.webp`,
+    alt: 'Fachgerechter Innenausbau'
+  },
+  {
+    id: 4,
+    image: `${r2Url}/nb/Elementbau-7_ergebnis.webp`,
+    alt: 'Qualitätsausführung Elementbau'
+  }
+];
+
 const jobsData = [
   {
     id: 'allrounder-sanierung',
@@ -71,6 +95,14 @@ const jobsData = [
 
 export default function BewerbenPage() {
   const [selectedJob, setSelectedJob] = useState('Allrounder für Wasserschäden, Kellerabdichtungen etc. gesucht! (m/w/d)');
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % careerHeroSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
   const [activeJobAccordion, setActiveJobAccordion] = useState('allrounder-sanierung');
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -233,79 +265,105 @@ export default function BewerbenPage() {
   return (
     <div className="career-page-root">
       
-      {/* 1. HERO SECTION */}
-      <section className="career-hero-section">
-        <div className="container career-hero-grid">
-          
-          <div className="career-hero-content">
-            <div className="section-tag">Karriere bei Elementbau Nienburg</div>
-
-            <h1 className="career-hero-title">
-              Handwerk mit Zukunft.<br />
-              <span className="highlight">Werde Teil unseres Teams.</span>
-            </h1>
-
-            <p className="career-hero-intro">
-              Du suchst echte Wertschätzung, modernste Maschinen, 4-Tage-Woche und ein starkes Team auf Augenhöhe? Bei Elementbau Nienburg bieten wir dir beste Bedingungen und langfristige Perspektiven.
-            </p>
-
-            <div className="career-hero-badges-row">
-              <div className="hero-trust-item">
-                <CheckCircle2 size={18} className="trust-check-icon" />
-                <span>4-Tage-Woche möglich</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle2 size={18} className="trust-check-icon" />
-                <span>Firmenwagen (inkl. Privatnutzung)</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle2 size={18} className="trust-check-icon" />
-                <span>Pünktliche & faire Bezahlung</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle2 size={18} className="trust-check-icon" />
-                <span>Werkzeug frei wählbar</span>
-              </div>
+      {/* 1. HERO SECTION (EXACT HOMEPAGE PRO MAX BRUSH SPLIT ARCHITECTURE) */}
+      <section className="hero-section hero-brush-split career-hero-split-master">
+        {/* Right Half: Centered Photo Slideshow */}
+        <div className="hero-slideshow-wrap" aria-hidden="true">
+          {careerHeroSlides.map((slide, idx) => (
+            <div 
+              key={slide.id}
+              className={`hero-slide-bg ${idx === activeSlide ? 'active' : ''}`}
+            >
+              <img 
+                src={slide.image} 
+                alt={slide.alt} 
+                className="hero-slide-img-full" 
+              />
+              <div className="hero-slide-right-gradient" />
             </div>
+          ))}
+          <div className="hero-mobile-slide-dots">
+            {careerHeroSlides.map((_, i) => (
+              <span key={i} className={`hero-mobile-dot ${i === activeSlide ? 'active' : ''}`} />
+            ))}
+          </div>
+        </div>
 
-            <div className="career-hero-cta-group">
-              <button onClick={() => scrollToForm('Allrounder für Wasserschäden, Kellerabdichtungen etc. gesucht! (m/w/d)')} className="btn-hero-primary">
-                <span>In 60 Sekunden bewerben</span>
-                <ArrowRight size={18} />
-              </button>
+        {/* Left Half: Solid Deep Navy Block with Real Acrylic Brush Edge PNG */}
+        <div className="hero-navy-brush-block">
+          <img 
+            src="/brush-edge-real.png" 
+            alt="" 
+            className="hero-brush-edge-real-png" 
+            aria-hidden="true" 
+          />
 
-              <a href="#stellen" className="btn-hero-secondary">
-                <span>Offene Stellen ansehen</span>
-                <ChevronDown size={18} />
-              </a>
+          <div className="hero-container-brush">
+            <div className="hero-brush-content">
+              
+              {/* Eyebrow */}
+              <div className="career-section-eyebrow">
+                <span className="pulse-dot-orange-sm" />
+                <span>KARRIERE BEI ELEMENTBAU NIENBURG</span>
+              </div>
+
+              {/* Title */}
+              <h1 className="hero-insta-title">
+                Handwerk mit Zukunft.<br />
+                <span className="highlight">Werde Teil unseres Teams.</span>
+              </h1>
+
+              {/* Subline */}
+              <p className="hero-insta-subline">
+                4-Tage-Woche • Eigener Firmenwagen • Freie Werkzeugwahl • Nienburg
+              </p>
+
+              {/* Description quote with orange bar */}
+              <div className="hero-insta-desc-box">
+                <div className="insta-bar" />
+                <p className="insta-text">
+                  Du suchst echte Wertschätzung, modernste Maschinen und ein starkes Team auf Augenhöhe? Bei Elementbau bieten wir dir beste Bedingungen und langfristige Perspektiven für dein Handwerk.
+                </p>
+              </div>
+
+              {/* 4 Circular Feature Icons */}
+              <div className="hero-insta-features-grid">
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon"><Calendar size={22} /></div>
+                  <span className="insta-feat-label">4-Tage-Woche</span>
+                </div>
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon"><Truck size={22} /></div>
+                  <span className="insta-feat-label">Firmenwagen</span>
+                </div>
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon"><Wrench size={22} /></div>
+                  <span className="insta-feat-label">Profi-Werkzeug</span>
+                </div>
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon"><Award size={22} /></div>
+                  <span className="insta-feat-label">Top Gehalt</span>
+                </div>
+              </div>
+
+              {/* Hero Action Buttons */}
+              <div className="hero-insta-actions">
+                <button 
+                  onClick={() => scrollToForm('Allrounder für Wasserschäden, Kellerabdichtungen etc. gesucht! (m/w/d)')} 
+                  className="btn-hero-primary-insta"
+                >
+                  <span>In 60 Sekunden bewerben</span>
+                  <ArrowRight size={18} />
+                </button>
+
+                <a href="#stellen" className="btn-hero-emergency-insta btn-hero-career-explore">
+                  <span>Offene Stellen ansehen</span>
+                  <ChevronDown size={18} />
+                </a>
+              </div>
+
             </div>
           </div>
-
-          <div className="career-hero-media">
-            <div className="career-media-stage">
-              <div className="career-photo-main">
-                <img 
-                  src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
-                  alt="Elementbau Team im Einsatz vor Ort" 
-                  className="career-img" 
-                />
-              </div>
-
-              <div className="career-photo-sub">
-                <img 
-                  src={`${r2Url}/nb/Elementbau-9_ergebnis.webp`} 
-                  alt="Sanierungsarbeiten Elementbau Nienburg" 
-                  className="career-img" 
-                />
-              </div>
-
-              <div className="career-floating-stat-box">
-                <div className="stat-number">100%</div>
-                <div className="stat-label">Teamgeist & Verlässlichkeit</div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
