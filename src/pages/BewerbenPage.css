@@ -1222,3 +1222,386 @@
   }
 }
 
+
+
+/* ==========================================================================
+   MASTER MOBILE OPTIMIZATION & CLEANUP - BEWERBEN & KARRIERE PAGE
+   ========================================================================== */
+
+/* Universal Form & Input Mobile Usability (16px base font prevents iOS auto-zoom) */
+.career-page-root input,
+.career-page-root select,
+.career-page-root textarea {
+  font-size: 16px !important;
+}
+
+@media (max-width: 1024px) {
+  .career-hero-section {
+    padding: 120px 0 60px 0;
+  }
+
+  .career-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .career-hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .career-hero-intro {
+    text-align: center;
+  }
+
+  .career-hero-badges-row {
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+  }
+
+  .career-hero-cta-group {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .career-media-stage {
+    max-width: 440px;
+    height: 380px;
+    margin: 0 auto;
+  }
+
+  .benefits-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .process-timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .career-photos-grid-3 {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 35px auto 0 auto;
+    gap: 20px;
+  }
+
+  .statement-grid-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+    padding: 35px 24px;
+  }
+
+  .statement-portrait-wrap {
+    aspect-ratio: 1 / 1;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .statement-direct-contacts {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .career-hero-section {
+    padding: 100px 0 50px 0;
+  }
+
+  .career-hero-title {
+    font-size: clamp(1.75rem, 6.8vw, 2.25rem);
+    line-height: 1.18;
+    margin-bottom: 14px;
+  }
+
+  .career-hero-intro {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .career-hero-badges-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: left;
+    max-width: 320px;
+  }
+
+  .hero-trust-item {
+    font-size: 0.92rem;
+  }
+
+  .career-hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    height: 50px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+  }
+
+  .career-media-stage {
+    height: 300px;
+    max-width: 340px;
+  }
+
+  .career-photo-main {
+    width: 88%;
+    height: 200px;
+    border-radius: 18px;
+  }
+
+  .career-photo-sub {
+    width: 60%;
+    height: 150px;
+    border-radius: 16px;
+  }
+
+  .career-floating-stat-box {
+    left: 0;
+    bottom: 15px;
+    padding: 10px 16px;
+    border-radius: 12px;
+  }
+
+  .career-floating-stat-box .stat-number {
+    font-size: 1.35rem;
+  }
+
+  .career-floating-stat-box .stat-label {
+    font-size: 0.68rem;
+  }
+
+  /* Benefits Section */
+  .career-benefits-section {
+    padding: 60px 0 50px 0;
+  }
+
+  .benefits-grid-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .benefit-feature-card {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .benefit-feature-title {
+    font-size: 1.15rem;
+  }
+
+  .benefit-feature-desc {
+    font-size: 0.92rem;
+  }
+
+  /* Jobs Section */
+  .career-jobs-section {
+    padding: 60px 0 50px 0;
+  }
+
+  .job-card-item {
+    border-radius: 18px;
+  }
+
+  .job-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+    gap: 14px;
+  }
+
+  .job-header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .job-icon-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .job-title-text {
+    font-size: 1.18rem;
+    line-height: 1.25;
+  }
+
+  .job-meta-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .job-header-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .btn-quick-select {
+    font-size: 0.84rem;
+    padding: 8px 16px;
+  }
+
+  .job-card-body-expanded {
+    padding: 20px 16px;
+  }
+
+  .job-full-description {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .job-details-columns {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .job-column-box {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .column-sub-heading {
+    font-size: 1rem;
+  }
+
+  .job-bullets-list li {
+    font-size: 0.88rem;
+  }
+
+  .job-highlights-bar {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .hl-pill {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .btn-apply-job-inside {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+  }
+
+  /* Process Steps */
+  .career-process-section {
+    padding: 60px 0 50px 0;
+  }
+
+  .process-step-card {
+    padding: 26px 18px;
+    border-radius: 16px;
+  }
+
+  .process-step-title {
+    font-size: 1.15rem;
+  }
+
+  .process-step-desc {
+    font-size: 0.92rem;
+  }
+
+  /* Gallery Section (Einblicke in den Alltag) - Mobil ausgeblendet */
+  .career-gallery-section {
+    display: none !important;
+  }
+
+  /* Statement Section */
+  .career-statement-section {
+    padding: 60px 0 50px 0;
+  }
+
+  .statement-grid-box {
+    padding: 26px 18px;
+    border-radius: 18px;
+  }
+
+  .statement-title {
+    font-size: 1.25rem;
+  }
+
+  .statement-body {
+    font-size: 0.94rem;
+  }
+
+  .statement-direct-contacts {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .statement-contact-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  /* Form Section */
+  .career-form-section {
+    padding: 60px 0 80px 0;
+  }
+
+  .apply-form-card-main {
+    padding: 24px 16px;
+    border-radius: 18px;
+    margin-top: 24px;
+  }
+
+  .form-inner-title {
+    font-size: 1.18rem;
+    margin-bottom: 18px;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-control {
+    height: 48px;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  .form-buttons-row {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .btn-step-next {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    height: 50px;
+    border-radius: 50px;
+  }
+
+  .btn-step-back {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .submit-action-btn {
+    width: 100%;
+    justify-content: center;
+    height: 50px;
+    border-radius: 50px;
+  }
+}

@@ -64,7 +64,6 @@ export default function ServiceDetailPage() {
 
             {service.emergencyText && (
               <motion.div className="emergency-alert-box" variants={fadeUp}>
-                <div className="pulse-indicator"></div>
                 <span>{service.emergencyText}</span>
               </motion.div>
             )}

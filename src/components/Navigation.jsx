@@ -346,14 +346,11 @@ export default function Navigation() {
           <li>
             <Link 
               to="/bewerben" 
-              className="mobile-nav-link mobile-nav-jobs-highlight"
+              className="mobile-nav-link mobile-nav-jobs-clean"
               onClick={() => setIsOpen(false)}
             >
-              <span className="mobile-jobs-inner">
-                <Briefcase size={16} className="jobs-nav-icon" />
-                <span>Jobs / Karriere</span>
-              </span>
-              <span className="m-jobs-badge">Wir stellen ein</span>
+              <Briefcase size={18} className="jobs-nav-icon" />
+              <span>Jobs & Karriere</span>
             </Link>
           </li>
         </ul>

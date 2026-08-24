@@ -433,7 +433,7 @@ export default function BewerbenPage() {
                         <span className="highlights-label">Deine Top-Benefits:</span>
                         <div className="highlights-pills-wrap">
                           {job.highlights.map((hl, hIdx) => (
-                            <span key={hIdx} className="hl-pill">⭐ {hl}</span>
+                            <span key={hIdx} className="hl-pill">{hl}</span>
                           ))}
                         </div>
                       </div>

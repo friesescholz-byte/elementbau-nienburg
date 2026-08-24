@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, Check, X, Phone, Mail,
-  Star, MessageSquare, CheckCircle2, ChevronLeft, ChevronRight, ZoomIn,
+  Star, MessageSquare, CheckCircle2, ChevronLeft, ChevronRight, ChevronDown, ZoomIn, MapPin,
   Droplets, Clock, ShieldCheck, Home, ShieldAlert, Sparkles, Paintbrush, Hammer, Wrench, Waves
 } from 'lucide-react';
 import { servicesData, r2Url } from '../data/servicesData';
@@ -68,9 +68,8 @@ export default function HomePage() {
     }
   };
 
-  // 3D Gallery Slider & Lightbox State
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  // Gallery Filter & Lightbox State
+  const [activeFilter, setActiveFilter] = useState('Alle');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const galleryProjects = [
@@ -159,6 +158,15 @@ export default function HomePage() {
     }
   ];
 
+  const filteredProjects = galleryProjects.filter(p => {
+    if (activeFilter === 'Alle') return true;
+    if (activeFilter === 'Wasserschaden & Trocknung') return p.category.includes('Trocknung') || p.category.includes('Notdienst');
+    if (activeFilter === 'Badsanierung') return p.category.includes('Fliesen') || p.category.includes('Sanitär') || p.category.includes('Boden');
+    if (activeFilter === 'Maler & Ausbau') return p.category.includes('Maler') || p.category.includes('Putz') || p.category.includes('Trockenbau') || p.category.includes('Energie');
+    if (activeFilter === 'Abdichtung & Montage') return p.category.includes('Abdichtung') || p.category.includes('Bauelemente') || p.category.includes('Tiefbau') || p.category.includes('Großprojekte');
+    return true;
+  });
+
   // Keyboard navigation for Lightbox
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -170,31 +178,6 @@ export default function HomePage() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex, galleryProjects.length]);
-
-  // Auto-advance 3D slider smoothly every 5 seconds (paused if hovered or lightbox open)
-  useEffect(() => {
-    if (isHovered || lightboxIndex !== null) return;
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % galleryProjects.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isHovered, lightboxIndex, activeSlide, galleryProjects.length]);
-
-  const nextSlide = () => setActiveSlide((prev) => (prev + 1) % galleryProjects.length);
-  const prevSlide = () => setActiveSlide((prev) => (prev - 1 + galleryProjects.length) % galleryProjects.length);
-
-  const getSlidePositionClass = (index) => {
-    const total = galleryProjects.length;
-    let diff = (index - activeSlide + total) % total;
-    if (diff > total / 2) diff -= total;
-
-    if (diff === 0) return 'slide-active';
-    if (diff === -1) return 'slide-prev';
-    if (diff === 1) return 'slide-next';
-    if (diff === -2) return 'slide-far-prev';
-    if (diff === 2) return 'slide-far-next';
-    return 'slide-hidden';
-  };
 
   const googleReviews = [
     {
@@ -223,7 +206,7 @@ export default function HomePage() {
   return (
     <div className="homepage-wrapper">
       
-      {/* 1. HERO SECTION WITH REAL HIGH-RES PAINTERLY BRUSH EDGE & SLIDESHOW */}
+      {/* 1. HERO SECTION WITH SEAMLESS REAL BRUSH STROKE & SLIDESHOW */}
       <section id="hero" className="hero-section hero-brush-split">
         
         {/* Right Half: Centered Photo Slideshow */}
@@ -240,14 +223,12 @@ export default function HomePage() {
               />
             </div>
           ))}
-          {/* Subtle soft vignette on the right */}
           <div className="hero-slide-right-gradient" />
         </div>
 
-        {/* Left Side: Deep #012444 Navy Painterly Block with Real PNG Brush Edge */}
+        {/* Left Side: Deep #012444 Navy Block with Real PNG Brush Edge */}
         <div className="hero-navy-brush-block">
           
-          {/* Real High-Resolution Acrylic Paintbrush Edge PNG */}
           <img 
             src="/brush-edge-real.png" 
             alt="" 
@@ -263,16 +244,10 @@ export default function HomePage() {
               animate="visible"
               variants={staggerContainer}
             >
-              {/* Eyebrow badge */}
-              <motion.div className="hero-insta-badge" variants={fadeUp}>
-                <span className="pulse-dot-orange" />
-                <span>24h Notdienst • Inh. Louis Gerber • Nienburg</span>
-              </motion.div>
-
-              {/* Main Headline */}
+              {/* Main Headline - High z-index & wide padding so it NEVER gets cut off */}
               <motion.h1 className="hero-insta-title" variants={fadeUp}>
-                SCHADENSSANIERUNG<br />
-                & LECKORTUNG
+                <span className="title-nowrap">SCHADENSSANIERUNG</span><br />
+                <span className="title-nowrap">& LECKORTUNG</span>
               </motion.h1>
 
               {/* Orange Sub-Headline */}
@@ -339,15 +314,11 @@ export default function HomePage() {
 
       </section>
 
-      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (PREMIUM STORYLINE WITH PAINTERLY BLUE CARDS) */}
+      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (PREMIUM STORYLINE WITH AUTHENTIC PAINTERLY CARDS) */}
       <section id="soforthilfe" className="soforthilfe-section storyline-flow">
         <div className="container">
           
           <div className="section-header center">
-            <div className="section-tag-navy">
-              <span className="pulse-tag-orange-dot" />
-              <span>3-Stufen Schadenssanierung</span>
-            </div>
             <h2 className="section-title">
               Wasserschaden? <span className="highlight-navy">So helfen wir Ihnen</span> <span className="highlight">Schritt für Schritt.</span>
             </h2>
@@ -357,10 +328,10 @@ export default function HomePage() {
           </div>
 
           <div className="storyline-steps-container">
-            {/* Center Vertical Connecting Spine on Desktop */}
+            {/* Center Vertical Connecting Line on Desktop */}
             <div className="storyline-center-spine" aria-hidden="true" />
 
-            {/* STEP 01: Photo Left | Painterly Blue Card Right */}
+            {/* STEP 01: Photo Left | Painterly Blue Card Right (Brush on outer RIGHT) */}
             <div className="storyline-step-row step-row-left">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -373,17 +344,25 @@ export default function HomePage() {
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card">
-                  <div className="step-card-eyebrow">
-                    <span className="pulse-dot-orange-sm" />
-                    <span>ERSTVERSORGUNG & LECKORTUNG</span>
-                  </div>
+                <div className="storyline-blue-card card-fused-brush-right">
+                  {/* Real Acrylic Painterly Brush Edge on outer RIGHT side */}
+                  <img 
+                    src="/card-brush-rounded-right.png" 
+                    alt="" 
+                    className="card-fused-brush-edge-right" 
+                    aria-hidden="true" 
+                  />
 
-                  <h3 className="step-card-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
-                  
-                  <p className="step-card-desc">
-                    Wasser im Gebäude? Unser 24h-Notdienst ist sofort bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Akustik- und Infrarottechnik orten wir das Leck zentimetergenau – ohne unnötige Wandaufbrüche.
-                  </p>
+                  <div className="step-card-header">
+                    <div className="step-card-eyebrow">
+                      <span className="pulse-dot-orange-sm" />
+                      <span>ERSTVERSORGUNG & LECKORTUNG</span>
+                    </div>
+                    <h3 className="step-card-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
+                    <p className="step-card-desc">
+                      Wasser im Gebäude? Unser 24h-Notdienst ist sofort bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Akustik- und Infrarottechnik orten wir das Leck zentimetergenau – ohne unnötige Wandaufbrüche.
+                    </p>
+                  </div>
 
                   <ul className="step-card-highlights">
                     <li>
@@ -412,7 +391,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* STEP 02: Painterly Blue Card Left | Photo Right */}
+            {/* STEP 02: Painterly Blue Card Left (Brush on outer LEFT) | Photo Right */}
             <div className="storyline-step-row step-row-right">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -425,17 +404,25 @@ export default function HomePage() {
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card">
-                  <div className="step-card-eyebrow">
-                    <span className="pulse-dot-orange-sm" />
-                    <span>BAUTROCKNUNG & FEUCHTIGKEITSENTZUG</span>
-                  </div>
+                <div className="storyline-blue-card card-fused-brush-left">
+                  {/* Real Acrylic Painterly Brush Edge on outer LEFT side */}
+                  <img 
+                    src="/card-brush-rounded-left.png" 
+                    alt="" 
+                    className="card-fused-brush-edge-left" 
+                    aria-hidden="true" 
+                  />
 
-                  <h3 className="step-card-title">Gezielte technische Bautrocknung</h3>
-                  
-                  <p className="step-card-desc">
-                    Wir entziehen Estrich, Wänden und Dämmschichten die Feuchtigkeit vollständig mit modernen Kondenstrocknern. Das schützt Ihre Bausubstanz und verhindert Schimmelbildung dauerhaft.
-                  </p>
+                  <div className="step-card-header">
+                    <div className="step-card-eyebrow">
+                      <span className="pulse-dot-orange-sm" />
+                      <span>BAUTROCKNUNG & FEUCHTIGKEITSENTZUG</span>
+                    </div>
+                    <h3 className="step-card-title">Gezielte technische Bautrocknung</h3>
+                    <p className="step-card-desc">
+                      Wir entziehen Estrich, Wänden und Dämmschichten die Feuchtigkeit vollständig mit modernen Kondenstrocknern. Das schützt Ihre Bausubstanz und verhindert Schimmelbildung dauerhaft.
+                    </p>
+                  </div>
 
                   <ul className="step-card-highlights">
                     <li>
@@ -464,7 +451,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* STEP 03: Photo Left | Painterly Blue Card Right */}
+            {/* STEP 03: Photo Left | Painterly Blue Card Right (Brush on outer RIGHT) */}
             <div className="storyline-step-row step-row-left">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -477,17 +464,25 @@ export default function HomePage() {
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-blue-card">
-                  <div className="step-card-eyebrow">
-                    <span className="pulse-dot-orange-sm" />
-                    <span>KOMPLETTSANIERUNG & WIEDERHERSTELLUNG</span>
-                  </div>
+                <div className="storyline-blue-card card-fused-brush-right">
+                  {/* Real Acrylic Painterly Brush Edge on outer RIGHT side */}
+                  <img 
+                    src="/card-brush-rounded-right.png" 
+                    alt="" 
+                    className="card-fused-brush-edge-right" 
+                    aria-hidden="true" 
+                  />
 
-                  <h3 className="step-card-title">Fachgerechte Komplettsanierung</h3>
-                  
-                  <p className="step-card-desc">
-                    Vom Trockenbau und Spachteln über Malerarbeiten bis zum neuen Bad: Unser Team übernimmt die komplette Wiederherstellung – schlüsselfertig, sauber und bezugsfertig übergeben.
-                  </p>
+                  <div className="step-card-header">
+                    <div className="step-card-eyebrow">
+                      <span className="pulse-dot-orange-sm" />
+                      <span>KOMPLETTSANIERUNG & WIEDERHERSTELLUNG</span>
+                    </div>
+                    <h3 className="step-card-title">Fachgerechte Komplettsanierung</h3>
+                    <p className="step-card-desc">
+                      Vom Trockenbau und Spachteln über Malerarbeiten bis zum neuen Bad: Unser Team übernimmt die komplette Wiederherstellung – schlüsselfertig, sauber und bezugsfertig übergeben.
+                    </p>
+                  </div>
 
                   <ul className="step-card-highlights">
                     <li>
@@ -521,10 +516,6 @@ export default function HomePage() {
           {/* Clean Navy Soforthilfe Action Banner */}
           <div className="soforthilfe-navy-cta-banner">
             <div className="cta-banner-content">
-              <div className="cta-banner-badge">
-                <span className="pulse-dot-orange" />
-                <span>24/7 Sofort-Hilfe vor Ort</span>
-              </div>
               <h3 className="cta-banner-title">Feuchtigkeit oder akuter Schaden im Gebäude?</h3>
               <p className="cta-banner-subtitle">
                 Wir sind in kürzester Zeit bei Ihnen in Nienburg und Umgebung. Rufen Sie uns jetzt an oder senden Sie Ihren Schaden online.
@@ -545,14 +536,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. LEISTUNGEN OVERVIEW SECTION */}
+      {/* 2. LEISTUNGEN OVERVIEW SECTION WITH RICH DEEP NAVY BLUE CARDS */}
       <section id="leistungen" className="services-section">
-        <div className="container">
+        {/* Multi-Section Smooth Gradient Atmosphere & Sweeping Architectural Contour Lines */}
+        <div className="services-designer-bg" aria-hidden="true">
+          <div className="designer-glow glow-navy-1" />
+          <div className="designer-glow glow-orange-1" />
+          <div className="designer-glow glow-navy-2" />
+          
+          <svg className="designer-lines-svg" viewBox="0 0 1600 1000" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="waveGradPrimary" x1="0%" y1="0%" x2="100%" y2="80%">
+                <stop offset="0%" stopColor="#012444" stopOpacity="0.08" />
+                <stop offset="25%" stopColor="#012444" stopOpacity="0.3" />
+                <stop offset="60%" stopColor="#ff8c00" stopOpacity="0.4" />
+                <stop offset="85%" stopColor="#012444" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#012444" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="waveGradSecondary" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#ff8c00" stopOpacity="0.4" />
+                <stop offset="40%" stopColor="#ea580c" stopOpacity="0.25" />
+                <stop offset="75%" stopColor="#012444" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#012444" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="waveGradAccent" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stopColor="#012444" stopOpacity="0.04" />
+                <stop offset="50%" stopColor="#ff8c00" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#012444" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="gridGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#012444" stopOpacity="0.06" />
+                <stop offset="100%" stopColor="#012444" stopOpacity="0.02" />
+              </linearGradient>
+            </defs>
+
+            {/* Architectural Blueprint Grid Pattern */}
+            <pattern id="subtleGrid" width="70" height="70" patternUnits="userSpaceOnUse">
+              <path d="M 70 0 L 0 0 0 70" fill="none" stroke="url(#gridGrad)" strokeWidth="0.9" />
+              <circle cx="70" cy="70" r="1.5" fill="rgba(255, 140, 0, 0.28)" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#subtleGrid)" />
+
+            {/* Sweeping Wave 1: Bold Flow Wave (3.5px) */}
+            <path d="M -150 240 C 280 60, 650 380, 1100 160 C 1350 40, 1550 140, 1750 220" stroke="url(#waveGradPrimary)" strokeWidth="3.5" strokeLinecap="round" />
+            
+            {/* Sweeping Wave 2: Harmonizing Mid Wave (2px dashed) */}
+            <path d="M -120 280 C 310 100, 680 420, 1130 200 C 1380 80, 1580 180, 1750 260" stroke="url(#waveGradPrimary)" strokeWidth="2" strokeDasharray="10 12" strokeLinecap="round" />
+            
+            {/* Sweeping Wave 3: Delicate Echo Wave (1px) */}
+            <path d="M -90 320 C 340 140, 710 460, 1160 240 C 1410 120, 1610 220, 1750 300" stroke="url(#waveGradPrimary)" strokeWidth="1" strokeLinecap="round" />
+
+            {/* Counter Swirl Wave 4: Dynamic Bottom Ribbon (3px) */}
+            <path d="M -100 780 C 400 940, 850 620, 1280 840 C 1480 940, 1620 860, 1750 800" stroke="url(#waveGradSecondary)" strokeWidth="3" strokeLinecap="round" />
+            
+            {/* Counter Swirl Wave 5: Lower Delicate Echo (1.5px dashed) */}
+            <path d="M -60 740 C 430 900, 880 580, 1310 800 C 1510 900, 1650 820, 1750 760" stroke="url(#waveGradSecondary)" strokeWidth="1.5" strokeDasharray="8 10" strokeLinecap="round" />
+
+            {/* Accent Glowing Center Line */}
+            <path d="M -50 520 Q 800 380 1700 580" stroke="url(#waveGradAccent)" strokeWidth="2.5" strokeLinecap="round" opacity="0.9" />
+          </svg>
+        </div>
+
+        <div className="container relative-content">
           
           <div className="section-header">
             <div className="section-tag">Baudienstleistungen</div>
             <h2 className="section-title">
-              Unsere Gewerke <span className="highlight">im Überblick.</span>
+              Unsere Gewerke <span className="highlight-navy">im</span> <span className="highlight">Überblick.</span>
             </h2>
             <p className="section-intro">
               Von der Leckortung und Trocknung über Badsanierung bis hin zu Malerarbeiten und Sanierung.
@@ -562,6 +612,17 @@ export default function HomePage() {
           <div className="services-grid">
             {servicesData.map((service) => (
               <div key={service.slug} className="service-card-clean">
+                
+                {/* Rich Navy Blue Watermark Photo Layer */}
+                <div className="service-card-watermark-bg" aria-hidden="true">
+                  <img 
+                    src={`${r2Url}/nb/Elementbau-Auto01.webp`} 
+                    alt="" 
+                    className="service-card-watermark-img" 
+                  />
+                  <div className="service-card-watermark-overlay" />
+                </div>
+
                 <div className="service-card-clean-header">
                   <div className="service-icon-clean">
                     {service.slug === 'wasserschaden' && <ShieldAlert size={24} />}
@@ -616,14 +677,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. GOOGLE REVIEWS SECTION */}
+      {/* 3. GOOGLE REVIEWS SECTION WITH RICH DEEP NAVY BLUE AESTHETICS */}
       <section id="bewertungen" className="reviews-section">
-        <div className="container">
+        {/* Ambient Blue Atmosphere Layer */}
+        <div className="reviews-ambient-bg" aria-hidden="true">
+          <div className="reviews-glow-left" />
+          <div className="reviews-glow-right" />
+        </div>
+
+        <div className="container relative-content">
           
           <div className="section-header center">
             <div className="section-tag center">Google Rezensionen</div>
             <h2 className="section-title">
-              Was Kunden <span className="highlight">über uns sagen.</span>
+              Was Kunden <span className="highlight-navy">über uns</span> <span className="highlight">sagen.</span>
             </h2>
             <p className="section-intro text-center">
               Echte Erfahrungen von Kunden aus Nienburg und der Region – von akuten Wasserschaden-Notfällen bis zu geplanten Sanierungen.
@@ -683,19 +750,21 @@ export default function HomePage() {
                     <Star size={14} className="star-filled" />
                   </div>
                 </div>
-                <span className="rating-sub">Bewertet auf Google</span>
+                <span className="rating-count">100% Kundenzufriedenheit auf Google</span>
               </div>
             </div>
 
-            <a 
-              href="https://search.google.com/local/writereview?placeid=ChIJvT4qfNTK04ARtbgIU5NoR5k" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-google-review"
-            >
-              <MessageSquare size={16} />
-              <span>Jetzt Google-Bewertung abgeben</span>
-            </a>
+            <div className="trust-actions">
+              <a 
+                href="https://maps.google.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-google-review"
+              >
+                <span>Alle Rezensionen ansehen</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
           </div>
 
         </div>
@@ -770,125 +839,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. REFERENZEN & PROJEKTE SECTION */}
+      {/* 5. REFERENZEN & PROJEKTE SECTION (HIGH-END MODERN PROJECT SHOWCASE) */}
       <section id="projekte" className="references-section">
         <div className="container">
           
-          <div className="ref-header">
-            <div className="section-tag">Referenzen / Projekte</div>
+          <div className="ref-header center">
+            <div className="section-tag center">Referenzen / Projekte</div>
             <h2 className="ref-title">
-              Qualität, die<br /><span className="highlight">man sieht.</span>
+              Qualität, die <span className="highlight">man sieht.</span>
             </h2>
-            <p className="ref-intro">
+            <p className="ref-intro text-center">
               Ein kleiner Einblick in unsere tägliche Arbeit – von der Schadensbehebung über Badsanierung bis zum Innenausbau.
             </p>
-            <div className="claim-box">
-              <p className="claim-text">
-                Unsere Projekte stehen für handwerkliche Präzision, saubere Ausführung und zuverlässige Umsetzung.
-              </p>
+          </div>
+
+          {/* Modern Clean Horizontal Swipeable Filter Bar */}
+          <div className="project-modern-filter-container">
+            <div className="filter-chips-track">
+              {[
+                { label: 'Alle Projekte', val: 'Alle', icon: '✦' },
+                { label: 'Wasserschaden & Trocknung', val: 'Wasserschaden & Trocknung', icon: '💧' },
+                { label: 'Badsanierung & Fliesen', val: 'Badsanierung', icon: '🛁' },
+                { label: 'Maler & Trockenbau', val: 'Maler & Ausbau', icon: '🎨' },
+                { label: 'Abdichtung & Montage', val: 'Abdichtung & Montage', icon: '🏠' }
+              ].map((item) => (
+                <button
+                  key={item.val}
+                  className={`modern-chip-btn ${activeFilter === item.val ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(item.val)}
+                >
+                  <span className="chip-icon">{item.icon}</span>
+                  <span>{item.label}</span>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* 3D Perspective Cover Flow Stage */}
-          <div 
-            className="perspective-carousel-wrapper"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <div className="perspective-stage">
-              {galleryProjects.map((project, idx) => {
-                const posClass = getSlidePositionClass(idx);
-                const isActive = idx === activeSlide;
-
-                return (
-                  <div 
-                    key={project.id} 
-                    className={`perspective-slide ${posClass}`}
-                    onClick={() => {
-                      if (!isActive) {
-                        setActiveSlide(idx);
-                      } else {
-                        setLightboxIndex(idx);
-                      }
-                    }}
-                  >
-                    <div className="slide-card-inner">
-                      <div className="slide-image-wrapper">
-                        {/* Ambient blurred backdrop for portrait / custom aspect ratio shots */}
-                        <img 
-                          src={project.image} 
-                          alt="" 
-                          className="slide-img-blur-bg" 
-                          aria-hidden="true" 
-                        />
-
-                        {/* Foreground sharp image (automatically adapts to any orientation) */}
-                        <img 
-                          src={project.image} 
-                          alt={project.alt} 
-                          className="slide-img" 
-                        />
-
-                        <div className="slide-badge-tag">
-                          {project.category}
-                        </div>
-
-                        {isActive && (
-                          <button 
-                            className="slide-zoom-pill"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setLightboxIndex(idx);
-                            }}
-                            title="Großansicht öffnen"
-                          >
-                            <ZoomIn size={13} />
-                            <span>Großansicht</span>
-                          </button>
-                        )}
-                      </div>
-
-                      <div className="slide-caption-bar">
-                        <div className="slide-text-main">
-                          <h3 className="slide-title">{project.title}</h3>
-                          <p className="slide-location">{project.location}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Slider Navigation & Dots Bar */}
-            <div className="slider-controls-bar">
-              <button 
-                className="slider-nav-arrow" 
-                onClick={prevSlide} 
-                aria-label="Vorheriges Projekt"
+          {/* Modern Clean Project Cards Grid */}
+          <div className="projects-modern-grid">
+            {filteredProjects.map((project, idx) => (
+              <div 
+                key={project.id} 
+                className="project-showcase-card"
+                onClick={() => setLightboxIndex(galleryProjects.findIndex(p => p.id === project.id))}
               >
-                <ChevronLeft size={22} />
-              </button>
-
-              <div className="slider-dots-container">
-                {galleryProjects.map((_, dotIdx) => (
-                  <button 
-                    key={dotIdx} 
-                    className={`slider-dot ${dotIdx === activeSlide ? 'active' : ''}`}
-                    onClick={() => setActiveSlide(dotIdx)}
-                    aria-label={`Gehe zu Projekt ${dotIdx + 1}`}
+                <div className="project-card-image-wrap">
+                  <img 
+                    src={project.image} 
+                    alt={project.alt} 
+                    className="project-card-img" 
                   />
-                ))}
-              </div>
+                  <div className="project-card-zoom-btn">
+                    <ZoomIn size={18} />
+                  </div>
+                </div>
 
-              <button 
-                className="slider-nav-arrow" 
-                onClick={nextSlide} 
-                aria-label="Nächstes Projekt"
-              >
-                <ChevronRight size={22} />
-              </button>
-            </div>
+                <div className="project-card-body">
+                  <h3 className="project-card-title">{project.title}</h3>
+                  <p className="project-card-desc">{project.desc}</p>
+                  
+                  <div className="project-card-footer">
+                    <span className="project-view-link">
+                      <span>Großansicht öffnen</span>
+                      <ArrowRight size={15} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* FULLSCREEN LIGHTBOX MODAL */}
@@ -958,15 +976,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. ÜBER UNS SECTION */}
+      
+      {/* 6. ÜBER UNS SECTION (WITH DEEP NAVY PHILOSOPHY BOX) */}
       <section id="ueber-uns" className="about-section">
-        <div className="container about-grid">
+        <div className="container about-grid relative-content">
           
           <div className="about-content">
             <div className="section-tag">Das sind wir</div>
             
             <h2 className="about-title">
-              Jung. Dynamisch.<br /><span className="highlight">Handwerk mit Herz.</span>
+              <span className="about-title-blue">Jung. Dynamisch.</span><br />
+              <span className="highlight">Handwerk mit Herz.</span>
             </h2>
             
             <p className="about-text">
@@ -977,8 +997,9 @@ export default function HomePage() {
               Ob akuter Wasserschaden mit 24h-Einsatz, Badsanierung oder umfassender Innenausbau – wir legen Wert auf ehrliche Arbeit, direkte Kommunikation und Ergebnisse, die sich sehen lassen können. Bei uns wissen Sie immer, wer auf Ihrer Baustelle arbeitet.
             </p>
             
-            <div className="claim-box">
-              <span className="claim-title">Meine Philosophie</span>
+            {/* Deep Navy Blue Philosophy Card with Orange Title and White Text */}
+            <div className="claim-box about-claim-blue">
+              <span className="claim-title claim-title-blue">Meine Philosophie</span>
               <p className="claim-text">
                 "Gute Arbeit braucht kein langes Reden, sondern saubere Ausführung und ein klares Wort."
               </p>
@@ -991,11 +1012,11 @@ export default function HomePage() {
           </div>
 
           <div className="image-container">
-            <div className="image-wrapper">
+            <div className="image-wrapper about-image-wrapper-blue">
               <img 
                 src={`${r2Url}/nb/Louis-Gerber_ergebnis.webp`} 
                 alt="Portrait von Louis Gerber - Elementbau Nienburg" 
-                className="profile-img"
+                className="profile-img" 
               />
             </div>
           </div>
@@ -1003,47 +1024,90 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6.5. HIGH-IMPACT CAREER TEASER SECTION */}
-      <section className="career-teaser-section">
-        <div className="container">
-          <div className="career-teaser-card">
-            <div className="career-teaser-content">
-              <div className="career-teaser-tag">
-                <span className="pulse-dot" />
-                <span>Karriere bei Elementbau • Nienburg & Region</span>
+      {/* 6.5. FULL-WIDTH DEEP NAVY CAREER SECTION (NO BOX/CARD - LARGE HEROIC PHOTO & CLEAN TYPOGRAPHY) */}
+      <section id="karriere" className="career-full-section">
+        {/* Ambient Glows */}
+        <div className="career-ambient-glow glow-top-orange" aria-hidden="true" />
+        <div className="career-ambient-glow glow-bottom-navy" aria-hidden="true" />
+
+        <div className="container relative-content">
+          <div className="career-full-grid">
+            
+            {/* Left Column: Clean, Highly Readable Content & Benefits */}
+            <div className="career-text-col">
+              <div className="career-section-eyebrow">
+                <span className="pulse-dot-orange-sm" />
+                <span>KARRIERE BEI ELEMENTBAU</span>
               </div>
-              <h2 className="career-teaser-title">
-                Allrounder & Fliesenleger gesucht!
+
+              <h2 className="career-pro-title">
+                Allrounder & Fliesenleger <span className="highlight">gesucht!</span>
               </h2>
-              <p className="career-teaser-desc">
-                Du suchst eine 4-Tage-Woche, faire Bezahlung, Firmenwagen (auch privat nutzbar), frei wählbares Profi-Werkzeug und ein starkes Team auf Augenhöhe? Bewirb dich jetzt in unter 60 Sekunden ohne Lebenslauf.
+
+              <p className="career-pro-desc">
+                Du suchst echte Wertschätzung, eine 4-Tage-Woche, modernste Arbeitsbedingungen und ein starkes Team auf Augenhöhe? Bei Elementbau in Nienburg bieten wir dir das perfekte Umfeld für dein Handwerkstalent.
               </p>
-              <div className="career-teaser-pills">
-                <span className="teaser-pill">📅 4-Tage-Woche</span>
-                <span className="teaser-pill">🚗 Firmenwagen (auch privat)</span>
-                <span className="teaser-pill">📱 Firmenhandy</span>
-                <span className="teaser-pill">🛠️ Profi-Werkzeug frei wählbar</span>
-              </div>
-              <div className="career-teaser-actions">
-                <Link to="/bewerben" className="btn-hero-primary btn-career-teaser">
+
+              {/* Benefit List with crisp readability (No emojis) */}
+              <ul className="career-pro-benefits">
+                <li>
+                  <div className="career-benefit-icon"><Check size={18} /></div>
+                  <div className="career-benefit-info">
+                    <strong className="benefit-title">4-Tage-Woche möglich:</strong>
+                    <span className="benefit-detail">Mehr Freizeit, optimale Work-Life-Balance</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="career-benefit-icon"><Check size={18} /></div>
+                  <div className="career-benefit-info">
+                    <strong className="benefit-title">Eigener Firmenwagen:</strong>
+                    <span className="benefit-detail">Inklusive privater Nutzung & Tankkarte</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="career-benefit-icon"><Check size={18} /></div>
+                  <div className="career-benefit-info">
+                    <strong className="benefit-title">Modernes Firmen-Smartphone:</strong>
+                    <span className="benefit-detail">Neueste Gerätegeneration für deinen Alltag</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="career-benefit-icon"><Check size={18} /></div>
+                  <div className="career-benefit-info">
+                    <strong className="benefit-title">Freie Profi-Werkzeugwahl:</strong>
+                    <span className="benefit-detail">Du entscheidest, mit welchem Werkzeug du arbeiten willst</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="career-benefit-icon"><Check size={18} /></div>
+                  <div className="career-benefit-info">
+                    <strong className="benefit-title">Überdurchschnittliche Bezahlung:</strong>
+                    <span className="benefit-detail">Faire, leistungsgerechte Vergütung + Extras</span>
+                  </div>
+                </li>
+              </ul>
+
+              {/* Express CTA */}
+              <div className="career-pro-actions">
+                <Link to="/bewerben" className="btn-career-pro-main">
                   <span>Offene Stellen & 60s Express-Bewerbung</span>
                   <ArrowRight size={18} />
                 </Link>
+                <span className="career-sub-note">Kein Lebenslauf nötig • Bewerbung in unter 60 Sekunden</span>
               </div>
             </div>
-            <div className="career-teaser-visual">
-              <div className="teaser-photo-wrapper">
+
+            {/* Right Column: Majestic Large Team & Job Photo */}
+            <div className="career-photo-col">
+              <div className="career-large-photo-frame">
                 <img 
                   src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
-                  alt="Elementbau Team im Einsatz" 
-                  className="teaser-photo-img" 
+                  alt="Elementbau Team Nienburg im Praxiseinsatz" 
+                  className="career-large-img" 
                 />
-                <div className="teaser-badge-overlay">
-                  <strong>2 offene Stellen</strong>
-                  <span>4-Tage-Woche möglich</span>
-                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>

@@ -79,12 +79,7 @@
 }
 
 .emergency-icon {
-  animation: pulseWarning 1.5s infinite;
-}
-
-@keyframes pulseWarning {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  color: #dc2626;
 }
 
 .service-hero-title {
@@ -116,26 +111,10 @@
   background-color: #fef2f2;
   border-left: 4px solid #dc2626;
   padding: 14px 20px;
-  border-radius: 4px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-weight: 700;
   font-size: 1.02rem;
   color: #991b1b;
-  animation: pulseRed 1.8s infinite;
-}
-
-@keyframes pulseRed {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
-  }
 }
 
 .service-hero-actions {
@@ -211,21 +190,23 @@
 }
 
 .features-container {
-  background-color: #f8fafc;
-  border: 1px solid var(--eb-card-border);
-  padding: 35px 30px;
-  border-radius: 6px;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #012444 0%, #061e38 100%);
+  border: 1.5px solid rgba(255, 140, 0, 0.4);
+  border-left: 5px solid var(--eb-orange);
+  padding: 38px 34px;
+  border-radius: 20px;
+  margin-bottom: 35px;
+  box-shadow: 0 14px 40px rgba(1, 36, 68, 0.22);
 }
 
 .features-title {
   font-family: 'Exo 2', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.35rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   margin-bottom: 24px;
-  color: var(--eb-text-main);
+  color: #ffffff;
 }
 
 .features-list {
@@ -234,17 +215,28 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .features-list li {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--eb-text-main);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #ffffff;
   font-weight: 500;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.feat-text {
+  color: #ffffff;
 }
 
 .feat-check {
@@ -567,6 +559,98 @@
   .cta-buttons-wrapper {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .cta-buttons-wrapper .btn-solid,
+  .cta-buttons-wrapper .btn-phone-white {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   SERVICE DETAIL MASTER MOBILE OPTIMIZATION
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .service-hero {
+    padding: 120px 0 60px 0;
+  }
+
+  .service-content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .service-media-column {
+    order: 2;
+  }
+
+  .service-text-column {
+    order: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-hero {
+    padding: 105px 0 45px 0;
+  }
+
+  .service-hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.4rem);
+  }
+
+  .service-hero-subtitle {
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  .emergency-alert-box {
+    width: 100%;
+    font-size: 0.92rem;
+    padding: 12px 16px;
+  }
+
+  .service-hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-btn,
+  .btn-phone-call {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .service-main-section {
+    padding: 60px 0;
+  }
+
+  .features-container {
+    padding: 26px 20px;
+    border-radius: 16px;
+  }
+
+  .features-title {
+    font-size: 1.18rem;
+  }
+
+  .features-list li {
+    font-size: 0.94rem;
+  }
+
+  .other-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-cta-card {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+
+  .cta-buttons-wrapper {
+    flex-direction: column;
+    width: 100%;
   }
 
   .cta-buttons-wrapper .btn-solid,
