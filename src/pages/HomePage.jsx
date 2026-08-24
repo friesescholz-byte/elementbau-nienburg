@@ -398,37 +398,33 @@ export default function HomePage() {
                     alt="24h Notfalleinsatz und zerstörungsfreie Ortung bei Elementbau Nienburg" 
                     className="storyline-img" 
                   />
-                  <div className="storyline-photo-badge">
-                    <Droplets size={16} />
-                    <span>24h Notdienst vor Ort</span>
+                  {/* Step Badge directly on image */}
+                  <div className="storyline-step-badge-on-img">
+                    <span className="badge-num-circle">01</span>
+                    <span className="badge-step-label">Erstversorgung & Leckortung</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-step-pill">
-                  <span className="step-number-highlight">01</span>
-                  <span className="step-name">Erstversorgung & Leckortung</span>
-                </div>
-
                 <h3 className="storyline-step-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
                 
-                <p className="storyline-step-desc">
-                  Bei einem Rohrbruch oder Feuchtigkeitseintritt zählt jede Minute. Unser 24h-Notdienst ist schnell bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Messtechnik finden wir die Leckage zentimetergenau – ohne unnötige Wandaufbrüche.
+                <p className="storyline-step-desc-punchy">
+                  Wasser im Gebäude? Unser 24h-Notdienst ist sofort bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Akustik- und Infrarottechnik orten wir das Leck zentimetergenau – ohne unnötige Wandaufbrüche.
                 </p>
 
-                <ul className="storyline-checklist">
+                <ul className="storyline-checklist-punchy">
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Schnelle Einsatzbereitschaft</strong> im gesamten Raum Nienburg & Region</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Schnell vor Ort:</strong> 24/7 Notdienst in Nienburg & Region</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Punktgenaue Leckortung</strong> ohne großflächige Zerstörung von Bausubstanz</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Ohne Stemmarbeiten:</strong> Zerstörungsfreie Ortung spart Zeit & Kosten</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Detailliertes Schadensprotokoll</strong> für die direkte Versicherungsabwicklung</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Versicherungsbericht:</strong> Lückenloses Schadensprotokoll inklusive</span>
                   </li>
                 </ul>
               </div>
@@ -443,37 +439,33 @@ export default function HomePage() {
                     alt="Professionelle Bautrocknung und Feuchtigkeitsentzug" 
                     className="storyline-img storyline-img-dryer" 
                   />
-                  <div className="storyline-photo-badge">
-                    <Clock size={16} />
-                    <span>Moderne Kondensationstechnik</span>
+                  {/* Step Badge directly on image */}
+                  <div className="storyline-step-badge-on-img">
+                    <span className="badge-num-circle">02</span>
+                    <span className="badge-step-label">Bautrocknung & Feuchtigkeitsentzug</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-step-pill">
-                  <span className="step-number-highlight">02</span>
-                  <span className="step-name">Bautrocknung & Feuchtigkeitsentzug</span>
-                </div>
-
                 <h3 className="storyline-step-title">Gezielte technische Bautrocknung</h3>
                 
-                <p className="storyline-step-desc">
-                  Nach der Leckagebehebung entziehen wir Wänden, Estrichen und Dämmschichten die Restfeuchte vollständig. Mit leistungsstarken Kondenstrocknern, Adsorptionstechnik und geräuscharmen Gebläsen verhindern wir zuverlässig Schimmel und Folgeschäden.
+                <p className="storyline-step-desc-punchy">
+                  Wir entziehen Estrich, Wänden und Dämmschichten die Feuchtigkeit vollständig mit modernen Kondenstrocknern. Das schützt Ihre Bausubstanz und verhindert Schimmelbildung dauerhaft.
                 </p>
 
-                <ul className="storyline-checklist">
+                <ul className="storyline-checklist-punchy">
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Tiefenentfeuchtung</strong> von Estrich, Mauerwerk & Dämmschichten</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Tiefenentfeuchtung:</strong> Leistungsstarke Trocknungs- & Gebläsetechnik</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Schimmel-Prävention</strong> und zertifizierte Raumluftreinigung</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Schimmelschutz:</strong> Sichere Prävention für ein gesundes Raumklima</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Lückenlose Messkontrollen</strong> bis zum Erreichen der Ausgleichsfeuchte</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Messprotokolle:</strong> Exakte Feuchtemessung bis zum optimalen Wert</span>
                   </li>
                 </ul>
               </div>
@@ -488,37 +480,33 @@ export default function HomePage() {
                     alt="Schlüsselfertige Sanierung und Wiederherstellung" 
                     className="storyline-img" 
                   />
-                  <div className="storyline-photo-badge">
-                    <Home size={16} />
-                    <span>Schlüsselfertig bezugsfertig</span>
+                  {/* Step Badge directly on image */}
+                  <div className="storyline-step-badge-on-img">
+                    <span className="badge-num-circle">03</span>
+                    <span className="badge-step-label">Komplettsanierung & Übergabe</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <div className="storyline-step-pill">
-                  <span className="step-number-highlight">03</span>
-                  <span className="step-name">Wiederherstellung & Sanierung</span>
-                </div>
-
                 <h3 className="storyline-step-title">Fachgerechte Komplettsanierung</h3>
                 
-                <p className="storyline-step-desc">
-                  Wir lassen Sie nach der Trocknung nicht allein: Von Trockenbau über Malerarbeiten bis hin zur kompletten Badsanierung und Bodenverlegung stellen unsere erfahrenen Handwerker Ihre Räume wieder vollständig her – sauber, hochwertig und schlüsselfertig.
+                <p className="storyline-step-desc-punchy">
+                  Vom Trockenbau und Spachteln über Malerarbeiten bis zum neuen Bad: Unser Team übernimmt die komplette Wiederherstellung – schlüsselfertig, sauber und bezugsfertig übergeben.
                 </p>
 
-                <ul className="storyline-checklist">
+                <ul className="storyline-checklist-punchy">
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Alle Gewerke aus einer Meisterhand</strong> (Maler, Fliesen, Trockenbau, Sanitär)</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Alle Gewerke:</strong> Trockenbau, Fliesen, Maler & Sanitär aus einer Hand</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Ein fester Ansprechpartner</strong> ohne nervige Schnittstellenprobleme</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Ein Ansprechpartner:</strong> Keine mühsame Koordination verschiedener Firmen</span>
                   </li>
                   <li>
-                    <CheckCircle2 size={18} className="check-navy-icon" />
-                    <span><strong>Saubere, termingerechte Übergabe</strong> in Neuzustand</span>
+                    <CheckCircle2 size={20} className="check-navy-icon" />
+                    <span><strong>Schlüsselfertig:</strong> Saubere, termingerechte Übergabe im Neuzustand</span>
                   </li>
                 </ul>
               </div>

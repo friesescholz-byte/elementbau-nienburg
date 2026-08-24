@@ -106,10 +106,14 @@ export default function Navigation() {
           {/* Logo */}
           <Link to="/" className="nav-logo-brand" onClick={() => setIsOpen(false)}>
             <img 
-              src="https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni/logo_elementbau_text-R0ypPhqND9QAHAZd.png" 
+              src="https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni/logo_elementbau-pcLK13DIH9JcVQZO.png" 
               alt="Elementbau Nienburg" 
               className="nav-brand-logo-img" 
             />
+            <div className="nav-brand-text">
+              <span className="brand-title">ELEMENTBAU</span>
+              <span className="brand-sub">NIENBURG</span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
