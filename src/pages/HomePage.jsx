@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, Check, X, Phone, Mail,
   Star, MessageSquare, CheckCircle2, ChevronLeft, ChevronRight, ZoomIn,
-  Droplets, Clock, ShieldCheck, Home
+  Droplets, Clock, ShieldCheck, Home, ShieldAlert, Sparkles, Paintbrush, Hammer, Wrench, Waves
 } from 'lucide-react';
 import { servicesData, r2Url } from '../data/servicesData';
 import './HomePage.css';
