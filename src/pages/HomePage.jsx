@@ -223,7 +223,7 @@ export default function HomePage() {
   return (
     <div className="homepage-wrapper">
       
-      {/* 1. HERO SECTION WITH BLUE BRUSH STROKE TRANSITION & SLIDESHOW */}
+      {/* 1. HERO SECTION WITH REALISTIC BLUE BRUSH STROKE TRANSITION & SLIDESHOW */}
       <section id="hero" className="hero-section hero-brush-split">
         
         {/* Full Background / Right Half: Photo Slideshow */}
@@ -242,20 +242,74 @@ export default function HomePage() {
           ))}
           {/* Subtle dark vignette on right */}
           <div className="hero-slide-right-gradient" />
+
+          {/* Clean Floating Slide Navigation Dots on the Right */}
+          <div className="hero-slide-dots-bottom">
+            {heroSlides.map((slide, idx) => (
+              <button
+                key={slide.id}
+                type="button"
+                aria-label={`Slide ${idx + 1}`}
+                className={`hero-nav-dot-pill ${idx === activeHeroSlide ? 'active' : ''}`}
+                onClick={() => setActiveHeroSlide(idx)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Left Side: Deep #012444 Navy Painterly Block with Organic Brush Edge */}
         <div className="hero-navy-brush-block">
           
-          {/* SVG Organic Brush Edge attached to the right of the blue block */}
+          {/* SVG Organic Paintbrush Edge attached to the right of the blue block */}
           <div className="hero-brush-edge-right" aria-hidden="true">
-            <svg viewBox="0 0 140 800" preserveAspectRatio="none" className="brush-edge-svg">
+            <svg viewBox="0 0 220 900" preserveAspectRatio="none" className="brush-edge-svg">
+              {/* Solid Paint Body with Jagged Bristle Contours */}
               <path 
-                d="M0 0 H45 C65 25 85 40 105 60 C125 80 90 105 118 130 C138 150 75 175 108 200 C132 220 70 240 98 265 C118 285 85 310 122 335 C142 350 80 375 102 400 C122 420 65 445 112 470 C138 485 90 515 118 540 C138 560 75 585 108 610 C132 630 90 655 122 680 C142 700 80 725 102 750 C118 770 65 785 92 800 H0 Z" 
+                d="M0 0 H50 
+                C68 15 92 25 125 32 C155 38 185 45 160 55 C130 65 175 75 195 88 C215 100 165 112 145 125 
+                C125 138 180 152 165 168 C150 182 195 198 175 215 C155 230 185 248 150 262 C120 275 190 290 180 308 
+                C170 325 140 338 190 355 C210 368 155 382 170 400 C185 418 135 432 185 450 C215 465 150 480 175 498 
+                C195 515 140 530 180 548 C205 562 155 578 170 595 C185 612 135 628 185 645 C210 660 160 675 175 692 
+                C190 710 145 725 180 742 C205 758 150 775 168 792 C185 810 135 825 175 842 C195 858 140 875 160 890 C170 898 120 900 80 900 H0 Z" 
                 fill="#012444" 
               />
-              {/* Ragged dry brush splatters along the edge */}
-              <path d="M96 38 Q122 45 100 54 Z M114 112 Q136 120 110 128 Z M104 185 Q130 193 106 202 Z M118 258 Q138 266 114 275 Z M100 328 Q126 336 102 345 Z M120 402 Q140 411 116 420 Z M108 478 Q132 486 110 495 Z M122 550 Q142 558 118 568 Z M102 622 Q128 630 104 640 Z M120 692 Q140 701 116 710 Z" fill="#012444" />
+              {/* Realistic Dry-Brush Horizontal Bristle Streaks */}
+              <path d="M140 28 Q185 34 210 38 Q175 42 135 44 Z" fill="#012444" />
+              <path d="M165 52 Q205 58 175 64 Z" fill="#012444" />
+              <path d="M150 82 Q215 90 185 96 Z" fill="#012444" />
+              <path d="M135 118 Q190 124 160 130 Z" fill="#012444" />
+              <path d="M145 155 Q210 162 175 170 Z" fill="#012444" />
+              <path d="M160 192 Q220 200 185 208 Z" fill="#012444" />
+              <path d="M138 228 Q195 235 165 242 Z" fill="#012444" />
+              <path d="M155 265 Q215 272 180 280 Z" fill="#012444" />
+              <path d="M170 302 Q220 310 190 318 Z" fill="#012444" />
+              <path d="M145 342 Q210 350 175 358 Z" fill="#012444" />
+              <path d="M158 378 Q218 386 182 394 Z" fill="#012444" />
+              <path d="M140 415 Q205 422 168 430 Z" fill="#012444" />
+              <path d="M165 452 Q220 460 185 468 Z" fill="#012444" />
+              <path d="M148 490 Q212 498 176 506 Z" fill="#012444" />
+              <path d="M162 528 Q218 536 182 544 Z" fill="#012444" />
+              <path d="M145 565 Q208 572 170 580 Z" fill="#012444" />
+              <path d="M168 605 Q220 612 184 620 Z" fill="#012444" />
+              <path d="M142 642 Q205 650 168 658 Z" fill="#012444" />
+              <path d="M160 680 Q215 688 178 696 Z" fill="#012444" />
+              <path d="M145 718 Q208 726 172 734 Z" fill="#012444" />
+              <path d="M164 755 Q220 762 182 770 Z" fill="#012444" />
+              <path d="M138 792 Q198 800 162 808 Z" fill="#012444" />
+              <path d="M158 830 Q215 838 175 846 Z" fill="#012444" />
+              <path d="M142 868 Q200 875 165 882 Z" fill="#012444" />
+              {/* Fine Dry-Brush Whispers & Splatters */}
+              <circle cx="205" cy="72" r="2.5" fill="#012444" />
+              <circle cx="215" cy="145" r="2" fill="#012444" />
+              <circle cx="208" cy="218" r="3" fill="#012444" />
+              <circle cx="218" cy="285" r="2.2" fill="#012444" />
+              <circle cx="212" cy="365" r="2.5" fill="#012444" />
+              <circle cx="216" cy="435" r="2" fill="#012444" />
+              <circle cx="210" cy="510" r="3" fill="#012444" />
+              <circle cx="215" cy="585" r="2.2" fill="#012444" />
+              <circle cx="212" cy="662" r="2.5" fill="#012444" />
+              <circle cx="218" cy="735" r="2" fill="#012444" />
+              <circle cx="210" cy="815" r="2.5" fill="#012444" />
             </svg>
           </div>
 
@@ -273,7 +327,7 @@ export default function HomePage() {
                 <span>24h Notdienst • Inh. Louis Gerber • Nienburg (Weser)</span>
               </motion.div>
 
-              {/* Main Headline (like in the Instagram graphic) */}
+              {/* Main Headline */}
               <motion.h1 className="hero-insta-title" variants={fadeUp}>
                 SCHADENSSANIERUNG<br />
                 & LECKORTUNG
@@ -292,7 +346,7 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
-              {/* 4 Circular feature icons (just like in the Instagram post) */}
+              {/* 4 Circular feature icons (like in the Instagram post) */}
               <motion.div className="hero-insta-features-grid" variants={fadeUp}>
                 <div className="insta-feat-item">
                   <div className="insta-feat-icon">
@@ -341,32 +395,12 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Right side floating cutout circle with orange border ring (Instagram style) */}
-        <div className="hero-right-circle-showcase">
-          <div className="hero-circle-frame">
-            <img 
-              src={heroSlides[activeHeroSlide].image} 
-              alt={heroSlides[activeHeroSlide].title} 
-              className="hero-circle-img" 
-            />
-            <div className="hero-circle-ring" />
-            <div className="hero-circle-badge">
-              <span className="live-dot-green" />
-              <span>{heroSlides[activeHeroSlide].tag}</span>
-            </div>
-          </div>
-          {/* Subtle slide indicator dots */}
-          <div className="hero-circle-dots">
-            {heroSlides.map((slide, idx) => (
-              <button
-                key={slide.id}
-                type="button"
-                aria-label={`Slide ${idx + 1}`}
-                className={`circle-dot ${idx === activeHeroSlide ? 'active' : ''}`}
-                onClick={() => setActiveHeroSlide(idx)}
-              />
-            ))}
-          </div>
+        {/* Clean Modern Architectural Angled Divider at Bottom of Hero */}
+        <div className="hero-bottom-angle-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" className="angle-divider-svg">
+            <path d="M0 60 L1440 10 L1440 60 Z" fill="#f8fafc" />
+            <path d="M0 60 L1440 10" stroke="rgba(255, 140, 0, 0.45)" strokeWidth="2.5" />
+          </svg>
         </div>
 
       </section>

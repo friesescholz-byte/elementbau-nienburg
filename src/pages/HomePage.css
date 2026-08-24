@@ -1,9 +1,9 @@
 /* ==========================================================================
-   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO)
+   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO PRO MAX)
    ========================================================================== */
 .hero-section.hero-brush-split {
   position: relative;
-  min-height: 88vh;
+  min-height: 90vh;
   padding: 0;
   display: flex;
   align-items: stretch;
@@ -50,46 +50,80 @@
 .hero-slide-right-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 40%, rgba(1, 36, 68, 0.3) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 60%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(90deg, transparent 40%, rgba(1, 36, 68, 0.25) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 60%, rgba(0,0,0,0.45) 100%);
   pointer-events: none;
+}
+
+/* Clean Slide Navigation Dots on Bottom Right */
+.hero-slide-dots-bottom {
+  position: absolute;
+  bottom: 45px;
+  right: 5%;
+  z-index: 6;
+  display: flex;
+  gap: 10px;
+  background: rgba(1, 36, 68, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-nav-dot-pill {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-nav-dot-pill.active {
+  width: 44px;
+  background: var(--eb-orange);
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
 }
 
 /* Left: Deep #012444 Navy Painterly Block with Organic Brush Edge */
 .hero-navy-brush-block {
   position: relative;
-  z-index: 2;
-  width: 56%;
-  min-height: 88vh;
+  z-index: 3;
+  width: 55%;
+  min-height: 90vh;
   background-color: #012444;
-  padding: 135px 40px 100px 0;
+  padding: 135px 30px 110px 0;
   display: flex;
   align-items: center;
-  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 25px 0 70px rgba(0, 0, 0, 0.5);
 }
 
-/* SVG Organic Brush Edge attached to the right boundary of the blue panel */
+/* Ultra-Detailed Painterly Brush Stroke Edge */
 .hero-brush-edge-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -130px;
-  width: 135px;
+  right: -175px;
+  width: 180px;
   height: 100%;
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
 }
 
 .brush-edge-svg {
   width: 100%;
   height: 100%;
   display: block;
-  filter: drop-shadow(6px 0 14px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(8px 0 16px rgba(0, 0, 0, 0.45));
 }
 
 .hero-container-brush {
   width: 100%;
-  max-width: 680px;
+  max-width: 660px;
   margin-left: auto;
   margin-right: 20px;
   padding-left: max(5%, 24px);
@@ -288,110 +322,27 @@
   box-shadow: 0 10px 26px rgba(220, 38, 38, 0.35);
 }
 
-/* Right Floating Circle Cutout with Orange Ring (Instagram Style) */
-.hero-right-circle-showcase {
+/* Modern Clean Architectural Angled Divider at Bottom of Hero */
+.hero-bottom-angle-divider {
   position: absolute;
-  bottom: 40px;
-  right: 5%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
   z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.hero-circle-frame {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.hero-circle-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-}
-
-.hero-circle-ring {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 4px solid var(--eb-orange);
-  box-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
   pointer-events: none;
 }
 
-.hero-circle-badge {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--eb-navy);
-  border: 1px solid var(--eb-orange);
-  color: #ffffff;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-family: 'Exo 2', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-}
-
-.live-dot-green {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #22c55e;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: pulseLiveGreen 1.6s infinite;
-}
-
-@keyframes pulseLiveGreen {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-}
-
-.hero-circle-dots {
-  display: flex;
-  gap: 8px;
-}
-
-.circle-dot {
-  width: 24px;
-  height: 5px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.35);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
-}
-
-.circle-dot.active {
-  width: 40px;
-  background: var(--eb-orange);
-  box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+.angle-divider-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* RESPONSIVE HERO ADJUSTMENTS */
 @media (max-width: 1200px) {
   .hero-navy-brush-block {
     width: 62%;
-  }
-  .hero-circle-frame {
-    width: 210px;
-    height: 210px;
   }
 }
 
@@ -403,7 +354,7 @@
   
   .hero-navy-brush-block {
     width: 100%;
-    padding: 120px 24px 70px 24px;
+    padding: 120px 24px 80px 24px;
     box-shadow: none;
   }
 
@@ -434,12 +385,10 @@
     justify-content: center;
   }
 
-  .hero-right-circle-showcase {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    padding: 30px 20px 60px 20px;
-    margin: 0 auto;
+  .hero-slide-dots-bottom {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
   }
 }
 
@@ -460,14 +409,8 @@
     width: 100%;
     justify-content: center;
   }
-
-  .hero-circle-frame {
-    width: 180px;
-    height: 180px;
-  }
 }
 
-/* === 1.5. SOFORTHILFE 3-STUFEN SECTION (SEAMLESS CLEAN GRID) === */
 .soforthilfe-section {
   padding: 110px 0 100px 0;
   background-color: #f8fafc;
