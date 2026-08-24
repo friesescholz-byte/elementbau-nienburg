@@ -1,9 +1,9 @@
 /* ==========================================================================
-   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO - NARROW & FIXED)
+   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO - NARROW & CENTERED PHOTOS)
    ========================================================================== */
 .hero-section.hero-brush-split {
   position: relative;
-  min-height: 90vh;
+  min-height: 88vh;
   padding: 0;
   display: flex;
   align-items: stretch;
@@ -12,16 +12,16 @@
   border-bottom: 3px solid var(--eb-orange);
 }
 
-/* Fixed Parallax Background Slideshow */
+/* Right Side: Perfectly Centered Photo Slideshow Canvas (Takes ~56% width on the right) */
 .hero-slideshow-wrap {
   position: absolute;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 58%;
   height: 100%;
   z-index: 1;
   overflow: hidden;
-  clip-path: inset(0 0 0 0);
+  background-color: #0b1120;
 }
 
 .hero-slide-bg {
@@ -36,47 +36,47 @@
 }
 
 .hero-slide-img-full {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center right;
+  object-position: center center;
   display: block;
-  pointer-events: none;
-  z-index: 1;
+  transform: scale(1.02);
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-slide-bg.active .hero-slide-img-full {
+  transform: scale(1.07);
 }
 
 .hero-slide-right-gradient {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(90deg, transparent 45%, rgba(1, 36, 68, 0.2) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 60%, rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
   pointer-events: none;
 }
 
-/* Left: Deep #012444 Navy Painterly Block (Narrower ~47% Width) */
+/* Left: Deep #012444 Navy Painterly Block (Narrower ~46% Width) */
 .hero-navy-brush-block {
   position: relative;
   z-index: 3;
-  width: 47%;
-  min-height: 90vh;
+  width: 46%;
+  min-height: 88vh;
   background-color: #012444;
-  padding: 135px 24px 105px 0;
+  padding: 130px 20px 100px 0;
   display: flex;
   align-items: center;
-  box-shadow: 25px 0 70px rgba(0, 0, 0, 0.5);
+  box-shadow: 25px 0 60px rgba(0, 0, 0, 0.45);
 }
 
-/* Dense, Natural Painterly Brush Stroke Edge */
+/* Authentic Dry-Brush Painterly Edge SVG */
 .hero-brush-edge-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -195px;
-  width: 200px;
+  right: -150px;
+  width: 155px;
   height: 100%;
   pointer-events: none;
   z-index: 4;
@@ -86,12 +86,12 @@
   width: 100%;
   height: 100%;
   display: block;
-  filter: drop-shadow(8px 0 16px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(6px 0 12px rgba(0, 0, 0, 0.35));
 }
 
 .hero-container-brush {
   width: 100%;
-  max-width: 580px;
+  max-width: 560px;
   margin-left: auto;
   margin-right: 15px;
   padding-left: max(5%, 24px);
@@ -138,7 +138,7 @@
 
 .hero-insta-title {
   font-family: 'Exo 2', sans-serif;
-  font-size: clamp(2.1rem, 3.4vw, 3.3rem);
+  font-size: clamp(2.1rem, 3.2vw, 3.2rem);
   font-weight: 900;
   line-height: 1.08;
   color: #ffffff;
@@ -150,7 +150,7 @@
 
 .hero-insta-subline {
   font-family: 'Exo 2', sans-serif;
-  font-size: clamp(1.02rem, 1.6vw, 1.35rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 900;
   line-height: 1.25;
   color: var(--eb-orange);
@@ -163,8 +163,8 @@
   display: flex;
   align-items: stretch;
   gap: 16px;
-  margin-bottom: 28px;
-  max-width: 500px;
+  margin-bottom: 26px;
+  max-width: 480px;
 }
 
 .insta-bar {
@@ -185,10 +185,10 @@
 .hero-insta-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 10px;
   width: 100%;
-  max-width: 520px;
-  margin-bottom: 34px;
+  max-width: 500px;
+  margin-bottom: 32px;
 }
 
 .insta-feat-item {
@@ -200,8 +200,8 @@
 }
 
 .insta-feat-icon {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 255, 255, 0.28);
@@ -222,7 +222,7 @@
 
 .insta-feat-label {
   font-family: 'Exo 2', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
@@ -293,7 +293,10 @@
 /* RESPONSIVE HERO ADJUSTMENTS */
 @media (max-width: 1200px) {
   .hero-navy-brush-block {
-    width: 54%;
+    width: 52%;
+  }
+  .hero-slideshow-wrap {
+    width: 52%;
   }
 }
 
@@ -303,10 +306,10 @@
     min-height: auto;
   }
 
-  .hero-slide-img-full {
-    position: absolute;
+  .hero-slideshow-wrap {
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 380px;
   }
   
   .hero-navy-brush-block {
@@ -346,7 +349,7 @@
 @media (max-width: 640px) {
   .hero-insta-features-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 16px;
   }
 
   .hero-insta-actions {
@@ -359,6 +362,10 @@
   .btn-hero-emergency-insta {
     width: 100%;
     justify-content: center;
+  }
+
+  .hero-slideshow-wrap {
+    height: 280px;
   }
 }
 

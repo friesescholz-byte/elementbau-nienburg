@@ -223,10 +223,10 @@ export default function HomePage() {
   return (
     <div className="homepage-wrapper">
       
-      {/* 1. HERO SECTION WITH FIXED BACKGROUND, NARROW NAVY PANEL & NATURAL BRUSH EDGE */}
+      {/* 1. HERO SECTION WITH AUTHENTIC DRY-BRUSH STROKE & CENTERED BACKGROUND PHOTOS */}
       <section id="hero" className="hero-section hero-brush-split">
         
-        {/* Fixed Parallax Background Photo Slideshow */}
+        {/* Right Half: Perfectly Centered Photo Slideshow */}
         <div className="hero-slideshow-wrap" aria-hidden="true">
           {heroSlides.map((slide, idx) => (
             <div 
@@ -240,42 +240,47 @@ export default function HomePage() {
               />
             </div>
           ))}
-          {/* Subtle dark vignette on right */}
+          {/* Subtle soft vignette on the right */}
           <div className="hero-slide-right-gradient" />
         </div>
 
-        {/* Left Side: Deep #012444 Navy Painterly Block with Organic Brush Edge (Narrower) */}
+        {/* Left Side: Deep #012444 Navy Painterly Block with Organic Brush Edge */}
         <div className="hero-navy-brush-block">
           
-          {/* Natural Paintbrush SVG Edge */}
+          {/* Authentic Painterly Brush SVG Edge */}
           <div className="hero-brush-edge-right" aria-hidden="true">
-            <svg viewBox="0 0 240 900" preserveAspectRatio="none" className="brush-edge-svg">
-              {/* Primary Dense Paint Body */}
-              <path 
-                d="M0 0 H60 
-                C85 12 110 20 150 28 C185 35 220 42 190 52 C155 62 205 72 230 84 C250 95 195 106 170 118 
-                C145 130 215 144 195 158 C175 172 225 186 200 202 C175 216 215 232 175 245 C140 258 220 272 205 288 
-                C190 304 155 316 215 332 C240 344 175 358 195 374 C215 390 155 404 210 420 C245 434 170 448 200 464 
-                C225 479 160 494 205 510 C235 523 175 538 195 554 C215 570 155 584 210 600 C240 614 180 628 200 644 
-                C220 660 165 674 205 690 C235 705 170 720 190 736 C210 752 155 766 200 782 C225 797 160 812 185 828 
-                C210 843 150 858 195 874 C225 886 160 895 100 900 H0 Z" 
-                fill="#012444" 
-              />
-              {/* Connected Dense Bristle Sweeps */}
-              <path d="M50 22 C100 25 180 32 235 38 C180 44 110 48 50 50 Z" fill="#012444" opacity="0.9" />
-              <path d="M60 76 C120 80 190 88 238 94 C190 100 120 104 60 106 Z" fill="#012444" opacity="0.9" />
-              <path d="M55 140 C115 145 185 152 232 158 C180 164 110 168 55 170 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 194 C120 200 195 208 240 214 C190 220 120 224 60 226 Z" fill="#012444" opacity="0.9" />
-              <path d="M50 260 C110 266 185 274 235 280 C180 286 110 290 50 292 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 324 C125 330 195 338 238 344 C185 350 120 354 60 356 Z" fill="#012444" opacity="0.9" />
-              <path d="M55 390 C115 396 190 404 236 410 C180 416 110 420 55 422 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 455 C120 462 195 470 240 476 C190 482 120 486 60 488 Z" fill="#012444" opacity="0.9" />
-              <path d="M50 520 C110 526 185 534 235 540 C180 546 110 550 50 552 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 588 C125 594 195 602 238 608 C185 614 120 618 60 620 Z" fill="#012444" opacity="0.9" />
-              <path d="M55 654 C115 660 190 668 236 674 C180 680 110 684 55 686 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 722 C120 728 195 736 240 742 C190 748 120 752 60 754 Z" fill="#012444" opacity="0.9" />
-              <path d="M50 788 C110 794 185 802 234 808 C180 814 110 818 50 820 Z" fill="#012444" opacity="0.95" />
-              <path d="M60 852 C125 858 190 866 230 872 C180 878 115 882 60 884 Z" fill="#012444" opacity="0.9" />
+            <svg viewBox="0 0 200 900" preserveAspectRatio="none" className="brush-edge-svg">
+              <defs>
+                <filter id="paintBrushFilter" x="-20%" y="-10%" width="140%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="4" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                  <feMerge>
+                    <feMergeNode in="displaced" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Main Paint Body with Brush Dispersion */}
+              <g filter="url(#paintBrushFilter)">
+                <path 
+                  d="M0 0 H40 
+                  C60 15 75 22 110 28 C140 34 175 42 150 50 C120 58 165 68 185 78 C155 88 135 98 165 110 
+                  C140 122 180 135 160 148 C135 160 185 174 165 188 C145 200 175 214 145 228 C120 240 180 254 165 268 
+                  C150 282 125 294 175 308 C195 320 145 334 165 348 C185 362 135 376 175 390 C195 404 140 418 165 432 
+                  C185 446 130 460 170 474 C195 488 145 502 165 518 C185 532 135 546 175 560 C195 574 150 588 165 602 
+                  C180 616 135 630 170 644 C195 658 140 672 165 686 C185 700 145 714 170 728 C195 742 150 756 165 770 
+                  C180 784 135 798 165 812 C185 826 140 840 160 854 C175 868 130 882 150 894 C160 900 100 900 50 900 H0 Z" 
+                  fill="#012444" 
+                />
+                {/* Horizontal Bristle Scratches */}
+                <path d="M30 20 H165 M20 40 H185 M40 65 H175 M25 90 H190 M35 115 H170 M20 140 H185 M40 165 H175 M25 190 H190 M35 215 H170 M20 240 H185 M40 265 H175 M25 290 H190 M35 315 H170 M20 340 H185 M40 365 H175 M25 390 H190 M35 415 H170 M20 440 H185 M40 465 H175 M25 490 H190 M35 515 H170 M20 540 H185 M40 565 H175 M25 590 H190 M35 615 H170 M20 640 H185 M40 665 H175 M25 690 H190 M35 715 H170 M20 740 H185 M40 765 H175 M25 790 H190 M35 815 H170 M20 840 H185 M40 865 H175 M25 890 H180" stroke="#012444" strokeWidth="6" strokeLinecap="round" />
+              </g>
+              
+              {/* Secondary Dry-Brush Layer with Fine Whiskers */}
+              <g opacity="0.85">
+                <path d="M120 35 Q170 38 190 40 M130 75 Q180 78 200 80 M110 120 Q165 124 185 126 M130 165 Q185 168 205 170 M115 210 Q170 214 190 216 M135 255 Q190 258 210 260 M120 300 Q175 304 195 306 M140 345 Q195 348 215 350 M125 390 Q180 394 200 396 M145 435 Q200 438 220 440 M130 480 Q185 484 205 486 M150 525 Q205 528 225 530 M135 570 Q190 574 210 576 M155 615 Q210 618 230 620 M140 660 Q195 664 215 666 M160 705 Q215 708 235 710 M145 750 Q200 754 220 756 M165 795 Q220 798 240 800 M150 840 Q205 844 225 846 M170 885 Q225 888 245 890" stroke="#012444" strokeWidth="3" strokeLinecap="round" />
+                <path d="M140 45 Q180 48 198 50 M150 135 Q190 138 208 140 M145 225 Q185 228 203 230 M155 315 Q195 318 213 320 M150 405 Q190 408 208 410 M160 495 Q200 498 218 500 M155 585 Q195 588 213 590 M165 675 Q205 678 223 680 M160 765 Q200 768 218 770 M170 855 Q210 858 228 860" stroke="#012444" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+              </g>
             </svg>
           </div>
 
