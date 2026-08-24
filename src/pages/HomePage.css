@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO PRO MAX)
+   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO - NARROW & FIXED)
    ========================================================================== */
 .hero-section.hero-brush-split {
   position: relative;
@@ -7,11 +7,12 @@
   padding: 0;
   display: flex;
   align-items: stretch;
-  background-color: #0b1120;
+  background-color: #012444;
   overflow: hidden;
+  border-bottom: 3px solid var(--eb-orange);
 }
 
-/* Background Slideshow on the Right */
+/* Fixed Parallax Background Slideshow */
 .hero-slideshow-wrap {
   position: absolute;
   top: 0;
@@ -20,6 +21,7 @@
   height: 100%;
   z-index: 1;
   overflow: hidden;
+  clip-path: inset(0 0 0 0);
 }
 
 .hero-slide-bg {
@@ -34,81 +36,47 @@
 }
 
 .hero-slide-img-full {
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   object-position: center right;
   display: block;
-  transform: scale(1.02);
-  transition: transform 6.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.hero-slide-bg.active .hero-slide-img-full {
-  transform: scale(1.08);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-slide-right-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 40%, rgba(1, 36, 68, 0.25) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 60%, rgba(0,0,0,0.45) 100%);
+  z-index: 2;
+  background: linear-gradient(90deg, transparent 45%, rgba(1, 36, 68, 0.2) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 60%, rgba(0,0,0,0.4) 100%);
   pointer-events: none;
 }
 
-/* Clean Slide Navigation Dots on Bottom Right */
-.hero-slide-dots-bottom {
-  position: absolute;
-  bottom: 45px;
-  right: 5%;
-  z-index: 6;
-  display: flex;
-  gap: 10px;
-  background: rgba(1, 36, 68, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 8px 16px;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-.hero-nav-dot-pill {
-  width: 24px;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.35);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.hero-nav-dot-pill.active {
-  width: 44px;
-  background: var(--eb-orange);
-  box-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
-}
-
-/* Left: Deep #012444 Navy Painterly Block with Organic Brush Edge */
+/* Left: Deep #012444 Navy Painterly Block (Narrower ~47% Width) */
 .hero-navy-brush-block {
   position: relative;
   z-index: 3;
-  width: 55%;
+  width: 47%;
   min-height: 90vh;
   background-color: #012444;
-  padding: 135px 30px 110px 0;
+  padding: 135px 24px 105px 0;
   display: flex;
   align-items: center;
   box-shadow: 25px 0 70px rgba(0, 0, 0, 0.5);
 }
 
-/* Ultra-Detailed Painterly Brush Stroke Edge */
+/* Dense, Natural Painterly Brush Stroke Edge */
 .hero-brush-edge-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -175px;
-  width: 180px;
+  right: -195px;
+  width: 200px;
   height: 100%;
   pointer-events: none;
   z-index: 4;
@@ -123,11 +91,11 @@
 
 .hero-container-brush {
   width: 100%;
-  max-width: 660px;
+  max-width: 580px;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 15px;
   padding-left: max(5%, 24px);
-  padding-right: 20px;
+  padding-right: 15px;
 }
 
 .hero-brush-content {
@@ -146,7 +114,7 @@
   padding: 6px 16px;
   border-radius: 20px;
   font-family: 'Exo 2', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -170,9 +138,9 @@
 
 .hero-insta-title {
   font-family: 'Exo 2', sans-serif;
-  font-size: clamp(2.3rem, 3.8vw, 3.7rem);
+  font-size: clamp(2.1rem, 3.4vw, 3.3rem);
   font-weight: 900;
-  line-height: 1.06;
+  line-height: 1.08;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -182,21 +150,21 @@
 
 .hero-insta-subline {
   font-family: 'Exo 2', sans-serif;
-  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.35rem);
   font-weight: 900;
   line-height: 1.25;
   color: var(--eb-orange);
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  margin: 0 0 22px 0;
+  margin: 0 0 20px 0;
 }
 
 .hero-insta-desc-box {
   display: flex;
   align-items: stretch;
   gap: 16px;
-  margin-bottom: 30px;
-  max-width: 540px;
+  margin-bottom: 28px;
+  max-width: 500px;
 }
 
 .insta-bar {
@@ -207,20 +175,20 @@
 }
 
 .insta-text {
-  font-size: 1.06rem;
-  line-height: 1.62;
+  font-size: 1.02rem;
+  line-height: 1.6;
   color: #cbd5e1;
   margin: 0;
 }
 
-/* 4 Circular Feature Icons (like in the Instagram post) */
+/* 4 Circular Feature Icons */
 .hero-insta-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  max-width: 560px;
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin-bottom: 34px;
 }
 
 .insta-feat-item {
@@ -228,12 +196,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .insta-feat-icon {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 255, 255, 0.28);
@@ -254,12 +222,12 @@
 
 .insta-feat-label {
   font-family: 'Exo 2', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 /* Hero Action Buttons */
@@ -276,11 +244,11 @@
   gap: 10px;
   background: linear-gradient(135deg, #ff8c00 0%, #ea580c 100%);
   color: #ffffff;
-  padding: 16px 28px;
+  padding: 15px 26px;
   border-radius: 50px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -302,11 +270,11 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   color: #ffffff;
-  padding: 16px 26px;
+  padding: 15px 24px;
   border-radius: 50px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -322,27 +290,10 @@
   box-shadow: 0 10px 26px rgba(220, 38, 38, 0.35);
 }
 
-/* Modern Clean Architectural Angled Divider at Bottom of Hero */
-.hero-bottom-angle-divider {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.angle-divider-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 /* RESPONSIVE HERO ADJUSTMENTS */
 @media (max-width: 1200px) {
   .hero-navy-brush-block {
-    width: 62%;
+    width: 54%;
   }
 }
 
@@ -350,6 +301,12 @@
   .hero-section.hero-brush-split {
     flex-direction: column;
     min-height: auto;
+  }
+
+  .hero-slide-img-full {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
   
   .hero-navy-brush-block {
@@ -383,12 +340,6 @@
 
   .hero-insta-actions {
     justify-content: center;
-  }
-
-  .hero-slide-dots-bottom {
-    bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
   }
 }
 
