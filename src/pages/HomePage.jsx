@@ -2,14 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowRight, Check, X, ShieldAlert, Award, Sparkles, FileText, CheckCircle2, Phone, Mail,
-  Star, MessageSquare, Droplets, Paintbrush, Hammer, Wrench, Home, Waves, AlertTriangle,
-  ChevronLeft, ChevronRight, ChevronUp, ChevronDown, ZoomIn, Maximize2
+  ArrowRight, Check, X, Phone, Mail,
+  Star, MessageSquare, CheckCircle2, ChevronLeft, ChevronRight, ZoomIn,
+  Droplets, Clock, ShieldCheck, Home
 } from 'lucide-react';
 import { servicesData, r2Url } from '../data/servicesData';
 import './HomePage.css';
 
 export default function HomePage() {
+  // Hero Background Slideshow State (4 high quality photos)
+  const heroSlides = [
+    {
+      id: 1,
+      image: `${r2Url}/nb/Elementbau-Auto02.webp`,
+      title: '24h Vor-Ort Einsatzflotte',
+      tag: '24h Notdienst vor Ort'
+    },
+    {
+      id: 2,
+      image: `${r2Url}/nb/Elementbau-13_ergebnis.webp`,
+      title: 'Zerstörungsfreie Bautrocknung',
+      tag: 'Moderne Kondensationstechnik'
+    },
+    {
+      id: 3,
+      image: `${r2Url}/nb/Elementbau-7_ergebnis.webp`,
+      title: 'Wasserschadensanierung',
+      tag: 'Alles aus einer Hand'
+    },
+    {
+      id: 4,
+      image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+      title: 'Handwerk & Baudienstleistungen',
+      tag: 'Team im Kundeneinsatz'
+    }
+  ];
+
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const heroTimer = setInterval(() => {
+      setActiveHeroSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5500);
+    return () => clearInterval(heroTimer);
+  }, [heroSlides.length]);
   // Framer Motion Animation Constants
   const ease = [0.25, 1, 0.5, 1];
   
@@ -187,98 +223,152 @@ export default function HomePage() {
   return (
     <div className="homepage-wrapper">
       
-      {/* 1. HERO SECTION */}
-      <section id="hero" className="hero-section">
-        {/* Architectural Grid Pattern Background */}
-        <div className="hero-blueprint-bg" />
-        <div className="hero-glow-accent" />
-
-        <div className="container hero-container">
-          
-          <motion.div 
-            className="content-side"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div className="brand-tag emergency-brand-tag" variants={fadeUp}>
-              <span className="pulse-tag-dot"></span>
-              24h Notdienst • Inh. Louis Gerber • Nienburg (Weser)
-            </motion.div>
-            
-            <motion.h1 className="title" variants={fadeUp}>
-              Schadenssanierung & <span className="highlight">Leckortung.</span><br />
-              Alles aus einer Hand.
-            </motion.h1>
-            
-            <motion.p className="subtitle" variants={fadeUp}>
-              Schnelle Soforthilfe bei Wasserschäden, zerstörungsfreie Ortung und fachgerechte Komplettsanierung in Nienburg & Region.
-            </motion.p>
-
-            <motion.div className="stats-row" variants={fadeUp}>
-              <div className="stat">
-                <span className="stat-title emergency-stat">24/7 Notruf</span>
-                <span className="stat-desc">Sofort vor Ort</span>
-              </div>
-              <div className="stat">
-                <span className="stat-title">Zerstörungsfrei</span>
-                <span className="stat-desc">Präzise Ortung</span>
-              </div>
-              <div className="stat">
-                <span className="stat-title">Komplettservice</span>
-                <span className="stat-desc">Trocknung & Sanierung</span>
-              </div>
-            </motion.div>
-
-            <motion.div className="button-group hero-buttons-wrap" variants={fadeUp}>
-              <Link to="/kontakt?service=Wasserschaden%20%26%20Leckortung" className="btn-hero-primary">
-                <span>Schaden online melden</span>
-                <ArrowRight size={18} />
-              </Link>
-
-              <a href="tel:+4950219249870" className="btn-hero-secondary">
-                <span className="emergency-icon-dot" />
-                <Phone size={17} />
-                <span>24h Notfall anrufen</span>
-              </a>
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
-            className="hero-organic-stage"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease }}
-          >
-            {/* 1. Top Wide Landscape Card */}
-            <div className="organic-photo-card organic-card-top">
+      {/* 1. HERO SECTION WITH BLUE BRUSH STROKE TRANSITION & SLIDESHOW */}
+      <section id="hero" className="hero-section hero-brush-split">
+        
+        {/* Full Background / Right Half: Photo Slideshow */}
+        <div className="hero-slideshow-wrap" aria-hidden="true">
+          {heroSlides.map((slide, idx) => (
+            <div 
+              key={slide.id}
+              className={`hero-slide-bg ${idx === activeHeroSlide ? 'active' : ''}`}
+            >
               <img 
-                src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
-                alt="Elementbau Nienburg Team vor Ort im Einsatz" 
-                className="organic-img" 
+                src={slide.image} 
+                alt="" 
+                className="hero-slide-img-full"
               />
             </div>
-
-            {/* 2. Bottom-Left Tall Portrait Card */}
-            <div className="organic-photo-card organic-card-portrait">
-              <img 
-                src={`${r2Url}/nb/Elementbau-9_ergebnis.webp`} 
-                alt="Elementbau Nienburg Handwerk & Sanierung" 
-                className="organic-img" 
-              />
-            </div>
-
-            {/* 3. Bottom-Right Card */}
-            <div className="organic-photo-card organic-card-bottom-right">
-              <img 
-                src={`${r2Url}/nb/Elementbau-7_ergebnis.webp`} 
-                alt="Elementbau Nienburg Baudienstleistungen" 
-                className="organic-img" 
-              />
-            </div>
-          </motion.div>
-
+          ))}
+          {/* Subtle dark vignette on right */}
+          <div className="hero-slide-right-gradient" />
         </div>
+
+        {/* Left Side: Deep #012444 Navy Painterly Block with Organic Brush Edge */}
+        <div className="hero-navy-brush-block">
+          
+          {/* SVG Organic Brush Edge attached to the right of the blue block */}
+          <div className="hero-brush-edge-right" aria-hidden="true">
+            <svg viewBox="0 0 140 800" preserveAspectRatio="none" className="brush-edge-svg">
+              <path 
+                d="M0 0 H45 C65 25 85 40 105 60 C125 80 90 105 118 130 C138 150 75 175 108 200 C132 220 70 240 98 265 C118 285 85 310 122 335 C142 350 80 375 102 400 C122 420 65 445 112 470 C138 485 90 515 118 540 C138 560 75 585 108 610 C132 630 90 655 122 680 C142 700 80 725 102 750 C118 770 65 785 92 800 H0 Z" 
+                fill="#012444" 
+              />
+              {/* Ragged dry brush splatters along the edge */}
+              <path d="M96 38 Q122 45 100 54 Z M114 112 Q136 120 110 128 Z M104 185 Q130 193 106 202 Z M118 258 Q138 266 114 275 Z M100 328 Q126 336 102 345 Z M120 402 Q140 411 116 420 Z M108 478 Q132 486 110 495 Z M122 550 Q142 558 118 568 Z M102 622 Q128 630 104 640 Z M120 692 Q140 701 116 710 Z" fill="#012444" />
+            </svg>
+          </div>
+
+          <div className="container hero-container-brush">
+            
+            <motion.div 
+              className="hero-brush-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              {/* Eyebrow badge */}
+              <motion.div className="hero-insta-badge" variants={fadeUp}>
+                <span className="pulse-dot-orange" />
+                <span>24h Notdienst • Inh. Louis Gerber • Nienburg (Weser)</span>
+              </motion.div>
+
+              {/* Main Headline (like in the Instagram graphic) */}
+              <motion.h1 className="hero-insta-title" variants={fadeUp}>
+                SCHADENSSANIERUNG<br />
+                & LECKORTUNG
+              </motion.h1>
+
+              {/* Orange Sub-Headline */}
+              <motion.h2 className="hero-insta-subline" variants={fadeUp}>
+                WIR BRINGEN IHRE RÄUME SCHNELL ZURÜCK ZUR NORMALITÄT!
+              </motion.h2>
+
+              {/* Orange bar with description */}
+              <motion.div className="hero-insta-desc-box" variants={fadeUp}>
+                <div className="insta-bar" />
+                <p className="insta-text">
+                  Feuchtigkeit im Gebäude oder akuter Rohrbruch? Wir sind Ihr kompetenter 24h-Partner für zerstörungsfreie Leckortung, Bautrocknung und fachgerechte Komplettsanierung.
+                </p>
+              </motion.div>
+
+              {/* 4 Circular feature icons (just like in the Instagram post) */}
+              <motion.div className="hero-insta-features-grid" variants={fadeUp}>
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon">
+                    <Droplets size={22} />
+                  </div>
+                  <span className="insta-feat-label">ZERSTÖRUNGSFREIE<br />ORTUNG</span>
+                </div>
+
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon">
+                    <Clock size={22} />
+                  </div>
+                  <span className="insta-feat-label">SCHNELLE<br />EINSATZBEREITSCHAFT</span>
+                </div>
+
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon">
+                    <ShieldCheck size={22} />
+                  </div>
+                  <span className="insta-feat-label">MODERNE<br />TECHNIK</span>
+                </div>
+
+                <div className="insta-feat-item">
+                  <div className="insta-feat-icon">
+                    <Home size={22} />
+                  </div>
+                  <span className="insta-feat-label">FÜR PRIVAT &<br />GEWERBE</span>
+                </div>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div className="hero-insta-actions" variants={fadeUp}>
+                <Link to="/kontakt?service=Wasserschaden%20%26%20Leckortung" className="btn-hero-primary-insta">
+                  <span>Schaden online melden</span>
+                  <ArrowRight size={18} />
+                </Link>
+
+                <a href="tel:+4950219249870" className="btn-hero-emergency-insta">
+                  <Phone size={17} />
+                  <span>24h Notfall anrufen</span>
+                </a>
+              </motion.div>
+
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* Right side floating cutout circle with orange border ring (Instagram style) */}
+        <div className="hero-right-circle-showcase">
+          <div className="hero-circle-frame">
+            <img 
+              src={heroSlides[activeHeroSlide].image} 
+              alt={heroSlides[activeHeroSlide].title} 
+              className="hero-circle-img" 
+            />
+            <div className="hero-circle-ring" />
+            <div className="hero-circle-badge">
+              <span className="live-dot-green" />
+              <span>{heroSlides[activeHeroSlide].tag}</span>
+            </div>
+          </div>
+          {/* Subtle slide indicator dots */}
+          <div className="hero-circle-dots">
+            {heroSlides.map((slide, idx) => (
+              <button
+                key={slide.id}
+                type="button"
+                aria-label={`Slide ${idx + 1}`}
+                className={`circle-dot ${idx === activeHeroSlide ? 'active' : ''}`}
+                onClick={() => setActiveHeroSlide(idx)}
+              />
+            ))}
+          </div>
+        </div>
+
       </section>
 
       {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (SEAMLESS 3-STEP FLOW) */}

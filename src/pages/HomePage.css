@@ -1,282 +1,470 @@
 /* ==========================================================================
-   HOMEPAGE STYLES - ELEMENTBAU NIENBURG (UI/UX PRO MAX)
+   1. HERO SECTION (INSTAGRAM-INSPIRED BLUE BRUSH-SPLIT HERO)
    ========================================================================== */
-
-/* === 1. HERO SECTION (PHOTO & ARCHITECTURAL GRID) === */
-.hero-section {
+.hero-section.hero-brush-split {
   position: relative;
+  min-height: 88vh;
+  padding: 0;
   display: flex;
-  align-items: center;
-  min-height: 90vh;
-  padding: 150px 0 90px 0;
-  background-color: #ffffff;
+  align-items: stretch;
+  background-color: #0b1120;
   overflow: hidden;
 }
 
-/* Subtle Architectural Blueprint Grid */
-.hero-blueprint-bg {
+/* Background Slideshow on the Right */
+.hero-slideshow-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-slide-bg {
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse at 60% 40%, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at 60% 40%, black 40%, transparent 80%);
-  pointer-events: none;
-  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.hero-glow-accent {
+.hero-slide-bg.active {
+  opacity: 1;
+}
+
+.hero-slide-img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 6.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-slide-bg.active .hero-slide-img-full {
+  transform: scale(1.08);
+}
+
+.hero-slide-right-gradient {
   position: absolute;
-  top: 15%;
-  right: 10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255, 140, 0, 0.08) 0%, rgba(220, 38, 38, 0.03) 50%, transparent 70%);
-  filter: blur(60px);
+  inset: 0;
+  background: linear-gradient(90deg, transparent 40%, rgba(1, 36, 68, 0.3) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 60%, rgba(0,0,0,0.5) 100%);
   pointer-events: none;
-  z-index: 1;
 }
 
-.hero-container {
+/* Left: Deep #012444 Navy Painterly Block with Organic Brush Edge */
+.hero-navy-brush-block {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 60px;
+  width: 56%;
+  min-height: 88vh;
+  background-color: #012444;
+  padding: 135px 40px 100px 0;
+  display: flex;
   align-items: center;
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.45);
 }
 
-.content-side {
+/* SVG Organic Brush Edge attached to the right boundary of the blue panel */
+.hero-brush-edge-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -130px;
+  width: 135px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.brush-edge-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(6px 0 14px rgba(0, 0, 0, 0.35));
+}
+
+.hero-container-brush {
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: 20px;
+  padding-left: max(5%, 24px);
+  padding-right: 20px;
+}
+
+.hero-brush-content {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  align-items: flex-start;
 }
 
-.emergency-brand-tag {
-  color: #dc2626;
-  background-color: #fef2f2;
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1px solid rgba(220, 38, 38, 0.2);
-  letter-spacing: 0.06em;
-  font-size: 0.92rem;
-  font-weight: 700;
+.hero-insta-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  width: fit-content;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 140, 0, 0.4);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
 }
 
-.pulse-tag-dot {
+.pulse-dot-orange {
   width: 8px;
   height: 8px;
-  background-color: #dc2626;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
-  animation: pulseDotTag 1.5s infinite;
+  background-color: var(--eb-orange);
+  box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.8);
+  animation: pulseDotOrangeAnim 1.6s infinite;
 }
 
-@keyframes pulseDotTag {
-  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
-  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+@keyframes pulseDotOrangeAnim {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.8); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(255, 140, 0, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); }
 }
 
-.title {
-  font-size: clamp(2.4rem, 4vw, 4rem);
+.hero-insta-title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(2.3rem, 3.8vw, 3.7rem);
   font-weight: 900;
-  line-height: 1.12;
+  line-height: 1.06;
+  color: #ffffff;
   text-transform: uppercase;
-  margin: 0;
   letter-spacing: -0.01em;
-  color: var(--eb-text-main);
+  margin: 0 0 12px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
-.title .highlight {
+.hero-insta-subline {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.25;
   color: var(--eb-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 22px 0;
 }
 
-.subtitle {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #475569;
-  margin: 0;
-  font-weight: 400;
-  max-width: 95%;
-}
-
-.stats-row {
+.hero-insta-desc-box {
   display: flex;
-  gap: 32px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 30px;
+  max-width: 540px;
 }
 
-.stat {
+.insta-bar {
+  width: 4px;
+  background: linear-gradient(180deg, #ff8c00 0%, #ea580c 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.insta-text {
+  font-size: 1.06rem;
+  line-height: 1.62;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* 4 Circular Feature Icons (like in the Instagram post) */
+.hero-insta-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+.insta-feat-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
 }
 
-.stat-title {
+.insta-feat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.insta-feat-item:hover .insta-feat-icon {
+  background: var(--eb-orange);
+  border-color: var(--eb-orange);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 22px rgba(255, 140, 0, 0.4);
+}
+
+.insta-feat-label {
   font-family: 'Exo 2', sans-serif;
-  font-size: 1.35rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--eb-text-main);
-}
-
-.stat-title.emergency-stat {
-  color: #dc2626;
-}
-
-.stat-desc {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #64748b;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  line-height: 1.3;
 }
 
-.hero-buttons-wrap {
+/* Hero Action Buttons */
+.hero-insta-actions {
   display: flex;
-  gap: 16px;
   align-items: center;
+  gap: 16px;
   flex-wrap: wrap;
-  padding-top: 10px;
 }
 
-.btn-hero-primary {
+.btn-hero-primary-insta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: linear-gradient(135deg, #ff8c00 0%, #ea580c 100%);
   color: #ffffff;
-  padding: 16px 30px;
-  border-radius: 12px;
+  padding: 16px 28px;
+  border-radius: 50px;
   font-family: 'Exo 2', sans-serif;
   font-weight: 800;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
-  border: none;
-  box-shadow: 0 10px 25px -4px rgba(234, 88, 12, 0.4), 0 4px 10px rgba(255, 140, 0, 0.2);
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-hero-primary:hover {
+.btn-hero-primary-insta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 35px -6px rgba(234, 88, 12, 0.55);
+  box-shadow: 0 14px 34px rgba(255, 140, 0, 0.55);
   color: #ffffff;
 }
 
-.btn-hero-secondary {
+.btn-hero-emergency-insta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #0f172a;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
   color: #ffffff;
   padding: 16px 26px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
   font-family: 'Exo 2', sans-serif;
-  font-weight: 700;
-  font-size: 0.94rem;
+  font-weight: 800;
+  font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.btn-hero-secondary:hover {
-  background: #1e293b;
-  border-color: rgba(239, 68, 68, 0.6);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.25);
+.btn-hero-emergency-insta:hover {
+  background: rgba(220, 38, 38, 0.25);
+  border-color: #ef4444;
   color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(220, 38, 38, 0.35);
 }
 
-.emergency-icon-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #ef4444;
-  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-  animation: pulseHeroRed 2s infinite;
-}
-
-@keyframes pulseHeroRed {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-}
-
-/* Hero Media Side - Organic Reference Layout */
-.hero-organic-stage {
-  position: relative;
-  width: 100%;
-  max-width: 580px;
-  height: 530px;
-  margin: 0 auto;
-}
-
-.organic-photo-card {
+/* Right Floating Circle Cutout with Orange Ring (Instagram Style) */
+.hero-right-circle-showcase {
   position: absolute;
-  overflow: hidden;
-  background-color: #0f172a;
-  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.14);
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
-  cursor: pointer;
+  bottom: 40px;
+  right: 5%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-.organic-img {
+.hero-circle-frame {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.hero-circle-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.organic-photo-card:hover .organic-img {
-  transform: scale(1.05);
+.hero-circle-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 4px solid var(--eb-orange);
+  box-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
+  pointer-events: none;
 }
 
-.organic-photo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 28px 55px -10px rgba(15, 23, 42, 0.22);
+.hero-circle-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--eb-navy);
+  border: 1px solid var(--eb-orange);
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-/* 1. Top Wide Landscape Card */
-.organic-card-top {
-  top: 0;
-  right: 0;
-  width: 82%;
-  height: 275px;
-  border-radius: 30px;
-  z-index: 2;
+.live-dot-green {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseLiveGreen 1.6s infinite;
 }
 
-/* 2. Bottom-Left Tall Portrait Card */
-.organic-card-portrait {
-  bottom: 0;
-  left: 0;
-  width: 45%;
-  height: 290px;
-  border-radius: 30px;
-  z-index: 3;
+@keyframes pulseLiveGreen {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-/* 3. Bottom-Right Card */
-.organic-card-bottom-right {
-  bottom: 15px;
-  right: 10px;
-  width: 50%;
-  height: 210px;
-  border-radius: 26px;
-  z-index: 2;
+.hero-circle-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.circle-dot {
+  width: 24px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.circle-dot.active {
+  width: 40px;
+  background: var(--eb-orange);
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+}
+
+/* RESPONSIVE HERO ADJUSTMENTS */
+@media (max-width: 1200px) {
+  .hero-navy-brush-block {
+    width: 62%;
+  }
+  .hero-circle-frame {
+    width: 210px;
+    height: 210px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-section.hero-brush-split {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .hero-navy-brush-block {
+    width: 100%;
+    padding: 120px 24px 70px 24px;
+    box-shadow: none;
+  }
+
+  .hero-brush-edge-right {
+    display: none;
+  }
+
+  .hero-container-brush {
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .hero-brush-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-insta-desc-box {
+    justify-content: center;
+  }
+
+  .insta-bar {
+    display: none;
+  }
+
+  .hero-insta-actions {
+    justify-content: center;
+  }
+
+  .hero-right-circle-showcase {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    padding: 30px 20px 60px 20px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-insta-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .hero-insta-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .btn-hero-primary-insta,
+  .btn-hero-emergency-insta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-circle-frame {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 /* === 1.5. SOFORTHILFE 3-STUFEN SECTION (SEAMLESS CLEAN GRID) === */
