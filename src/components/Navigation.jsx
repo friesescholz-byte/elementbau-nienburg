@@ -104,9 +104,12 @@ export default function Navigation() {
       <nav className={`navigation-bar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           {/* Logo */}
-          <Link to="/" className="nav-logo" onClick={() => setIsOpen(false)}>
-            <span className="logo-accent">ELEMENTBAU</span>
-            <span className="logo-sub">NIENBURG</span>
+          <Link to="/" className="nav-logo-brand" onClick={() => setIsOpen(false)}>
+            <img 
+              src="https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni/logo_elementbau_text-R0ypPhqND9QAHAZd.png" 
+              alt="Elementbau Nienburg" 
+              className="nav-brand-logo-img" 
+            />
           </Link>
 
           {/* Desktop Menu */}

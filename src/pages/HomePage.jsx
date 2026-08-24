@@ -394,13 +394,13 @@ export default function HomePage() {
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
                   <img 
-                    src={`${r2Url}/nb/Elementbau-6_ergebnis.webp`} 
-                    alt="Zerstörungsfreie Leckortung bei Elementbau Nienburg" 
+                    src={`${r2Url}/nb/Elementbau-Auto02.webp`} 
+                    alt="24h Notfalleinsatz und zerstörungsfreie Ortung bei Elementbau Nienburg" 
                     className="storyline-img" 
                   />
                   <div className="storyline-photo-badge">
                     <Droplets size={16} />
-                    <span>Ortung ohne Stemmarbeiten</span>
+                    <span>24h Notdienst vor Ort</span>
                   </div>
                 </div>
               </div>
@@ -414,7 +414,7 @@ export default function HomePage() {
                 <h3 className="storyline-step-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
                 
                 <p className="storyline-step-desc">
-                  Bei einem Rohrbruch oder Feuchtigkeitseintritt zählt jede Minute. Unser 24h-Notdienst ist schnell bei Ihnen vor Ort in Nienburg und Umgebung. Mit moderner Infrarot-, Akustik- und Endoskopie-Messtechnik finden wir die Leckage zentimetergenau – ohne unnötige Wandaufbrüche.
+                  Bei einem Rohrbruch oder Feuchtigkeitseintritt zählt jede Minute. Unser 24h-Notdienst ist schnell bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Messtechnik finden wir die Leckage zentimetergenau – ohne unnötige Wandaufbrüche.
                 </p>
 
                 <ul className="storyline-checklist">

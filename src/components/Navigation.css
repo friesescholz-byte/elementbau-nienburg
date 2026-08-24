@@ -37,35 +37,33 @@
 }
 
 /* === BRAND LOGO === */
-.nav-logo {
+.nav-logo-brand {
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
   user-select: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.logo-accent {
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 900;
-  font-size: 1.42rem;
-  color: #0f172a;
-  letter-spacing: -0.02em;
-  transition: color 0.2s ease;
+.nav-logo-brand:hover {
+  transform: scale(1.02);
+  opacity: 0.92;
 }
 
-.logo-sub {
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 700;
-  font-size: 0.68rem;
-  color: var(--eb-orange);
-  letter-spacing: 0.26em;
-  margin-top: 2px;
+.nav-brand-logo-img {
+  height: 48px;
+  width: auto;
+  max-width: 230px;
+  object-fit: contain;
+  display: block;
 }
 
-.nav-logo:hover .logo-accent {
-  color: var(--eb-orange);
+@media (max-width: 768px) {
+  .nav-brand-logo-img {
+    height: 38px;
+    max-width: 175px;
+  }
 }
 
 /* === DESKTOP MENU & LINKS === */
