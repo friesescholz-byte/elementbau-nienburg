@@ -368,7 +368,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (PREMIUM STORYLINE SEQUENCE) */}
+      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (PREMIUM STORYLINE WITH PAINTERLY BLUE CARDS) */}
       <section id="soforthilfe" className="soforthilfe-section storyline-flow">
         <div className="container">
           
@@ -389,7 +389,7 @@ export default function HomePage() {
             {/* Center Vertical Connecting Spine on Desktop */}
             <div className="storyline-center-spine" aria-hidden="true" />
 
-            {/* STEP 01 */}
+            {/* STEP 01: Photo Left | Painterly Blue Card Right */}
             <div className="storyline-step-row step-row-left">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -398,39 +398,60 @@ export default function HomePage() {
                     alt="24h Notfalleinsatz und zerstörungsfreie Ortung bei Elementbau Nienburg" 
                     className="storyline-img" 
                   />
-                  {/* Step Badge directly on image */}
-                  <div className="storyline-step-badge-on-img">
-                    <span className="badge-num-circle">01</span>
-                    <span className="badge-step-label">Erstversorgung & Leckortung</span>
+                  <div className="photo-step-number-tag">
+                    <span>SCHRITT 01</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <h3 className="storyline-step-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
-                
-                <p className="storyline-step-desc-punchy">
-                  Wasser im Gebäude? Unser 24h-Notdienst ist sofort bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Akustik- und Infrarottechnik orten wir das Leck zentimetergenau – ohne unnötige Wandaufbrüche.
-                </p>
+                <div className="storyline-blue-card card-brush-left">
+                  <div className="card-brush-edge-left" aria-hidden="true">
+                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
+                      <path d="M60 0 H20 C10 15 35 30 15 48 C-2 65 30 82 12 100 C-5 118 28 135 10 155 C-8 175 32 192 14 212 C-4 230 28 250 8 270 C-10 290 30 310 12 330 C-6 350 26 370 8 390 C-8 410 28 430 12 450 C-4 470 25 485 20 500 H60 Z" fill="#012444" />
+                      <path d="M30 35 H0 M35 90 H0 M28 145 H0 M32 200 H0 M25 258 H0 M30 315 H0 M26 372 H0 M32 430 H0" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  
+                  <div className="step-card-eyebrow">
+                    <span className="pulse-dot-orange-sm" />
+                    <span>01 • ERSTVERSORGUNG & LECKORTUNG</span>
+                  </div>
 
-                <ul className="storyline-checklist-punchy">
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Schnell vor Ort:</strong> 24/7 Notdienst in Nienburg & Region</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Ohne Stemmarbeiten:</strong> Zerstörungsfreie Ortung spart Zeit & Kosten</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Versicherungsbericht:</strong> Lückenloses Schadensprotokoll inklusive</span>
-                  </li>
-                </ul>
+                  <h3 className="step-card-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
+                  
+                  <p className="step-card-desc">
+                    Wasser im Gebäude? Unser 24h-Notdienst ist sofort bei Ihnen vor Ort in Nienburg und Umgebung. Mit modernster Akustik- und Infrarottechnik orten wir das Leck zentimetergenau – ohne unnötige Wandaufbrüche.
+                  </p>
+
+                  <ul className="step-card-highlights">
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Schnell vor Ort:</span>
+                        <span className="highlight-val">24/7 Notdienst in Nienburg & Region</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Ohne Stemmarbeiten:</span>
+                        <span className="highlight-val">Zerstörungsfreie Ortung spart Zeit & Kosten</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Versicherungsbericht:</span>
+                        <span className="highlight-val">Lückenloses Schadensprotokoll inklusive</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            {/* STEP 02 */}
+            {/* STEP 02: Painterly Blue Card Left | Photo Right */}
             <div className="storyline-step-row step-row-right">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -439,39 +460,60 @@ export default function HomePage() {
                     alt="Professionelle Bautrocknung und Feuchtigkeitsentzug" 
                     className="storyline-img storyline-img-dryer" 
                   />
-                  {/* Step Badge directly on image */}
-                  <div className="storyline-step-badge-on-img">
-                    <span className="badge-num-circle">02</span>
-                    <span className="badge-step-label">Bautrocknung & Feuchtigkeitsentzug</span>
+                  <div className="photo-step-number-tag">
+                    <span>SCHRITT 02</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <h3 className="storyline-step-title">Gezielte technische Bautrocknung</h3>
-                
-                <p className="storyline-step-desc-punchy">
-                  Wir entziehen Estrich, Wänden und Dämmschichten die Feuchtigkeit vollständig mit modernen Kondenstrocknern. Das schützt Ihre Bausubstanz und verhindert Schimmelbildung dauerhaft.
-                </p>
+                <div className="storyline-blue-card card-brush-right">
+                  <div className="card-brush-edge-right" aria-hidden="true">
+                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
+                      <path d="M0 0 H40 C50 15 25 30 45 48 C62 65 30 82 48 100 C65 118 32 135 50 155 C68 175 28 192 46 212 C64 230 32 250 52 270 C70 290 30 310 48 330 C66 350 34 370 52 390 C68 410 32 430 48 450 C64 470 35 485 40 500 H0 Z" fill="#012444" />
+                      <path d="M30 35 H60 M25 90 H60 M32 145 H60 M28 200 H60 M35 258 H60 M30 315 H60 M34 372 H60 M28 430 H60" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  
+                  <div className="step-card-eyebrow">
+                    <span className="pulse-dot-orange-sm" />
+                    <span>02 • BAUTROCKNUNG & ENTZUG</span>
+                  </div>
 
-                <ul className="storyline-checklist-punchy">
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Tiefenentfeuchtung:</strong> Leistungsstarke Trocknungs- & Gebläsetechnik</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Schimmelschutz:</strong> Sichere Prävention für ein gesundes Raumklima</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Messprotokolle:</strong> Exakte Feuchtemessung bis zum optimalen Wert</span>
-                  </li>
-                </ul>
+                  <h3 className="step-card-title">Gezielte technische Bautrocknung</h3>
+                  
+                  <p className="step-card-desc">
+                    Wir entziehen Estrich, Wänden und Dämmschichten die Feuchtigkeit vollständig mit modernen Kondenstrocknern. Das schützt Ihre Bausubstanz und verhindert Schimmelbildung dauerhaft.
+                  </p>
+
+                  <ul className="step-card-highlights">
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Tiefenentfeuchtung:</span>
+                        <span className="highlight-val">Leistungsstarke Trocknungs- & Gebläsetechnik</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Schimmelschutz:</span>
+                        <span className="highlight-val">Sichere Prävention für ein gesundes Raumklima</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Messprotokolle:</span>
+                        <span className="highlight-val">Exakte Feuchtemessung bis zum optimalen Wert</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            {/* STEP 03 */}
+            {/* STEP 03: Photo Left | Painterly Blue Card Right */}
             <div className="storyline-step-row step-row-left">
               <div className="storyline-photo-col">
                 <div className="storyline-photo-frame">
@@ -480,35 +522,56 @@ export default function HomePage() {
                     alt="Schlüsselfertige Sanierung und Wiederherstellung" 
                     className="storyline-img" 
                   />
-                  {/* Step Badge directly on image */}
-                  <div className="storyline-step-badge-on-img">
-                    <span className="badge-num-circle">03</span>
-                    <span className="badge-step-label">Komplettsanierung & Übergabe</span>
+                  <div className="photo-step-number-tag">
+                    <span>SCHRITT 03</span>
                   </div>
                 </div>
               </div>
 
               <div className="storyline-text-col">
-                <h3 className="storyline-step-title">Fachgerechte Komplettsanierung</h3>
-                
-                <p className="storyline-step-desc-punchy">
-                  Vom Trockenbau und Spachteln über Malerarbeiten bis zum neuen Bad: Unser Team übernimmt die komplette Wiederherstellung – schlüsselfertig, sauber und bezugsfertig übergeben.
-                </p>
+                <div className="storyline-blue-card card-brush-left">
+                  <div className="card-brush-edge-left" aria-hidden="true">
+                    <svg viewBox="0 0 60 500" preserveAspectRatio="none" className="card-brush-svg">
+                      <path d="M60 0 H20 C10 15 35 30 15 48 C-2 65 30 82 12 100 C-5 118 28 135 10 155 C-8 175 32 192 14 212 C-4 230 28 250 8 270 C-10 290 30 310 12 330 C-6 350 26 370 8 390 C-8 410 28 430 12 450 C-4 470 25 485 20 500 H60 Z" fill="#012444" />
+                      <path d="M30 35 H0 M35 90 H0 M28 145 H0 M32 200 H0 M25 258 H0 M30 315 H0 M26 372 H0 M32 430 H0" stroke="#012444" strokeWidth="4" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  
+                  <div className="step-card-eyebrow">
+                    <span className="pulse-dot-orange-sm" />
+                    <span>03 • KOMPLETTSANIERUNG & ÜBERGABE</span>
+                  </div>
 
-                <ul className="storyline-checklist-punchy">
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Alle Gewerke:</strong> Trockenbau, Fliesen, Maler & Sanitär aus einer Hand</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Ein Ansprechpartner:</strong> Keine mühsame Koordination verschiedener Firmen</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={20} className="check-navy-icon" />
-                    <span><strong>Schlüsselfertig:</strong> Saubere, termingerechte Übergabe im Neuzustand</span>
-                  </li>
-                </ul>
+                  <h3 className="step-card-title">Fachgerechte Komplettsanierung</h3>
+                  
+                  <p className="step-card-desc">
+                    Vom Trockenbau und Spachteln über Malerarbeiten bis zum neuen Bad: Unser Team übernimmt die komplette Wiederherstellung – schlüsselfertig, sauber und bezugsfertig übergeben.
+                  </p>
+
+                  <ul className="step-card-highlights">
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Alle Gewerke:</span>
+                        <span className="highlight-val">Trockenbau, Fliesen, Maler & Sanitär aus einer Hand</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Ein Ansprechpartner:</span>
+                        <span className="highlight-val">Keine mühsame Koordination verschiedener Firmen</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="highlight-icon-box"><Check size={16} /></div>
+                      <div className="highlight-text-box">
+                        <span className="highlight-key">Schlüsselfertig:</span>
+                        <span className="highlight-val">Saubere, termingerechte Übergabe im Neuzustand</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
