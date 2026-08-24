@@ -368,109 +368,185 @@ export default function HomePage() {
 
       </section>
 
-      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (SEAMLESS 3-STEP FLOW) */}
-      <section id="soforthilfe" className="soforthilfe-section">
+      {/* 1.5. SCHADENSSANIERUNG & NOTDIENST (PREMIUM STORYLINE SEQUENCE) */}
+      <section id="soforthilfe" className="soforthilfe-section storyline-flow">
         <div className="container">
           
           <div className="section-header center">
-            <div className="section-tag center">3-Stufen Soforthilfe</div>
+            <div className="section-tag-navy">
+              <span className="pulse-tag-orange-dot" />
+              <span>3-Stufen Schadenssanierung</span>
+            </div>
             <h2 className="section-title">
-              Wasserschaden? <span className="highlight">Wir handeln sofort.</span>
+              Wasserschaden? <span className="highlight-navy">So helfen wir Ihnen</span> <span className="highlight">Schritt für Schritt.</span>
             </h2>
             <p className="section-intro text-center">
-              Von der zerstörungsfreien Ortung bis zur schlüsselfertigen Übergabe – schnell, transparent und fachgerecht.
+              Von der ersten Notfall-Ortung bis zur schlüsselfertigen Wiederherstellung – transparent, schnell und alles aus einer Hand.
             </p>
           </div>
 
-          <div className="soforthilfe-grid-wrap">
-            <div className="soforthilfe-process-track" />
+          <div className="storyline-steps-container">
+            {/* Center Vertical Connecting Spine on Desktop */}
+            <div className="storyline-center-spine" aria-hidden="true" />
 
-            <div className="soforthilfe-grid">
-              
-              {/* Step 1 */}
-              <div className="soforthilfe-card">
-                <div className="soforthilfe-card-media">
+            {/* STEP 01 */}
+            <div className="storyline-step-row step-row-left">
+              <div className="storyline-photo-col">
+                <div className="storyline-photo-frame">
                   <img 
                     src={`${r2Url}/nb/Elementbau-6_ergebnis.webp`} 
-                    alt="Zerstörungsfreie Leckortung" 
-                    className="soforthilfe-img" 
+                    alt="Zerstörungsfreie Leckortung bei Elementbau Nienburg" 
+                    className="storyline-img" 
                   />
-                  <div className="step-num-pill">1</div>
-                </div>
-                <div className="soforthilfe-card-body">
-                  <h3 className="soforthilfe-card-title">Zerstörungsfreie Ortung</h3>
-                  <p className="soforthilfe-card-desc">
-                    Punktgenaue Lokalisierung des Rohrbruchs per Infrarot- und Akustikmesstechnik – ganz ohne unnötige Wandaufbrüche.
-                  </p>
-                  <ul className="soforthilfe-bullets">
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Ortung ohne Stemmarbeiten</span>
-                    </li>
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Schadensbericht für Versicherung</span>
-                    </li>
-                  </ul>
+                  <div className="storyline-photo-badge">
+                    <Droplets size={16} />
+                    <span>Ortung ohne Stemmarbeiten</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Step 2 */}
-              <div className="soforthilfe-card">
-                <div className="soforthilfe-card-media">
+              <div className="storyline-text-col">
+                <div className="storyline-step-pill">
+                  <span className="step-number-highlight">01</span>
+                  <span className="step-name">Erstversorgung & Leckortung</span>
+                </div>
+
+                <h3 className="storyline-step-title">Zerstörungsfreie Ortung & Schadensstopp</h3>
+                
+                <p className="storyline-step-desc">
+                  Bei einem Rohrbruch oder Feuchtigkeitseintritt zählt jede Minute. Unser 24h-Notdienst ist schnell bei Ihnen vor Ort in Nienburg und Umgebung. Mit moderner Infrarot-, Akustik- und Endoskopie-Messtechnik finden wir die Leckage zentimetergenau – ohne unnötige Wandaufbrüche.
+                </p>
+
+                <ul className="storyline-checklist">
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Schnelle Einsatzbereitschaft</strong> im gesamten Raum Nienburg & Region</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Punktgenaue Leckortung</strong> ohne großflächige Zerstörung von Bausubstanz</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Detailliertes Schadensprotokoll</strong> für die direkte Versicherungsabwicklung</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* STEP 02 */}
+            <div className="storyline-step-row step-row-right">
+              <div className="storyline-photo-col">
+                <div className="storyline-photo-frame">
                   <img 
                     src={`${r2Url}/nb/Elementbau-13_ergebnis.webp`} 
-                    alt="Gezielte Bautrocknung" 
-                    className="soforthilfe-img soforthilfe-img-step2" 
+                    alt="Professionelle Bautrocknung und Feuchtigkeitsentzug" 
+                    className="storyline-img storyline-img-dryer" 
                   />
-                  <div className="step-num-pill">2</div>
-                </div>
-                <div className="soforthilfe-card-body">
-                  <h3 className="soforthilfe-card-title">Gezielte Bautrocknung</h3>
-                  <p className="soforthilfe-card-desc">
-                    Hocheffiziente Tiefenentfeuchtung von Estrich, Mauerwerk und Dämmschichten zur dauerhaften Schimmel-Prävention.
-                  </p>
-                  <ul className="soforthilfe-bullets">
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Tiefenentfeuchtung der Bausubstanz</span>
-                    </li>
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Lückenloses Messprotokoll</span>
-                    </li>
-                  </ul>
+                  <div className="storyline-photo-badge">
+                    <Clock size={16} />
+                    <span>Moderne Kondensationstechnik</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Step 3 */}
-              <div className="soforthilfe-card">
-                <div className="soforthilfe-card-media">
+              <div className="storyline-text-col">
+                <div className="storyline-step-pill">
+                  <span className="step-number-highlight">02</span>
+                  <span className="step-name">Bautrocknung & Feuchtigkeitsentzug</span>
+                </div>
+
+                <h3 className="storyline-step-title">Gezielte technische Bautrocknung</h3>
+                
+                <p className="storyline-step-desc">
+                  Nach der Leckagebehebung entziehen wir Wänden, Estrichen und Dämmschichten die Restfeuchte vollständig. Mit leistungsstarken Kondenstrocknern, Adsorptionstechnik und geräuscharmen Gebläsen verhindern wir zuverlässig Schimmel und Folgeschäden.
+                </p>
+
+                <ul className="storyline-checklist">
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Tiefenentfeuchtung</strong> von Estrich, Mauerwerk & Dämmschichten</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Schimmel-Prävention</strong> und zertifizierte Raumluftreinigung</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Lückenlose Messkontrollen</strong> bis zum Erreichen der Ausgleichsfeuchte</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* STEP 03 */}
+            <div className="storyline-step-row step-row-left">
+              <div className="storyline-photo-col">
+                <div className="storyline-photo-frame">
                   <img 
-                    src={`${r2Url}/nb/Elementbau-14_ergebnis.webp`} 
-                    alt="Komplette Wiederherstellung" 
-                    className="soforthilfe-img" 
+                    src={`${r2Url}/nb/Bad-Sanieren_Elementbau.jpg`} 
+                    alt="Schlüsselfertige Sanierung und Wiederherstellung" 
+                    className="storyline-img" 
                   />
-                  <div className="step-num-pill">3</div>
-                </div>
-                <div className="soforthilfe-card-body">
-                  <h3 className="soforthilfe-card-title">Komplette Sanierung</h3>
-                  <p className="soforthilfe-card-desc">
-                    Trockenbau, Fliesen- und Malerarbeiten aus einer Hand – sauber, fachgerecht und bezugsfertig übergeben.
-                  </p>
-                  <ul className="soforthilfe-bullets">
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Alle Gewerke nahtlos koordiniert</span>
-                    </li>
-                    <li>
-                      <CheckCircle2 size={20} />
-                      <span>Schlüsselfertig & bezugsfertig</span>
-                    </li>
-                  </ul>
+                  <div className="storyline-photo-badge">
+                    <Home size={16} />
+                    <span>Schlüsselfertig bezugsfertig</span>
+                  </div>
                 </div>
               </div>
 
+              <div className="storyline-text-col">
+                <div className="storyline-step-pill">
+                  <span className="step-number-highlight">03</span>
+                  <span className="step-name">Wiederherstellung & Sanierung</span>
+                </div>
+
+                <h3 className="storyline-step-title">Fachgerechte Komplettsanierung</h3>
+                
+                <p className="storyline-step-desc">
+                  Wir lassen Sie nach der Trocknung nicht allein: Von Trockenbau über Malerarbeiten bis hin zur kompletten Badsanierung und Bodenverlegung stellen unsere erfahrenen Handwerker Ihre Räume wieder vollständig her – sauber, hochwertig und schlüsselfertig.
+                </p>
+
+                <ul className="storyline-checklist">
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Alle Gewerke aus einer Meisterhand</strong> (Maler, Fliesen, Trockenbau, Sanitär)</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Ein fester Ansprechpartner</strong> ohne nervige Schnittstellenprobleme</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} className="check-navy-icon" />
+                    <span><strong>Saubere, termingerechte Übergabe</strong> in Neuzustand</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Clean Navy Soforthilfe Action Banner */}
+          <div className="soforthilfe-navy-cta-banner">
+            <div className="cta-banner-content">
+              <div className="cta-banner-badge">
+                <span className="pulse-dot-orange" />
+                <span>24/7 Sofort-Hilfe vor Ort</span>
+              </div>
+              <h3 className="cta-banner-title">Feuchtigkeit oder akuter Schaden im Gebäude?</h3>
+              <p className="cta-banner-subtitle">
+                Wir sind in kürzester Zeit bei Ihnen in Nienburg und Umgebung. Rufen Sie uns jetzt an oder senden Sie Ihren Schaden online.
+              </p>
+            </div>
+            <div className="cta-banner-buttons">
+              <Link to="/kontakt?service=Wasserschaden%20%26%20Leckortung" className="btn-banner-primary">
+                <span>Schaden online melden</span>
+                <ArrowRight size={17} />
+              </Link>
+              <a href="tel:+4950219249870" className="btn-banner-emergency">
+                <Phone size={17} />
+                <span>24h Notruf: 05021 / 9249870</span>
+              </a>
             </div>
           </div>
 
