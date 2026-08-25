@@ -897,38 +897,29 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Category Filter: Clean 3 on Top, 2 on Bottom (No Emojis/Icons) */}
-          <div className="project-filter-32-wrapper">
-            <div className="filter-row-top-3">
-              {[
-                { label: 'Alle Projekte', val: 'Alle' },
-                { label: 'Wasserschaden & Trocknung', val: 'Wasserschaden & Trocknung' },
-                { label: 'Badsanierung & Fliesen', val: 'Badsanierung' }
-              ].map((item) => (
+          {/* Category Filter: 3 on Top / 2 on Bottom on Desktop, Single 1-Line Swipe on Mobile */}
+          <div className="project-filter-unified-track">
+            {[
+              { label: 'Alle Projekte', val: 'Alle' },
+              { label: 'Wasserschaden & Trocknung', val: 'Wasserschaden & Trocknung' },
+              { label: 'Badsanierung & Fliesen', val: 'Badsanierung' },
+              { isBreak: true },
+              { label: 'Maler & Trockenbau', val: 'Maler & Ausbau' },
+              { label: 'Abdichtung & Montage', val: 'Abdichtung & Montage' }
+            ].map((item, idx) => {
+              if (item.isBreak) {
+                return <div key="filter-break-line" className="filter-desktop-break" aria-hidden="true" />;
+              }
+              return (
                 <button
                   key={item.val}
-                  className={`btn-filter-32 ${activeFilter === item.val ? 'active' : ''}`}
+                  className={`btn-filter-pill ${activeFilter === item.val ? 'active' : ''}`}
                   onClick={() => { setActiveFilter(item.val); setVisibleCount(6); }}
                 >
                   <span>{item.label}</span>
                 </button>
-              ))}
-            </div>
-
-            <div className="filter-row-bottom-2">
-              {[
-                { label: 'Maler & Trockenbau', val: 'Maler & Ausbau' },
-                { label: 'Abdichtung & Montage', val: 'Abdichtung & Montage' }
-              ].map((item) => (
-                <button
-                  key={item.val}
-                  className={`btn-filter-32 ${activeFilter === item.val ? 'active' : ''}`}
-                  onClick={() => { setActiveFilter(item.val); setVisibleCount(6); }}
-                >
-                  <span>{item.label}</span>
-                </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
           {/* Modern Clean Project Cards Grid (Max 6 visible by default) */}
