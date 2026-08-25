@@ -168,32 +168,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 3. OTHER SERVICES NAVIGATION */}
-      <section className="other-services-section">
-        <div className="container">
-          <div className="section-header center">
-            <div className="section-tag center">Alle Gewerke</div>
-            <h2 className="section-title">
-              Weitere Leistungen <span className="highlight">von Elementbau.</span>
-            </h2>
-          </div>
 
-          <div className="other-services-grid">
-            {servicesData.filter(s => s.slug !== service.slug).map((s) => (
-              <Link to={`/leistungen/${s.slug}`} key={s.slug} className="other-service-card">
-                <div className="other-service-info">
-                  <span className="other-badge">{s.badge.split('•')[0]}</span>
-                  <h4>{s.navTitle}</h4>
-                  <p>{s.subtitle}</p>
-                </div>
-                <div className="other-arrow">
-                  <ArrowRight size={18} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 5. FINAL CTA BANNER */}
       <section className="service-final-cta">
