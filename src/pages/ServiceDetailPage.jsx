@@ -31,14 +31,7 @@ export default function ServiceDetailPage() {
       <section className={`service-hero ${isEmergency ? 'hero-emergency' : ''}`}>
         <div className="container">
           
-          {/* Breadcrumbs */}
-          <div className="breadcrumbs">
-            <Link to="/" className="crumb-link">Startseite</Link>
-            <ChevronRight size={14} className="crumb-arrow" />
-            <Link to="/#leistungen" className="crumb-link">Baudienstleistungen</Link>
-            <ChevronRight size={14} className="crumb-arrow" />
-            <span className="crumb-current">{service.navTitle}</span>
-          </div>
+          
 
           <motion.div 
             className="service-hero-content"
@@ -62,11 +55,7 @@ export default function ServiceDetailPage() {
               {service.subtitle}
             </motion.p>
 
-            {service.emergencyText && (
-              <motion.div className="emergency-alert-box" variants={fadeUp}>
-                <span>{service.emergencyText}</span>
-              </motion.div>
-            )}
+            
 
             <motion.div className="service-hero-actions" variants={fadeUp}>
               <Link 
@@ -99,9 +88,7 @@ export default function ServiceDetailPage() {
                 Präzise Umsetzung & <span className="highlight">höchste Qualität.</span>
               </h2>
               
-              <p className="lead-paragraph">
-                {service.heroDesc}
-              </p>
+              <p className="lead-paragraph" dangerouslySetInnerHTML={{ __html: service.heroDesc }} />
 
               <div className="features-container">
                 <h3 className="features-title">Ihre Vorteile & unsere Leistungen:</h3>
@@ -111,7 +98,7 @@ export default function ServiceDetailPage() {
                       <span className="feat-check">
                         <CheckCircle2 size={20} />
                       </span>
-                      <span className="feat-text">{feat}</span>
+                      <span className="feat-text" dangerouslySetInnerHTML={{ __html: feat }} />
                     </li>
                   ))}
                 </ul>

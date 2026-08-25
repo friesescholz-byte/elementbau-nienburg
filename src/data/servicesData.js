@@ -9,7 +9,7 @@ export const servicesData = [
     navTitle: 'Wasserschaden & Leckortung',
     badge: '24h Notdienst • Zerstörungsfrei',
     subtitle: 'Schnelle Schadensanalyse, punktgenaue Leckortung, Bautrocknung und Schimmelbeseitigung in Nienburg & Region.',
-    emergencyText: 'Akuter Wasserschaden? Unser 24h-Notdienst ist sofort für Sie erreichbar!',
+    emergencyText: null,
     heroDesc: 'Ein Rohrbruch oder eindringendes Wasser erfordert sofortiges Handeln. Mit modernster akustischer und thermografischer Ortungstechnik lokalisieren wir die Schadensquelle zerstörungsfrei und stoppen die Ausbreitung. Im Anschluss trocknen wir die Bausubstanz gründlich und übernehmen die vollständige Sanierung.',
     coverImage: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
     cardShortDesc: '24h Soforthilfe bei Wassereintritt, zerstörungsfreie Ortung & professionelle Bautrocknung.',
@@ -41,34 +41,34 @@ export const servicesData = [
     slug: 'badsanierung',
     title: 'Badsanierung',
     navTitle: 'Badsanierung',
-    badge: 'Modern • Barrierefrei • Hochwertig',
-    subtitle: 'Vom alten Bad zur modernen Wohlfühloase – fachgerechte Komplettbadsanierung aus einer Hand.',
+    badge: 'Komplettbad & Kleinaufträge • Barrierefrei',
+    subtitle: 'Vom Komplettbad bis zur schnellen Einzelmontage: Waschtisch- & WC-Tausch, Handtuchhalter-Montage oder komplette Wohlfühloase.',
     emergencyText: null,
-    heroDesc: 'Wir planen und realisieren Ihr neues Badezimmer nach Ihren individuellen Vorstellungen. Ob barrierefreie Dusche, großformatige Fliesen oder vollständige Entkernung und Neugestaltung: Bei uns haben Sie einen festen Ansprechpartner für Sanitär, Fliesen und Trockenbau.',
-    coverImage: `${r2Url}/nb/Bad-Sanieren_Elementbau.jpg`,
-    cardShortDesc: 'Vom Altbad zur modernen Wohlfühloase – barrierefrei, sauber und aus einer Hand.',
+    heroDesc: 'Wir planen und realisieren Ihr neues Badezimmer nach Ihren individuellen Vorstellungen – von der vollständigen Badsanierung bis hin zu schnellen Reparaturen und Teilerneuerungen. <strong class="hero-badsanierung-highlight">Auch kleine Arbeiten wie der Austausch von Waschtischen, WCs, Armaturen oder die Montage von Bad-Accessoires wie Handtuchhaltern und Spiegeln erledigen wir schnell, sauber und zuverlässig.</strong>',
+    coverImage: `${r2Url}/nb/Elementbau-Badsanierung01.webp`,
+    cardShortDesc: 'Komplettbäder & schnelle Kleinaufträge: Waschtisch- & WC-Tausch, Handtuchhalter-Montage und schlüsselfertige Sanierung.',
     cardBullets: [
-      'Individuelle Badplanung',
-      'Ebenerdige Walk-In Duschen',
-      'Fliesen & Sanitär komplett'
+      'Komplett- & Teilbadsanierung',
+      'Waschtisch-, WC- & Armaturentausch',
+      'Montage von Zubehör (Handtuchhalter etc.)'
     ],
     images: [
       {
-        url: `${r2Url}/nb/Bad-Sanieren_Elementbau.jpg`,
-        alt: 'Moderne Badsanierung Elementbau Nienburg'
+        url: `${r2Url}/nb/Elementbau-Badsanierung01.webp`,
+        alt: 'Moderne Badsanierung und Fliesenarbeiten Elementbau Nienburg'
       },
       {
         url: `${r2Url}/photo-1584622650111-993a426fbf0a.jpg`,
-        alt: 'Saubere Fertigstellung und Fliesenarbeiten'
+        alt: 'Saubere Fertigstellung, Sanitärkeramik und Bad-Zubehör'
       }
     ],
     features: [
-      'Individuelle Badplanung & Beratung vor Ort',
-      'Fachgerechte Entkernung & umweltgerechte Entsorgung',
-      'Moderne Sanitär- & Rohrleitungsinstallationen',
-      'Präzise Fliesenverlegung & langlebige Abdichtung (DIN 18534)',
-      'Ebenerdige Walk-In Duschen & barrierefreie Lösungen',
-      'Montage hochwertiger Badmöbel und Sanitärkeramik'
+      'Komplettbadsanierung & barrierefreie Walk-In Duschen',
+      'Auch Kleinaufträge: Schneller Austausch von Waschtisch, WC, Armaturen & Silikonfugen',
+      'Fachgerechte Montage von Bad-Accessoires: Handtuchhalter, Spiegel, Duschstangen & Badmöbel',
+      'Präzise Fliesenverlegung & langlebige Verbundabdichtung (DIN 18534)',
+      'Individuelle Badplanung & Vor-Ort-Beratung',
+      'Moderne Sanitär- & Rohrleitungsinstallationen'
     ]
   },
   {
@@ -143,34 +143,34 @@ export const servicesData = [
     slug: 'trockenbau',
     title: 'Trockenbau',
     navTitle: 'Trockenbau',
-    badge: 'Flexibel • Leichtbau • Schallschutz',
-    subtitle: 'Moderne Raumaufteilungen, Akustikdecken, Trennwände und Dachgeschossausbauten.',
+    badge: 'Wandverputzen • Lichtspots • Leichtbau',
+    subtitle: 'Wandverputzen, moderne Raumaufteilungen, Akustikdecken und Installation von LED-Lichtspots.',
     emergencyText: null,
-    heroDesc: 'Trockenbau ist die schnellste und flexibelste Methode, neue Räume zu schaffen oder bestehende Zimmer energieeffizient und schallisoliert aufzuwerten. Wir montieren Metallständerwände, abgehängte Decken und brandschutzgerechte Verkleidungen.',
+    heroDesc: 'Trockenbau und professionelles Wandverputzen schaffen die perfekte Raumgeometrie und ein modernes Wohngefühl. Von raumbildenden Trennwänden und glatten Putzoberflächen bis hin zu abgehängten Decken mit integrierten LED-Lichtspots realisieren wir maßgeschneiderte Lösungen schnell und sauber.',
     coverImage: `${r2Url}/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png`,
-    cardShortDesc: 'Flexible Raumtrennwände, Akustikdecken, Brandschutz und energieeffizienter Dachausbau.',
+    cardShortDesc: 'Ständerwände, fachgerechtes Verputzen von Wand & Decke sowie moderne Lichtspots-Installation.',
     cardBullets: [
-      'Ständerwände & Decken',
-      'Schall- & Dämmschutz',
-      'Dachgeschossausbau'
+      'Ständerwände & Deckenverkleidung',
+      'Verputzen von Wand & Decke',
+      'Integrierte Lichtspots-Installation'
     ],
     images: [
       {
-        url: `${r2Url}/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png`,
-        alt: 'Trockenbau Montage und Ständerwerk'
+        url: `${r2Url}/nb/Elementbau-Badsanierung101.webp`,
+        alt: 'Trockenbau, Wandverputzen und Deckenkonstruktion mit Lichtspots'
       },
       {
-        url: `${r2Url}/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg`,
-        alt: 'Dämmung und Deckenverkleidung im Trockenbau'
+        url: `${r2Url}/gemini_generated_image_22rait22rait22ra-1tv5QxiizvRCc2jX.png`,
+        alt: 'Ständerwerk Montage und Dämmung'
       }
     ],
     features: [
-      'Errichtung von leichten Trennwänden & Raumteilern',
-      'Abgehängte Decken mit integrierten Lichtvouten / Spots',
+      'Errichtung von leichten Trennwänden, Vorsatzschalen & Raumteilern',
+      'Fachgerechtes Verputzen & Spachteln von Wand- und Deckenflächen',
+      'Abgehängte Decken mit professioneller Installation von Lichtspots & LED-Vouten',
       'Dachgeschossausbau inklusive Dampfbremse & Dämmung',
       'Schallschutz-, Brandschutz- & Feuchtraumverkleidungen',
-      'Trockenestrich-Elemente für schnelle Bodenaufbauten',
-      'Verkleidung von Rohrleitungen und Vorwandinstallationen'
+      'Trockenestrich-Elemente für schnelle, saubere Bodenaufbauten'
     ]
   },
   {
@@ -205,40 +205,6 @@ export const servicesData = [
       'Montage moderner Armaturen, Regenduschen & Ventile',
       'Dichtheitsprüfung & Druckprüfungen',
       'Schnittstellenfreie Zusammenarbeit mit unserem Sanierungsteam'
-    ]
-  },
-  {
-    slug: 'innenausbau',
-    title: 'Innenausbau',
-    navTitle: 'Innenausbau',
-    badge: 'Wohnraum • Gewerbe • Maßarbeit',
-    subtitle: 'Ganzheitliche Innenausbau-Lösungen: Türen, Wandverkleidungen, Decken und Raumgestaltung.',
-    emergencyText: null,
-    heroDesc: 'Wir verwandeln Rohbauten und Altbauten in behagliche, repräsentative Wohn- und Arbeitswelten. Unser Innenausbau verbindet Ästhetik mit Langlebigkeit – vom Türeinbau bis zur individuellen Deckenkonstruktion.',
-    coverImage: `${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg`,
-    cardShortDesc: 'Türen- & Fenstermontage, Wand- und Deckenverkleidungen sowie maßgeschneiderter Raumausbau.',
-    cardBullets: [
-      'Zimmertüren & Schiebetüren',
-      'Wand- & Deckenpaneele',
-      'Raumbildender Ausbau'
-    ],
-    images: [
-      {
-        url: `${r2Url}/schiebeta1-4r-einmal-neu-bitte-dy-dy-kann-sich-sehen-lassen-oder-home_innovation_bauelemente-JuPHcH6Zw7UI8kkj.jpg`,
-        alt: 'Moderner Türen- und Fenstereinbau'
-      },
-      {
-        url: `${r2Url}/diese-woche-starten-wir-eine-grapaere-baustelle-mit-home_innovation_bauelemente-neue-fenster-ro-1-BBwRqVvNfA3ccoHf.jpg`,
-        alt: 'Baustellenausbau und Großprojekte'
-      }
-    ],
-    features: [
-      'Fachgerechte Montage von Zimmertüren, Schiebetüren & Zargen',
-      'Individuelle Wand- & Deckenverkleidungen in Holz- oder Paneeloptik',
-      'Ausbau von Kellerräumen zu Hobby- oder Arbeitszimmern',
-      'Einbau moderner Fensterelemente & Beschläge',
-      'Bodenaufbauten und raumbildender Ausbau',
-      'Maßgeschneiderte Detaillösungen für anspruchsvolle Grundrisse'
     ]
   },
   {

@@ -71,6 +71,7 @@ export default function HomePage() {
   // Gallery Filter & Lightbox State
   const [activeFilter, setActiveFilter] = useState('Alle');
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const galleryProjects = [
     {
@@ -106,9 +107,9 @@ export default function HomePage() {
       id: 4,
       title: 'Moderne Badsanierung',
       category: 'Fliesen & Sanitär',
-      location: 'Komplettbad Modernisierung',
-      desc: 'Schlüsselfertiger Umbau mit barrierefreier Dusche und hochwertiger Sanitärausstattung.',
-      image: `${r2Url}/nb/Bad-Sanieren_Elementbau.jpg`,
+      location: 'Komplettbad & Kleinaufträge',
+      desc: 'Schlüsselfertiger Umbau, Waschtisch- & WC-Tausch sowie barrierefreie Walk-In Duschen.',
+      image: `${r2Url}/nb/Elementbau-Badsanierung01.webp`,
       alt: 'Moderne Badsanierung Elementbau Nienburg'
     },
     {
@@ -131,24 +132,15 @@ export default function HomePage() {
     },
     {
       id: 7,
-      title: 'Dachdämmung & Trockenbau',
-      category: 'Energieeffizienz',
-      location: 'Dachausbau & Isolierung',
-      desc: 'Wärmedämmung und raumbildende Trockenbauwände.',
-      image: `${r2Url}/pexels-introspectivedsgn-6124239-2kgBXEvUloO7d9EN.jpg`,
-      alt: 'Dachdämmung und Isolierung'
+      title: 'Trockenbau, Verputzen & Lichtspots',
+      category: 'Trockenbau & Licht',
+      location: 'Decken- & Wandgestaltung',
+      desc: 'Fachgerechtes Verputzen von Wänden, raumbildende Trockenbauwände und moderne Lichtspots-Installation.',
+      image: `${r2Url}/nb/Elementbau-Badsanierung101.webp`,
+      alt: 'Trockenbau, Wandverputzen und Deckenbeleuchtung mit Lichtspots'
     },
     {
       id: 8,
-      title: 'Erdarbeiten & Mutterbodenaushub',
-      category: 'Tiefbau & Sanierung',
-      location: 'Nienburg (Weser)',
-      desc: 'Fachgerechtes Auskoffern und Untergrundstabilisierung.',
-      image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
-      alt: 'Fachgerechte Erdarbeiten und Schadensbehebung'
-    },
-    {
-      id: 9,
       title: 'Großbaustellen Fenstereinbau',
       category: 'Großprojekte',
       location: 'Gewerbe & Wohnbau',
@@ -609,11 +601,13 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="services-grid">
-            {servicesData.map((service) => (
-              <div key={service.slug} className="service-card-clean">
+          <div className="services-showcase-master">
+            
+            {/* Top Wide Service Card: Wasserschaden & Leckortung (Light Glass with subtle reddish tint, NO 24h badge) */}
+            {servicesData.filter(s => s.slug === 'wasserschaden').map((service) => (
+              <div key={service.slug} className="service-card-clean service-card-clean-wide service-card-reddish">
                 
-                {/* Rich Navy Blue Watermark Photo Layer */}
+                {/* Watermark Photo Layer */}
                 <div className="service-card-watermark-bg" aria-hidden="true">
                   <img 
                     src={`${r2Url}/nb/Elementbau-Auto01.webp`} 
@@ -623,44 +617,94 @@ export default function HomePage() {
                   <div className="service-card-watermark-overlay" />
                 </div>
 
-                <div className="service-card-clean-header">
-                  <div className="service-icon-clean">
-                    {service.slug === 'wasserschaden' && <ShieldAlert size={24} />}
-                    {service.slug === 'badsanierung' && <Sparkles size={24} />}
-                    {service.slug === 'malerarbeiten' && <Paintbrush size={24} />}
-                    {service.slug === 'renovierung-sanierung' && <Hammer size={24} />}
-                    {service.slug === 'trockenbau' && <Wrench size={24} />}
-                    {service.slug === 'sanitaerarbeiten' && <Droplets size={24} />}
-                    {service.slug === 'innenausbau' && <Home size={24} />}
-                    {service.slug === 'kellerabdichtung' && <Waves size={24} />}
+                <div className="service-wide-grid">
+                  <div className="service-wide-col-left">
+                    <div className="service-card-clean-header">
+                      <div className="service-icon-clean icon-reddish">
+                        <ShieldAlert size={24} />
+                      </div>
+                    </div>
+
+                    <div className="service-card-clean-body">
+                      <h3 className="card-clean-title">{service.title}</h3>
+                      <p className="card-clean-desc">{service.cardShortDesc || service.shortDesc}</p>
+                    </div>
                   </div>
-                  {service.slug === 'wasserschaden' && (
-                    <span className="service-badge-emergency">24h Notdienst</span>
-                  )}
+
+                  <div className="service-wide-col-right">
+                    {service.cardBullets && service.cardBullets.length > 0 && (
+                      <ul className="service-clean-bullets">
+                        {service.cardBullets.slice(0, 3).map((bullet, idx) => (
+                          <li key={idx}>
+                            <Check className="clean-bullet-icon" size={16} />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="service-wide-actions">
+                      <Link to={`/leistungen/${service.slug}`} className="service-clean-action">
+                        <span>Details ansehen</span>
+                        <ArrowRight size={16} className="clean-action-arrow" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="service-card-clean-body">
-                  <h3 className="card-clean-title">{service.title}</h3>
-                  <p className="card-clean-desc">{service.cardShortDesc || service.shortDesc}</p>
-                  
-                  {service.cardBullets && service.cardBullets.length > 0 && (
-                    <ul className="service-clean-bullets">
-                      {service.cardBullets.slice(0, 3).map((bullet, idx) => (
-                        <li key={idx}>
-                          <Check className="clean-bullet-icon" size={16} />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <Link to={`/leistungen/${service.slug}`} className="service-clean-action">
-                    <span>Details ansehen</span>
-                    <ArrowRight size={16} className="clean-action-arrow" />
-                  </Link>
-                </div>
               </div>
             ))}
+
+            {/* 6 Balanced Light Glass Cards below */}
+            <div className="services-grid-balanced-6">
+              {servicesData.filter(s => s.slug !== 'wasserschaden').map((service) => (
+                <div key={service.slug} className="service-card-clean">
+                  
+                  {/* Watermark Photo Layer */}
+                  <div className="service-card-watermark-bg" aria-hidden="true">
+                    <img 
+                      src={`${r2Url}/nb/Elementbau-Auto01.webp`} 
+                      alt="" 
+                      className="service-card-watermark-img" 
+                    />
+                    <div className="service-card-watermark-overlay" />
+                  </div>
+
+                  <div className="service-card-clean-header">
+                    <div className="service-icon-clean">
+                      {service.slug === 'badsanierung' && <Sparkles size={24} />}
+                      {service.slug === 'malerarbeiten' && <Paintbrush size={24} />}
+                      {service.slug === 'renovierung-sanierung' && <Hammer size={24} />}
+                      {service.slug === 'trockenbau' && <Wrench size={24} />}
+                      {service.slug === 'sanitaerarbeiten' && <Droplets size={24} />}
+                      {service.slug === 'kellerabdichtung' && <Waves size={24} />}
+                    </div>
+                  </div>
+
+                  <div className="service-card-clean-body">
+                    <h3 className="card-clean-title">{service.title}</h3>
+                    <p className="card-clean-desc">{service.cardShortDesc || service.shortDesc}</p>
+                    
+                    {service.cardBullets && service.cardBullets.length > 0 && (
+                      <ul className="service-clean-bullets">
+                        {service.cardBullets.slice(0, 3).map((bullet, idx) => (
+                          <li key={idx}>
+                            <Check className="clean-bullet-icon" size={16} />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <Link to={`/leistungen/${service.slug}`} className="service-clean-action">
+                      <span>Details ansehen</span>
+                      <ArrowRight size={16} className="clean-action-arrow" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           <div className="cta-banner">
@@ -853,31 +897,43 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Modern Clean Horizontal Swipeable Filter Bar */}
-          <div className="project-modern-filter-container">
-            <div className="filter-chips-track">
+          {/* Category Filter: Clean 3 on Top, 2 on Bottom (No Emojis/Icons) */}
+          <div className="project-filter-32-wrapper">
+            <div className="filter-row-top-3">
               {[
-                { label: 'Alle Projekte', val: 'Alle', icon: '✦' },
-                { label: 'Wasserschaden & Trocknung', val: 'Wasserschaden & Trocknung', icon: '💧' },
-                { label: 'Badsanierung & Fliesen', val: 'Badsanierung', icon: '🛁' },
-                { label: 'Maler & Trockenbau', val: 'Maler & Ausbau', icon: '🎨' },
-                { label: 'Abdichtung & Montage', val: 'Abdichtung & Montage', icon: '🏠' }
+                { label: 'Alle Projekte', val: 'Alle' },
+                { label: 'Wasserschaden & Trocknung', val: 'Wasserschaden & Trocknung' },
+                { label: 'Badsanierung & Fliesen', val: 'Badsanierung' }
               ].map((item) => (
                 <button
                   key={item.val}
-                  className={`modern-chip-btn ${activeFilter === item.val ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(item.val)}
+                  className={`btn-filter-32 ${activeFilter === item.val ? 'active' : ''}`}
+                  onClick={() => { setActiveFilter(item.val); setVisibleCount(6); }}
                 >
-                  <span className="chip-icon">{item.icon}</span>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="filter-row-bottom-2">
+              {[
+                { label: 'Maler & Trockenbau', val: 'Maler & Ausbau' },
+                { label: 'Abdichtung & Montage', val: 'Abdichtung & Montage' }
+              ].map((item) => (
+                <button
+                  key={item.val}
+                  className={`btn-filter-32 ${activeFilter === item.val ? 'active' : ''}`}
+                  onClick={() => { setActiveFilter(item.val); setVisibleCount(6); }}
+                >
                   <span>{item.label}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Modern Clean Project Cards Grid */}
+          {/* Modern Clean Project Cards Grid (Max 6 visible by default) */}
           <div className="projects-modern-grid">
-            {filteredProjects.map((project, idx) => (
+            {filteredProjects.slice(0, visibleCount).map((project, idx) => (
               <div 
                 key={project.id} 
                 className="project-showcase-card"
@@ -908,6 +964,19 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* Load More Button if more than 6 projects */}
+          {filteredProjects.length > visibleCount && (
+            <div className="load-more-projects-container">
+              <button 
+                className="btn-load-more-projects"
+                onClick={() => setVisibleCount(prev => prev + 6)}
+              >
+                <span>Weitere Projekte anzeigen ({filteredProjects.length - visibleCount} weitere)</span>
+                <ChevronDown size={18} />
+              </button>
+            </div>
+          )}
 
           {/* FULLSCREEN LIGHTBOX MODAL */}
           <AnimatePresence>

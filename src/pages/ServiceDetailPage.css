@@ -659,3 +659,17 @@
     justify-content: center;
   }
 }
+
+
+.hero-badsanierung-highlight {
+  display: block;
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 140, 0, 0.08);
+  border-left: 4px solid var(--eb-orange);
+  border-radius: 8px;
+  color: var(--eb-orange) !important;
+  font-weight: 800 !important;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}

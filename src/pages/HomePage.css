@@ -7069,3 +7069,1167 @@ html, body {
     max-width: 360px !important;
   }
 }
+
+
+/* ==========================================================================
+   PERFECT DESKTOP & MOBILE FILTER CHIP ALIGNMENT (NO CUTOFF, 100% STRAIGHT)
+   ========================================================================== */
+.project-modern-filter-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 45px !important;
+  width: 100% !important;
+}
+
+.filter-chips-track {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  padding: 4px 0 !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .project-modern-filter-container {
+    margin-bottom: 30px !important;
+    justify-content: flex-start !important;
+  }
+
+  .filter-chips-track {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 6px 16px 16px 16px !important;
+    margin: 0 -16px !important;
+    width: calc(100% + 32px) !important;
+  }
+}
+
+
+/* ==========================================================================
+   PRO MAX FEATURED EMERGENCY CARD & 3+2 BALANCED REFERENZEN FILTER
+   ========================================================================== */
+
+/* 1. FEATURED HEROIC EMERGENCY CARD (TOP OF SERVICES) */
+.services-showcase-master {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+.service-featured-heroic-card {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #012444 0%, #06192a 100%);
+  border: 1.5px solid rgba(255, 140, 0, 0.4);
+  border-left: 6px solid var(--eb-orange);
+  border-radius: 24px;
+  padding: 38px 45px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(1, 36, 68, 0.28);
+}
+
+.featured-watermark-photo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.featured-watermark-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 30%;
+  opacity: 0.12;
+  filter: grayscale(100%) contrast(140%);
+}
+
+.featured-watermark-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #012444 0%, rgba(1, 36, 68, 0.85) 60%, rgba(6, 25, 42, 0.95) 100%);
+}
+
+.featured-card-inner-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.featured-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.featured-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1.5px solid rgba(220, 38, 38, 0.4);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.2);
+}
+
+.badge-notdienst-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  color: #fca5a5;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 50px;
+}
+
+.pulse-dot-red {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: pulseRedDot 2s infinite;
+}
+
+@keyframes pulseRedDot {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.featured-title-main {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.featured-desc-text {
+  color: #cbd5e1;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin: 0 0 22px 0;
+  max-width: 680px;
+}
+
+.featured-bullets-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+}
+
+.featured-b-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.feat-check-orange {
+  color: var(--eb-orange);
+  flex-shrink: 0;
+}
+
+.featured-right-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.featured-action-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  backdrop-filter: blur(10px);
+}
+
+.action-box-tag {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--eb-orange);
+  letter-spacing: 0.06em;
+}
+
+.btn-featured-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(220, 38, 38, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-featured-call:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(220, 38, 38, 0.5);
+  color: #ffffff;
+}
+
+.btn-featured-details {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-featured-details:hover {
+  background: rgba(255, 140, 0, 0.2);
+  border-color: var(--eb-orange);
+  color: var(--eb-orange);
+}
+
+/* 6-CARD BALANCED GRID FOR OTHER SERVICES (3x2 or 2x3 - PERFECTLY EVEN) */
+.services-grid-balanced-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  width: 100%;
+}
+
+/* 2. REFERENZEN 3+2 CLEAN BUTTONS (NO ICONS, DESKTOP BALANCED) */
+.project-filter-32-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 45px;
+  width: 100%;
+}
+
+.filter-row-top-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-row-bottom-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-filter-32 {
+  background: #ffffff;
+  border: 1.5px solid rgba(1, 36, 68, 0.12);
+  color: #012444;
+  padding: 11px 24px;
+  border-radius: 50px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(1, 36, 68, 0.05);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+}
+
+.btn-filter-32:hover {
+  border-color: var(--eb-orange);
+  color: var(--eb-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 140, 0, 0.22);
+}
+
+.btn-filter-32.active {
+  background: #012444;
+  border-color: #012444;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(1, 36, 68, 0.28), 0 0 0 2px rgba(255, 140, 0, 0.4);
+}
+
+/* 3. LOAD MORE BUTTON CONTAINER */
+.load-more-projects-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.btn-load-more-projects {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #012444;
+  color: #ffffff;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1.5px solid rgba(255, 140, 0, 0.4);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(1, 36, 68, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-load-more-projects:hover {
+  background: var(--eb-orange);
+  border-color: var(--eb-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(255, 140, 0, 0.45);
+}
+
+/* Tablet & Mobile Media Queries */
+@media (max-width: 1024px) {
+  .featured-card-inner-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .featured-right-actions {
+    justify-content: flex-start;
+  }
+
+  .featured-action-box {
+    max-width: 100%;
+  }
+
+  .services-grid-balanced-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-featured-heroic-card {
+    padding: 26px 20px;
+    border-radius: 18px;
+  }
+
+  .featured-bullets-2col {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .services-grid-balanced-6 {
+    grid-template-columns: 1fr;
+  }
+
+  .project-filter-32-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .filter-row-top-3,
+  .filter-row-bottom-2 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding: 4px 6px 10px 6px;
+    justify-content: flex-start;
+  }
+
+  .btn-filter-32 {
+    padding: 9px 18px;
+    font-size: 0.84rem;
+  }
+}
+
+
+/* ==========================================================================
+   CLEAN & DEZENT WIDE SERVICE CARD (EXACT SAME VISUAL LANGUAGE)
+   ========================================================================== */
+.service-card-clean-wide {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  padding: 32px 38px !important;
+  margin-bottom: 8px !important;
+}
+
+.service-wide-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.service-wide-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-wide-col-left .service-card-clean-header {
+  margin-bottom: 14px;
+}
+
+.service-wide-col-left .card-clean-title {
+  font-size: 1.45rem;
+  margin-bottom: 8px;
+}
+
+.service-wide-col-left .card-clean-desc {
+  margin-bottom: 0;
+  max-width: 520px;
+}
+
+.service-wide-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-wide-col-right .service-clean-bullets {
+  margin-bottom: 0;
+}
+
+.service-wide-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.service-wide-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #cbd5e1;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.service-wide-phone-link:hover {
+  color: var(--eb-orange);
+}
+
+@media (max-width: 900px) {
+  .service-card-clean-wide {
+    padding: 28px 22px !important;
+  }
+
+  .service-wide-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
+/* ==========================================================================
+   COMPACT, BALANCED & HARMONIOUS SERVICE CARDS (TIGHT GAPS & NO STRETCH)
+   ========================================================================== */
+
+/* 1. Services Grid Container with Tight Gaps */
+.services-showcase-master {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+  width: 100% !important;
+}
+
+.services-grid-balanced-6 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 18px !important;
+  width: 100% !important;
+}
+
+/* 2. Compact Standard Service Card */
+.service-card-clean {
+  background: linear-gradient(145deg, #012444 0%, #061e38 100%) !important;
+  border: 1px solid rgba(255, 140, 0, 0.28) !important;
+  border-radius: 16px !important;
+  padding: 22px 20px 18px 20px !important;
+  min-height: auto !important;
+  box-shadow: 0 10px 28px rgba(1, 36, 68, 0.2) !important;
+}
+
+.service-card-clean-header {
+  margin-bottom: 12px !important;
+}
+
+.service-icon-clean {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+}
+
+.service-badge-emergency {
+  font-size: 0.72rem !important;
+  padding: 4px 10px !important;
+}
+
+.card-clean-title {
+  font-size: 1.18rem !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.2 !important;
+}
+
+.card-clean-desc {
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+  color: #cbd5e1 !important;
+  margin: 0 0 12px 0 !important;
+  min-height: auto !important;
+}
+
+.service-clean-bullets {
+  margin: 0 0 14px 0 !important;
+  padding-top: 10px !important;
+  gap: 6px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.service-clean-bullets li {
+  font-size: 0.84rem !important;
+  gap: 8px !important;
+}
+
+.clean-bullet-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.service-clean-action {
+  font-size: 0.86rem !important;
+  padding-top: 6px !important;
+}
+
+/* 3. Compact Top Wide Card */
+.service-card-clean-wide {
+  padding: 20px 24px !important;
+  border-radius: 16px !important;
+  margin-bottom: 0 !important;
+}
+
+.service-wide-grid {
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
+  gap: 24px !important;
+}
+
+.service-wide-col-left .service-card-clean-header {
+  margin-bottom: 10px !important;
+}
+
+.service-wide-col-left .card-clean-title {
+  font-size: 1.25rem !important;
+  margin-bottom: 5px !important;
+}
+
+.service-wide-col-left .card-clean-desc {
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+  margin-bottom: 0 !important;
+}
+
+.service-wide-col-right {
+  gap: 10px !important;
+}
+
+.service-wide-actions {
+  gap: 14px !important;
+  margin-top: 2px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .service-card-clean-wide {
+    padding: 20px 16px !important;
+  }
+
+  .service-wide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+
+/* ==========================================================================
+   CRYSTAL CLEAR HIGH CONTRAST & PERFECTLY BALANCED SERVICE CARDS
+   ========================================================================== */
+
+.services-showcase-master {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+.services-grid-balanced-6 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+/* Base Service Card (Both Regular & Wide) */
+.service-card-clean {
+  flex: initial !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  background: linear-gradient(145deg, #012444 0%, #03182e 100%) !important;
+  border: 1px solid rgba(255, 140, 0, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 20px 22px !important;
+  min-height: auto !important;
+  height: auto !important;
+  box-shadow: 0 8px 24px rgba(1, 36, 68, 0.3) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  color: #ffffff !important;
+  position: relative !important;
+}
+
+.service-card-clean-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 10px !important;
+}
+
+.service-icon-clean {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1.5px solid rgba(255, 140, 0, 0.6) !important;
+  color: var(--eb-orange) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.service-badge-emergency {
+  font-family: 'Exo 2', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+  color: #fca5a5 !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+}
+
+.card-clean-title {
+  font-family: 'Exo 2', sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  margin: 0 0 6px 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+.card-clean-desc {
+  font-size: 0.86rem !important;
+  line-height: 1.45 !important;
+  color: #cbd5e1 !important;
+  margin: 0 0 10px 0 !important;
+  min-height: auto !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-clean-bullets {
+  list-style: none !important;
+  padding: 8px 0 0 0 !important;
+  margin: 0 0 12px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.service-clean-bullets li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.clean-bullet-icon {
+  color: var(--eb-orange) !important;
+  flex-shrink: 0 !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.service-clean-action {
+  margin-top: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: 'Exo 2', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.82rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--eb-orange) !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  padding-top: 4px !important;
+}
+
+.service-clean-action:hover {
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+}
+
+.clean-action-arrow {
+  color: var(--eb-orange) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.service-clean-action:hover .clean-action-arrow {
+  transform: translateX(3px) !important;
+  color: #ffffff !important;
+}
+
+/* 3. Top Horizontal Wide Card (Wasserschaden & Leckortung) */
+.service-card-clean-wide {
+  padding: 18px 24px !important;
+}
+
+.service-wide-grid {
+  display: grid !important;
+  grid-template-columns: 1.1fr 0.9fr !important;
+  gap: 24px !important;
+  align-items: center !important;
+}
+
+.service-wide-col-left .service-card-clean-header {
+  margin-bottom: 8px !important;
+}
+
+.service-wide-col-left .card-clean-title {
+  font-size: 1.25rem !important;
+  margin-bottom: 4px !important;
+}
+
+.service-wide-col-left .card-clean-desc {
+  font-size: 0.86rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
+}
+
+.service-wide-col-right {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.service-wide-col-right .service-clean-bullets {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+.service-wide-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-top: 2px !important;
+}
+
+.service-wide-phone-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: #cbd5e1 !important;
+  font-family: 'Exo 2', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+}
+
+.service-wide-phone-link:hover {
+  color: var(--eb-orange) !important;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .service-wide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+
+/* ==========================================================================
+   ORIGINAL LIGHT GLASSMORPHIC SERVICE CARDS (EXACT MATCH TO SCREENSHOT)
+   ========================================================================== */
+
+.services-showcase-master {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 22px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+.services-grid-balanced-6 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 22px !important;
+  width: 100% !important;
+}
+
+/* 1. Regular Light Soft-Icy Blue Cards (Exactly like Screenshot) */
+.service-card-clean {
+  background: linear-gradient(135deg, rgba(232, 241, 249, 0.88) 0%, rgba(216, 230, 244, 0.92) 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 20px !important;
+  padding: 30px 26px 26px 26px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 12px 35px rgba(1, 36, 68, 0.08) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+  z-index: 1 !important;
+  color: #012444 !important;
+}
+
+.service-card-clean:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 45px rgba(1, 36, 68, 0.14) !important;
+  border-color: var(--eb-orange) !important;
+}
+
+/* Watermark in Card */
+.service-card-watermark-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.service-card-watermark-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  opacity: 0.18 !important;
+  filter: grayscale(100%) contrast(120%) !important;
+  mix-blend-mode: multiply !important;
+}
+
+.service-card-watermark-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(135deg, rgba(232, 241, 249, 0.5) 0%, rgba(216, 230, 244, 0.7) 100%) !important;
+  pointer-events: none !important;
+}
+
+/* Icon Box in Card (White box with orange border) */
+.service-card-clean-header {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 20px !important;
+}
+
+.service-icon-clean {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(255, 140, 0, 0.5) !important;
+  color: var(--eb-orange) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 14px rgba(255, 140, 0, 0.15) !important;
+}
+
+.service-card-clean:hover .service-icon-clean {
+  background: linear-gradient(135deg, #ff8c00 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: scale(1.06) !important;
+}
+
+/* Title & Text in Dark Navy */
+.card-clean-title {
+  font-family: 'Exo 2', sans-serif !important;
+  font-size: 1.32rem !important;
+  font-weight: 900 !important;
+  color: #012444 !important;
+  margin: 0 0 10px 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  text-shadow: none !important;
+}
+
+.card-clean-desc {
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  color: #475569 !important;
+  margin: 0 0 18px 0 !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+/* Bullets with Dark Navy Text & Orange Checkmarks */
+.service-clean-bullets {
+  list-style: none !important;
+  padding: 14px 0 0 0 !important;
+  margin: 0 0 20px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  border-top: 1px solid rgba(1, 36, 68, 0.1) !important;
+}
+
+.service-clean-bullets li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  color: #012444 !important;
+  text-shadow: none !important;
+}
+
+.clean-bullet-icon {
+  color: #ea580c !important;
+  flex-shrink: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Action Link: DETAILS ANSEHEN -> */
+.service-clean-action {
+  margin-top: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Exo 2', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 0.88rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #012444 !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  padding-top: 4px !important;
+}
+
+.service-clean-action:hover {
+  color: var(--eb-orange) !important;
+  transform: translateX(4px) !important;
+}
+
+.clean-action-arrow {
+  color: var(--eb-orange) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.service-clean-action:hover .clean-action-arrow {
+  transform: translateX(4px) !important;
+}
+
+
+/* ==========================================================================
+   2. TOP WIDE SERVICE CARD: WASSERSCHADEN (SUBTLE REDDISH TINT, NO 24H BADGE)
+   ========================================================================== */
+.service-card-reddish {
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.92) 0%, rgba(254, 226, 226, 0.88) 100%) !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.3) !important;
+  box-shadow: 0 14px 40px rgba(220, 38, 38, 0.08) !important;
+}
+
+.service-card-reddish .service-card-watermark-overlay {
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.5) 0%, rgba(254, 226, 226, 0.7) 100%) !important;
+}
+
+.service-card-reddish:hover {
+  border-color: #ef4444 !important;
+  box-shadow: 0 20px 50px rgba(220, 38, 38, 0.16) !important;
+}
+
+.icon-reddish {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.5) !important;
+  color: #dc2626 !important;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.15) !important;
+}
+
+.service-card-reddish:hover .icon-reddish {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Wide Horizontal Grid for Top Card */
+.service-card-clean-wide {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  padding: 28px 34px !important;
+}
+
+.service-wide-grid {
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
+  gap: 32px !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.service-wide-col-left .service-card-clean-header {
+  margin-bottom: 12px !important;
+}
+
+.service-wide-col-left .card-clean-title {
+  font-size: 1.45rem !important;
+  margin-bottom: 6px !important;
+}
+
+.service-wide-col-left .card-clean-desc {
+  margin-bottom: 0 !important;
+  max-width: 520px !important;
+}
+
+.service-wide-col-right {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.service-wide-col-right .service-clean-bullets {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+.service-wide-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-top: 4px !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid-balanced-6 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .service-card-clean-wide {
+    padding: 24px 20px !important;
+  }
+
+  .service-wide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
