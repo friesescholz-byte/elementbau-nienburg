@@ -14,7 +14,7 @@ const r2Url = 'https://pub-b33108412309406a9a941ddc51e9a5b9.r2.dev/Elementbau-Ni
 const careerHeroSlides = [
   {
     id: 1,
-    image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+    image: `${r2Url}/nb/Elementbau-Auto02.webp`,
     alt: 'Elementbau Team im Praxiseinsatz'
   },
   {

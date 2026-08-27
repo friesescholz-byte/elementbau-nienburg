@@ -366,7 +366,7 @@ export default function Navigation() {
           </Link>
           <div className="mobile-drawer-info">
             <span>Elementbau Nienburg • Inh. Louis Gerber</span>
-            <span>Verdener Landstraße 126 • 31582 Nienburg</span>
+            <span>Auf dem Kampe 6a • 31582 Nienburg (Weser)</span>
           </div>
         </div>
       </div>

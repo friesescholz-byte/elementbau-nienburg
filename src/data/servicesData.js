@@ -11,7 +11,7 @@ export const servicesData = [
     subtitle: 'Schnelle Schadensanalyse, punktgenaue Leckortung, Bautrocknung und Schimmelbeseitigung in Nienburg & Region.',
     emergencyText: null,
     heroDesc: 'Ein Rohrbruch oder eindringendes Wasser erfordert sofortiges Handeln. Mit modernster akustischer und thermografischer Ortungstechnik lokalisieren wir die Schadensquelle zerstörungsfrei und stoppen die Ausbreitung. Im Anschluss trocknen wir die Bausubstanz gründlich und übernehmen die vollständige Sanierung.',
-    coverImage: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+    coverImage: `${r2Url}/nb/Elementbau-Auto02.webp`,
     cardShortDesc: '24h Soforthilfe bei Wassereintritt, zerstörungsfreie Ortung & professionelle Bautrocknung.',
     cardBullets: [
       '24/7 Notfalleinsatz vor Ort',
@@ -20,7 +20,7 @@ export const servicesData = [
     ],
     images: [
       {
-        url: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+        url: `${r2Url}/nb/Elementbau-Auto02.webp`,
         alt: 'Wasserschadensanierung und Leckortung im Einsatz'
       },
       {
@@ -228,7 +228,7 @@ export const servicesData = [
         alt: 'Abdichtung von Sockel- und Eingangsbereichen'
       },
       {
-        url: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
+        url: `${r2Url}/nb/Elementbau-Auto02.webp`,
         alt: 'Freilegung des Mauerwerks für langlebige Außenabdichtung'
       }
     ],

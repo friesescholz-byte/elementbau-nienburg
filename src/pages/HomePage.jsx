@@ -32,9 +32,9 @@ export default function HomePage() {
     },
     {
       id: 4,
-      image: `${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`,
-      title: 'Handwerk & Baudienstleistungen',
-      tag: 'Team im Kundeneinsatz'
+      image: `${r2Url}/nb/Elementbau-1_ergebnis.webp`,
+      title: 'Moderne Baudienstleistungen',
+      tag: 'Präzises Handwerk vor Ort'
     }
   ];
 
@@ -1161,7 +1161,7 @@ export default function HomePage() {
             <div className="career-photo-col">
               <div className="career-large-photo-frame">
                 <img 
-                  src={`${r2Url}/heute-beim-kunden-im-einsatz-dawir-haben-den-alten-mutterboden-fachgerecht-ausgekoffert-und-die-WQru6cOqBraRgsDv.jpg`} 
+                  src={`${r2Url}/nb/Elementbau-Auto01.webp`} 
                   alt="Elementbau Team Nienburg im Praxiseinsatz" 
                   className="career-large-img" 
                 />
